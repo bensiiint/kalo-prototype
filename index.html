@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalo Villa Siargao - Your Serene Sanctuary by the Sea</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 0;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #8b7355;
+        letter-spacing: 2px;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        color: #666;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: #8b7355;
+      }
+
+      .nav-buttons {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .book-now-btn {
+        background: linear-gradient(135deg, #dac3a2, #c4a676);
+        color: white;
+        padding: 8px 20px;
+        border: none;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+      }
+
+      .book-now-btn:hover {
+        background: linear-gradient(135deg, #c4a676, #8b7355);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(218, 195, 162, 0.4);
+      }
+
+      .plan-trip-btn {
+        background: transparent;
+        color: #8b7355;
+        padding: 6px 20px;
+        border: 2px solid #8b7355;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+      }
+
+      .plan-trip-btn:hover {
+        background: #8b7355;
+        color: white;
+        transform: translateY(-1px);
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        background: linear-gradient(
+            135deg,
+            rgba(139, 115, 85, 0.7),
+            rgba(218, 195, 162, 0.5)
+          ),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><linearGradient id="ocean" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%2387CEEB"/><stop offset="50%" stop-color="%234682B4"/><stop offset="100%" stop-color="%23191970"/></linearGradient><linearGradient id="sand" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%23F5DEB3"/><stop offset="100%" stop-color="%23DEB887"/></linearGradient></defs><rect fill="url(%23ocean)" width="1200" height="400"/><ellipse fill="%23FFD700" cx="900" cy="120" rx="60" ry="50"/><polygon fill="url(%23sand)" points="0,350 300,320 600,340 900,310 1200,330 1200,600 0,600"/><rect fill="%23228B22" x="100" y="380" width="15" height="220" rx="7"/><rect fill="%23228B22" x="200" y="370" width="12" height="230" rx="6"/><rect fill="%23228B22" x="300" y="385" width="18" height="215" rx="9"/><polygon fill="%234682B4" points="0,450 400,430 800,440 1200,425 1200,500 0,500"/></svg>');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        position: relative;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        z-index: 2;
+      }
+
+      .hero-subtitle {
+        font-size: 0.9rem;
+        font-weight: 500;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        opacity: 0.9;
+      }
+
+      .hero h1 {
+        font-size: 4.5rem;
+        font-weight: 300;
+        margin-bottom: 1.5rem;
+        letter-spacing: 4px;
+        text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero-tagline {
+        font-size: 1.2rem;
+        font-weight: 300;
+        margin-bottom: 3rem;
+        opacity: 0.85;
+        font-style: italic;
+      }
+
+      /* Tour Categories */
+      .tour-categories {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(15px);
+      }
+
+      .tour-category {
+        padding: 2rem 1rem;
+        text-align: center;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .tour-category:last-child {
+        border-right: none;
+      }
+
+      .tour-category:hover {
+        background: rgba(255, 255, 255, 0.25);
+      }
+
+      /* Experience Section - Compact */
+      .experiences {
+        padding: 4rem 0;
+        background: white;
+      }
+
+      .experience-intro {
+        text-align: center;
+        padding-bottom: 3rem;
+      }
+
+      .experience-intro h2 {
+        font-size: 2.5rem;
+        font-weight: 300;
+        color: #8b7355;
+        margin-bottom: 1rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      .experience-intro p {
+        font-size: 1.1rem;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto;
+        font-weight: 300;
+      }
+
+      .experience-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .experience-card {
+        height: 600px;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        border-radius: 12px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .experience-card.beach {
+        background: linear-gradient(
+            135deg,
+            rgba(139, 115, 85, 0.3),
+            rgba(218, 195, 162, 0.3)
+          ),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600"><defs><linearGradient id="beachOcean" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%2387CEEB"/><stop offset="100%" stop-color="%234682B4"/></linearGradient><linearGradient id="beachSand" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%23F5DEB3"/><stop offset="100%" stop-color="%23DEB887"/></linearGradient></defs><rect fill="url(%23beachOcean)" width="400" height="400"/><ellipse fill="%23FFD700" cx="320" cy="80" rx="40" ry="30"/><polygon fill="url(%23beachSand)" points="0,350 100,320 200,340 300,310 400,330 400,600 0,600"/><rect fill="%23228B22" x="50" y="400" width="8" height="200" rx="4"/><rect fill="%23228B22" x="120" y="390" width="6" height="210" rx="3"/><rect fill="%23228B22" x="200" y="405" width="10" height="195" rx="5"/><circle fill="%23FFFFFF" cx="200" cy="200" r="80" opacity="0.3"/><rect fill="%234682B4" x="0" y="450" width="400" height="30" opacity="0.7"/></svg>');
+        background-size: cover;
+      }
+
+      .experience-card.wellness {
+        background: linear-gradient(
+            135deg,
+            rgba(139, 115, 85, 0.3),
+            rgba(218, 195, 162, 0.3)
+          ),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600"><defs><linearGradient id="spa" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%2398FB98"/><stop offset="100%" stop-color="%2390EE90"/></linearGradient></defs><rect fill="url(%23spa)" width="400" height="600"/><circle fill="%23FFFFFF" cx="200" cy="150" r="60" opacity="0.4"/><circle fill="%23FFFFFF" cx="200" cy="300" r="40" opacity="0.3"/><circle fill="%23FFFFFF" cx="200" cy="450" r="30" opacity="0.2"/><rect fill="%23228B22" x="50" y="500" width="300" height="8" rx="4" opacity="0.6"/><rect fill="%23228B22" x="80" y="480" width="240" height="6" rx="3" opacity="0.5"/><circle fill="%23DAC3A2" cx="100" cy="100" r="20" opacity="0.4"/><circle fill="%23DAC3A2" cx="300" cy="200" r="25" opacity="0.4"/><circle fill="%23DAC3A2" cx="150" cy="350" r="15" opacity="0.4"/></svg>');
+        background-size: cover;
+      }
+
+      .experience-card.adventure {
+        background: linear-gradient(
+            135deg,
+            rgba(139, 115, 85, 0.3),
+            rgba(218, 195, 162, 0.3)
+          ),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600"><defs><linearGradient id="adventureOcean" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%2320B2AA"/><stop offset="100%" stop-color="%23008B8B"/></linearGradient><linearGradient id="island" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%23228B22"/><stop offset="100%" stop-color="%23006400"/></linearGradient></defs><rect fill="url(%23adventureOcean)" width="400" height="600"/><ellipse fill="url(%23island)" cx="200" cy="300" rx="150" ry="100"/><ellipse fill="url(%23island)" cx="100" cy="150" rx="60" ry="40"/><ellipse fill="url(%23island)" cx="320" cy="180" rx="40" ry="25"/><ellipse fill="url(%23island)" cx="80" cy="450" rx="50" ry="30"/><rect fill="%23228B22" x="180" y="250" width="8" height="80" rx="4"/><rect fill="%23228B22" x="200" y="240" width="6" height="90" rx="3"/><rect fill="%23228B22" x="220" y="260" width="10" height="70" rx="5"/><polygon fill="%23FFFFFF" points="150,200 250,200 200,120" opacity="0.3"/><circle fill="%23FFD700" cx="300" cy="80" r="25"/></svg>');
+        background-size: cover;
+      }
+
+      .experience-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(transparent 60%, rgba(0, 0, 0, 0.8));
+        transition: all 0.4s ease;
+      }
+
+      .experience-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        z-index: 10;
+      }
+
+      .experience-card:hover::before {
+        background: linear-gradient(transparent 40%, rgba(0, 0, 0, 0.9));
+      }
+
+      .experience-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 2.5rem;
+        color: white;
+        z-index: 2;
+        transform: translateY(60px);
+        transition: all 0.4s ease;
+      }
+
+      .experience-card:hover .experience-content {
+        transform: translateY(0);
+      }
+
+      .experience-content h3 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transform: translateY(0);
+        transition: all 0.4s ease;
+      }
+
+      .experience-content p {
+        font-size: 1rem;
+        font-weight: 300;
+        line-height: 1.6;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.4s ease 0.1s;
+      }
+
+      .experience-card:hover .experience-content p {
+        opacity: 0.9;
+        transform: translateY(0);
+      }
+
+      /* Feature Package - Compact */
+      .feature-package {
+        padding: 4rem 0;
+        background: #fafafa;
+      }
+
+      .package-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .package-info h2 {
+        font-size: 2rem;
+        font-weight: 300;
+        color: #8b7355;
+        margin-bottom: 1.5rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .package-details {
+        margin: 1.5rem 0;
+      }
+
+      .package-details h4 {
+        color: #8b7355;
+        margin-bottom: 0.8rem;
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .package-details ul {
+        list-style: none;
+        margin-bottom: 1.5rem;
+      }
+
+      .package-details li {
+        padding: 0.3rem 0;
+        color: #666;
+        font-weight: 300;
+        position: relative;
+        padding-left: 1.5rem;
+      }
+
+      .package-details li::before {
+        content: "•";
+        color: #dac3a2;
+        position: absolute;
+        left: 0;
+        font-weight: 600;
+      }
+
+      .package-price {
+        font-size: 1.8rem;
+        color: #8b7355;
+        font-weight: 600;
+        margin: 1.5rem 0 0.5rem 0;
+      }
+
+      .package-note {
+        font-style: italic;
+        color: #999;
+        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
+      }
+
+      .read-more-btn {
+        background: transparent;
+        color: #8b7355;
+        padding: 12px 24px;
+        border: 2px solid #8b7355;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-size: 0.9rem;
+      }
+
+      .read-more-btn:hover {
+        background: #8b7355;
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      .package-image {
+        height: 350px;
+        background: linear-gradient(
+            135deg,
+            rgba(139, 115, 85, 0.2),
+            rgba(218, 195, 162, 0.2)
+          ),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 350"><defs><linearGradient id="villaOcean" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%2387CEEB"/><stop offset="100%" stop-color="%234682B4"/></linearGradient></defs><rect fill="url(%23villaOcean)" width="400" height="250"/><rect fill="%23F5DEB3" x="0" y="250" width="400" height="100"/><rect fill="%23DAC3A2" x="150" y="200" width="100" height="80" rx="5"/><rect fill="%238B7355" x="140" y="190" width="120" height="10" rx="5"/><rect fill="%234682B4" x="50" y="220" width="80" height="60" rx="40" opacity="0.7"/><rect fill="%234682B4" x="270" y="230" width="60" height="40" rx="30" opacity="0.7"/><rect fill="%23228B22" x="80" y="280" width="6" height="70" rx="3"/><rect fill="%23228B22" x="320" y="285" width="8" height="65" rx="4"/><circle fill="%23FFD700" cx="320" cy="60" r="30"/></svg>');
+        background-size: cover;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 300;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Testimonial - Compact */
+      .testimonials {
+        padding: 4rem 0;
+        background: white;
+      }
+
+      .testimonial-container {
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        gap: 3rem;
+        align-items: center;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .testimonial-image {
+        height: 250px;
+        background: linear-gradient(135deg, #dac3a2, #c4a676),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250"><circle fill="white" cx="125" cy="125" r="60" opacity="0.3"/><circle fill="white" cx="125" cy="100" r="25" opacity="0.4"/><ellipse fill="white" cx="125" cy="160" rx="35" ry="15" opacity="0.4"/></svg>');
+        background-size: cover;
+        border-radius: 12px;
+        position: relative;
+        transition: all 0.4s ease;
+      }
+
+      .testimonial-image.changing {
+        transform: scale(0.98);
+        opacity: 0.8;
+      }
+
+      .testimonial-content {
+        padding: 1rem 0;
+      }
+
+      .stars {
+        color: #dac3a2;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+
+      .testimonial-text {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #666;
+        margin-bottom: 1.5rem;
+        font-style: italic;
+        font-weight: 300;
+        transition: all 0.4s ease;
+        transform: translateX(0);
+      }
+
+      .testimonial-text.sliding-out {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+
+      .testimonial-text.sliding-in {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+
+      .testimonial-author {
+        font-weight: 600;
+        color: #8b7355;
+        font-size: 1rem;
+        transition: all 0.4s ease;
+        transform: translateX(0);
+      }
+
+      .testimonial-author.sliding-out {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+
+      .testimonial-author.sliding-in {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+
+      .testimonial-nav {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .nav-arrow {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: #8b7355;
+        color: white;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .nav-arrow::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.3s ease;
+      }
+
+      .nav-arrow:hover {
+        background: #6d5a43;
+        transform: scale(1.05);
+      }
+
+      .nav-arrow:active {
+        transform: scale(0.95);
+      }
+
+      .nav-arrow:active::before {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* Contact Section - Compact */
+      .contact-section {
+        padding: 4rem 0;
+        background: #fafafa;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .contact-item {
+        text-align: center;
+        padding: 2rem;
+        background: white;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .contact-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .contact-item h3 {
+        font-size: 1.1rem;
+        color: #8b7355;
+        margin-bottom: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .contact-item p {
+        color: #666;
+        font-weight: 300;
+        line-height: 1.4;
+      }
+
+      /* Instagram - Compact */
+      .instagram-section {
+        text-align: center;
+        margin-top: 3rem;
+      }
+
+      .instagram-section h3 {
+        font-size: 1.5rem;
+        font-weight: 300;
+        color: #8b7355;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .instagram-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .instagram-post {
+        aspect-ratio: 1;
+        background: linear-gradient(135deg, #dac3a2, #c4a676),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle fill="white" cx="100" cy="100" r="25" opacity="0.4"/><rect fill="white" x="80" y="80" width="40" height="40" rx="20" opacity="0.2"/></svg>');
+        background-size: cover;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .instagram-post:hover {
+        transform: scale(1.05);
+      }
+
+      /* Newsletter - Compact */
+      .newsletter {
+        padding: 3rem 0;
+        background: linear-gradient(135deg, #8b7355, #dac3a2);
+        color: white;
+        text-align: center;
+      }
+
+      .newsletter-content {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .newsletter h3 {
+        font-size: 1.8rem;
+        font-weight: 300;
+        margin-bottom: 1rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .newsletter p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+        font-weight: 300;
+      }
+
+      .newsletter-form {
+        display: flex;
+        max-width: 400px;
+        margin: 0 auto;
+        border-radius: 50px;
+        overflow: hidden;
+        background: white;
+      }
+
+      .newsletter input {
+        flex: 1;
+        padding: 15px 20px;
+        border: none;
+        font-size: 1rem;
+        outline: none;
+      }
+
+      .newsletter button {
+        background: #8b7355;
+        color: white;
+        padding: 15px 25px;
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-size: 0.9rem;
+      }
+
+      .newsletter button:hover {
+        background: #6d5a43;
+      }
+
+      /* FAQ - Compact */
+      .faq {
+        padding: 4rem 0;
+        background: white;
+      }
+
+      .faq h2 {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 300;
+        color: #8b7355;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .faq-subtitle {
+        text-align: center;
+        color: #666;
+        margin-bottom: 3rem;
+        font-weight: 300;
+      }
+
+      .faq-container {
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .faq-item {
+        margin-bottom: 0.8rem;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .faq-question {
+        background: #8b7355;
+        color: white;
+        padding: 1.2rem 1.5rem;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background 0.3s ease;
+        border: none;
+        width: 100%;
+        text-align: left;
+        font-size: 0.95rem;
+      }
+
+      .faq-question:hover {
+        background: #6d5a43;
+      }
+
+      .faq-answer {
+        background: white;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .faq-answer.active {
+        padding: 1.2rem 1.5rem;
+        max-height: 150px;
+      }
+
+      .faq-answer p {
+        color: #666;
+        font-weight: 300;
+        line-height: 1.5;
+      }
+
+      /* Footer */
+      footer {
+        background: #2c2c2c;
+        color: white;
+        padding: 2.5rem 0;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .footer-logo {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #dac3a2;
+        letter-spacing: 2px;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .footer-links a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        font-weight: 300;
+        font-size: 0.9rem;
+      }
+
+      .footer-links a:hover {
+        color: #dac3a2;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.8rem;
+      }
+
+      .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        background: #dac3a2;
+        color: #2c2c2c;
+        border-radius: 50%;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 0.8rem;
+      }
+
+      .social-links a:hover {
+        background: white;
+        transform: translateY(-2px);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #444;
+        color: #999;
+        font-weight: 300;
+        font-size: 0.85rem;
+      }
+
+      /* Floating Contact */
+      .floating-contact {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      .float-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        font-size: 1.2rem;
+      }
+
+      .float-btn:hover {
+        transform: scale(1.1) translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .float-btn.whatsapp {
+        background: #25d366;
+      }
+
+      .float-btn.email {
+        background: #8b7355;
+      }
+
+      .float-btn.phone {
+        background: #dac3a2;
+        color: #2c2c2c;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.8rem;
+        }
+
+        .hero-subtitle {
+          font-size: 0.8rem;
+          letter-spacing: 2px;
+        }
+
+        .hero-tagline {
+          font-size: 1.1rem;
+        }
+
+        .tour-categories {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .tour-category {
+          padding: 1.5rem 0.8rem;
+          font-size: 0.8rem;
+        }
+
+        /* Make experience section more compact on mobile */
+        .experiences {
+          padding: 3rem 0;
+        }
+
+        .experience-intro {
+          padding-bottom: 2rem;
+        }
+
+        .experience-intro h2 {
+          font-size: 2rem;
+        }
+
+        .experience-cards {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+          margin-top: 2rem;
+        }
+
+        .experience-card {
+          height: 300px; /* Much shorter on mobile */
+          border-radius: 8px;
+        }
+
+        .experience-content {
+          padding: 1.5rem;
+          transform: translateY(40px);
+        }
+
+        .experience-content h3 {
+          font-size: 1.3rem;
+          margin-bottom: 0.5rem;
+          letter-spacing: 1px;
+        }
+
+        .experience-content p {
+          font-size: 0.9rem;
+          line-height: 1.4;
+        }
+
+        /* Compact other sections */
+        .feature-package,
+        .testimonials,
+        .contact-section,
+        .faq {
+          padding: 3rem 0;
+        }
+
+        .package-container,
+        .testimonial-container {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .package-info h2 {
+          font-size: 1.8rem;
+        }
+
+        .package-image {
+          height: 250px;
+        }
+
+        .testimonial-container {
+          gap: 1.5rem;
+        }
+
+        .testimonial-image {
+          height: 200px;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .nav-buttons {
+          gap: 0.5rem;
+        }
+
+        .book-now-btn {
+          padding: 8px 16px;
+          font-size: 0.85rem;
+        }
+        .plan-trip-btn {
+          padding: 6px 16px;
+          font-size: 0.85rem;
+        }
+
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+          margin-bottom: 2rem;
+        }
+
+        .contact-item {
+          padding: 1.5rem;
+        }
+
+        .instagram-section {
+          margin-top: 2rem;
+        }
+
+        .instagram-section h3 {
+          font-size: 1.3rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .instagram-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 0.8rem;
+          max-width: 100%;
+        }
+
+        .newsletter {
+          padding: 2.5rem 0;
+        }
+
+        .newsletter h3 {
+          font-size: 1.5rem;
+        }
+
+        .newsletter-form {
+          flex-direction: column;
+          border-radius: 8px;
+          max-width: 100%;
+        }
+
+        .faq h2 {
+          font-size: 1.8rem;
+        }
+
+        .faq-container {
+          margin-top: 2rem;
+        }
+
+        .faq-question {
+          padding: 1rem 1.2rem;
+          font-size: 0.9rem;
+        }
+
+        .faq-answer.active {
+          padding: 1rem 1.2rem;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 1.5rem;
+        }
+
+        .social-links {
+          justify-content: center;
+        }
+
+        .floating-contact {
+          bottom: 1.5rem;
+          right: 1.5rem;
+        }
+
+        .float-btn {
+          width: 45px;
+          height: 45px;
+          font-size: 1.1rem;
+        }
+      }
+
+      /* Extra small mobile optimization */
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 15px;
+        }
+
+        .hero h1 {
+          font-size: 2.2rem;
+          letter-spacing: 2px;
+        }
+
+        .experience-card {
+          height: 280px;
+        }
+
+        .experience-content h3 {
+          font-size: 1.1rem;
+        }
+
+        .experience-content p {
+          font-size: 0.85rem;
+        }
+
+        .package-info h2 {
+          font-size: 1.6rem;
+        }
+
+        .package-price {
+          font-size: 1.5rem;
+        }
+      }
+
+      /* Animation Classes */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      .fade-in-up.animate {
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 0.8s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav class="container">
+        <div class="logo">KALO VILLA</div>
+        <ul class="nav-links">
+          <li><a href="#experiences">Experiences</a></li>
+          <li><a href="#packages">Packages</a></li>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-buttons">
+          <a
+            href="https://www.booking.com/hotel/ph/kalo-villas-siargao-room-1.html"
+            target="_blank"
+            class="book-now-btn"
+            >Book Now</a
+          >
+          <a href="#contact" class="plan-trip-btn">Plan Trip</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="hero-subtitle">Discover Siargao</div>
+        <h1>KALO VILLA</h1>
+        <div class="hero-tagline">Your Serene Sanctuary by the Sea</div>
+      </div>
+
+      <div class="tour-categories">
+        <div class="tour-category">Beach Villa</div>
+        <div class="tour-category">Wellness Retreat</div>
+        <div class="tour-category">Island Adventures</div>
+        <div class="tour-category">Surf Experience</div>
+      </div>
+    </section>
+
+    <!-- Experience Cards Section -->
+    <section class="experiences" id="experiences">
+      <div class="container">
+        <div class="experience-intro">
+          <h2 class="fade-in-up">Discover Siargao's Magic</h2>
+          <p class="fade-in-up">
+            Turn your dream vacation into reality – we'll take care of every
+            detail, and you just enjoy the magic!
+          </p>
+        </div>
+
+        <div class="experience-cards">
+          <div class="experience-card beach">
+            <div class="experience-content">
+              <h3>Beach Villa</h3>
+              <p>
+                Private beachfront villas with direct pool access and stunning
+                ocean views. Wake up to the sound of waves and spend your days
+                lounging by the crystal-clear waters of Siargao.
+              </p>
+            </div>
+          </div>
+
+          <div class="experience-card wellness">
+            <div class="experience-content">
+              <h3>Wellness Retreat</h3>
+              <p>
+                Floating breakfast served poolside, in-villa massage treatments,
+                and peaceful hammock moments. Reconnect with yourself in our
+                serene sanctuary designed for total relaxation.
+              </p>
+            </div>
+          </div>
+
+          <div class="experience-card adventure">
+            <div class="experience-content">
+              <h3>Island Adventures</h3>
+              <p>
+                Island hopping tours, surf lessons with local experts, and
+                exploring the hidden gems of Siargao. From secret lagoons to
+                vibrant coral reefs, adventure awaits.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature Package Section -->
+    <section class="feature-package" id="packages">
+      <div class="container">
+        <div class="package-container">
+          <div class="package-info fade-in-up">
+            <h2>Premium Villa Package 2025</h2>
+
+            <div class="package-details">
+              <h4>Locations & Experience:</h4>
+              <ul>
+                <li>Cabitoonan Beachfront (5 Private Villas)</li>
+                <li>3.9km from General Luna Center</li>
+                <li>Direct pool and beach access</li>
+                <li>Daily floating breakfast service</li>
+              </ul>
+
+              <h4>Included Services:</h4>
+              <ul>
+                <li>Free airport shuttle (Sayak Airport - 33km)</li>
+                <li>Daily housekeeping and breakfast</li>
+                <li>High-speed Starlink Wi-Fi</li>
+                <li>In-villa massage (by request)</li>
+                <li>24/7 Joy & team assistance</li>
+              </ul>
+            </div>
+
+            <div class="package-price">₱8,500/night</div>
+            <div class="package-note">
+              Price is for 2 people and includes all amenities
+            </div>
+
+            <button class="read-more-btn" onclick="showPackageDetails()">
+              Read more
+            </button>
+          </div>
+
+          <div class="package-image fade-in-up">
+            <div>Stunning Villa Views</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonials">
+      <div class="container">
+        <div class="testimonial-container">
+          <div class="testimonial-image fade-in-up"></div>
+
+          <div class="testimonial-content fade-in-up">
+            <div class="stars">★★★★★</div>
+            <div class="testimonial-text">
+              "Kalo Villa exceeded all our expectations! The floating breakfast
+              was magical, Joy and her team were incredibly welcoming, and the
+              beachfront location was perfect. We felt like we found our own
+              piece of paradise in Siargao."
+            </div>
+            <div class="testimonial-author">Sarah & Mike</div>
+
+            <div class="testimonial-nav">
+              <button class="nav-arrow" onclick="previousTestimonial()">
+                ‹
+              </button>
+              <button class="nav-arrow" onclick="nextTestimonial()">›</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-item fade-in-up">
+            <div class="contact-icon">📧</div>
+            <h3>Email</h3>
+            <p>kalovillasiargao@gmail.com</p>
+          </div>
+
+          <div class="contact-item fade-in-up">
+            <div class="contact-icon">📱</div>
+            <h3>WhatsApp</h3>
+            <p>0917 622 3916</p>
+          </div>
+
+          <div class="contact-item fade-in-up">
+            <div class="contact-icon">📍</div>
+            <h3>Villa</h3>
+            <p>Cabitoonan, General Luna<br />Siargao Island, Philippines</p>
+          </div>
+        </div>
+
+        <div class="instagram-section">
+          <h3 class="fade-in-up">Follow Our Journey on Instagram</h3>
+          <div class="instagram-grid">
+            <div class="instagram-post fade-in-up"></div>
+            <div class="instagram-post fade-in-up"></div>
+            <div class="instagram-post fade-in-up"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+      <div class="container">
+        <div class="newsletter-content">
+          <h3 class="fade-in-up">Get Updates from Kalo Villa</h3>
+          <p class="fade-in-up">
+            Subscribe for exclusive offers, island tips, and Siargao
+            inspiration.
+          </p>
+          <form
+            class="newsletter-form fade-in-up"
+            onsubmit="subscribeNewsletter(event)"
+          >
+            <input type="email" placeholder="Email address" required />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+      <div class="container">
+        <h2 class="fade-in-up">Frequently Asked Questions</h2>
+        <p class="faq-subtitle fade-in-up">Find out what people are asking!</p>
+
+        <div class="faq-container">
+          <div class="faq-item fade-in-up">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+              What are your check-in and check-out times?
+            </button>
+            <div class="faq-answer">
+              <p>
+                Check-in: 3:00 PM to 8:00 PM<br />Check-out: 11:00 AM to 11:30
+                AM
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item fade-in-up">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+              Do you accept kids or pets?
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes! Children of all ages are welcome, and pets stay for free at
+                Kalo Villa.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item fade-in-up">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+              Is airport shuttle included?
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes, we provide free airport shuttle service from Sayak Airport
+                (33km away) for all our guests.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item fade-in-up">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+              What activities can we enjoy?
+            </button>
+            <div class="faq-answer">
+              <p>
+                Island hopping, surfing lessons, beach lounging, in-villa
+                massages, floating breakfast, and exploring General Luna's
+                vibrant scene!
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item fade-in-up">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+              How far are you from General Luna center?
+            </button>
+            <div class="faq-answer">
+              <p>
+                Just 3.9km from General Luna center - an easy 5-minute tuktuk
+                ride to restaurants, bars, and surf spots.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">KALO VILLA</div>
+
+          <div class="footer-links">
+            <a href="#experiences">Experiences</a>
+            <a href="#packages">Packages</a>
+            <a href="#about">About us</a>
+            <a href="#contact">Contact</a>
+          </div>
+
+          <div class="social-links">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          © 2025 Kalo Villa Siargao. All rights reserved
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating Contact Buttons -->
+    <div class="floating-contact">
+      <a
+        href="https://wa.me/639176223916"
+        class="float-btn whatsapp"
+        title="WhatsApp"
+        >💬</a
+      >
+      <a
+        href="mailto:kalovillasiargao@gmail.com"
+        class="float-btn email"
+        title="Email"
+        >📧</a
+      >
+      <a href="tel:+639176223916" class="float-btn phone" title="Call">📞</a>
+    </div>
+
+    <script>
+      // Scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".fade-in-up").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // FAQ functionality
+      function toggleFAQ(element) {
+        const answer = element.nextElementSibling;
+        const isActive = answer.classList.contains("active");
+
+        document.querySelectorAll(".faq-answer").forEach((faq) => {
+          faq.classList.remove("active");
+        });
+
+        if (!isActive) {
+          answer.classList.add("active");
+        }
+      }
+
+      // Newsletter subscription
+      function subscribeNewsletter(event) {
+        event.preventDefault();
+        const email = event.target.querySelector("input").value;
+        alert(
+          `🏝️ Subscribed! ${email} will receive exclusive Kalo Villa updates.`
+        );
+        event.target.reset();
+      }
+
+      // Package details
+      function showPackageDetails() {
+        const bookingURL =
+          "https://www.booking.com/hotel/ph/kalo-villas-siargao-room-1.html";
+
+        if (
+          confirm(`🏖️ Premium Villa Package Details:
+
+✨ What's Included:
+• 5 Private beachfront villas with pool access
+• King-sized beds with premium linens
+• Full kitchen and modern amenities
+• Daily floating breakfast service
+• Free airport shuttle (33km from Sayak)
+• High-speed Starlink Wi-Fi
+• Daily housekeeping
+• In-villa massage (on request)
+
+📍 Location: Peaceful Cabitoonan village, 3.9km from General Luna center
+
+💰 ₱8,500/night for 2 people
+💳 ₱3,000 refundable deposit at check-in
+
+Would you like to book now on Booking.com?`)
+        ) {
+          window.open(bookingURL, "_blank");
+        }
+      }
+
+      // Testimonial navigation
+      let currentTestimonial = 0;
+      let isAnimating = false;
+      const testimonials = [
+        {
+          text: "Kalo Villa exceeded all our expectations! The floating breakfast was magical, Joy and her team were incredibly welcoming, and the beachfront location was perfect. We felt like we found our own piece of paradise in Siargao.",
+          author: "Sarah & Mike",
+        },
+        {
+          text: "The villa design was stunning with authentic Filipino touches. Having direct pool access made every morning special. The island hopping tour they arranged was unforgettable!",
+          author: "Emma & James",
+        },
+        {
+          text: "Joy and her team made us feel like family from day one. The villa was spotless, the location was perfect for both relaxation and adventure. The floating breakfast became our daily ritual!",
+          author: "Lisa & David",
+        },
+        {
+          text: "We've stayed at many resorts, but Kalo Villa stands out for its personal touch. The beachfront location, amazing staff, and authentic Filipino hospitality made our honeymoon absolutely perfect.",
+          author: "Rachel & Tom",
+        },
+      ];
+
+      function nextTestimonial() {
+        if (isAnimating) return;
+        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+        updateTestimonial();
+      }
+
+      function previousTestimonial() {
+        if (isAnimating) return;
+        currentTestimonial =
+          (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+        updateTestimonial();
+      }
+
+      function updateTestimonial() {
+        if (isAnimating) return;
+        isAnimating = true;
+
+        const textElement = document.querySelector(".testimonial-text");
+        const authorElement = document.querySelector(".testimonial-author");
+        const imageElement = document.querySelector(".testimonial-image");
+
+        // Add sliding out animation and image scaling
+        textElement.classList.add("sliding-out");
+        authorElement.classList.add("sliding-out");
+        imageElement.classList.add("changing");
+
+        setTimeout(() => {
+          // Update content
+          textElement.textContent = testimonials[currentTestimonial].text;
+          authorElement.textContent = testimonials[currentTestimonial].author;
+
+          // Remove sliding out and add sliding in
+          textElement.classList.remove("sliding-out");
+          authorElement.classList.remove("sliding-out");
+          textElement.classList.add("sliding-in");
+          authorElement.classList.add("sliding-in");
+
+          // After a brief moment, remove sliding in to show final state
+          setTimeout(() => {
+            textElement.classList.remove("sliding-in");
+            authorElement.classList.remove("sliding-in");
+            imageElement.classList.remove("changing");
+            textElement.style.opacity = "1";
+            textElement.style.transform = "translateX(0)";
+            authorElement.style.opacity = "1";
+            authorElement.style.transform = "translateX(0)";
+
+            // Reset animation flag after complete animation
+            setTimeout(() => {
+              isAnimating = false;
+            }, 100);
+          }, 50);
+        }, 200);
+      }
+
+      // Smooth scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            const headerOffset = 100;
+            const elementPosition = target.offsetTop;
+            const offsetPosition = elementPosition - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Header scroll effect
+      window.addEventListener("scroll", () => {
+        const header = document.querySelector("header");
+        if (window.scrollY > 100) {
+          header.style.background = "rgba(255, 255, 255, 0.98)";
+          header.style.boxShadow = "0 2px 20px rgba(0,0,0,0.1)";
+        } else {
+          header.style.background = "rgba(255, 255, 255, 0.95)";
+          header.style.boxShadow = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
