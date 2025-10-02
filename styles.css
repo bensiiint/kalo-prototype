@@ -850,6 +850,10 @@ nav {
     align-items: center;
 }
 
+.package-info {
+    padding: 0 clamp(1rem, 4vw, 1.5rem);
+}
+
 .package-info h3 {
     font-size: clamp(1.2rem, 3vw, 1.5rem);
     color: #8B7355;
@@ -1702,6 +1706,23 @@ nav {
     outline: none;
 }
 
+.newsletter-form-large button {
+    border: 2px solid #8B7355;
+    background: white;
+    color: #8B7355;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    padding: clamp(0.875rem, 2vw, 1rem) clamp(1.25rem, 3vw, 1.5rem);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.newsletter-form-large button:hover {
+    background: #8B7355;
+    color: white;
+    transform: translateY(-1px);
+}
+
 /* Quick Booking */
 .quick-booking {
     text-align: center;
@@ -2073,15 +2094,19 @@ footer {
     
     /* Hero adjustments */
     .tour-categories {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
     
     .tour-category {
-        border-right: none;
         border-bottom: 1px solid rgba(255,255,255,0.2);
     }
     
-    .tour-category:last-child {
+    .tour-category:nth-child(2) {
+        border-right: none;
+    }
+    
+    .tour-category:nth-child(3) {
+        grid-column: 1 / -1;
         border-bottom: none;
     }
     
