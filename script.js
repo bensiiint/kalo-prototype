@@ -110,17 +110,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Header scroll effect
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    if (window.scrollY > 100) {
-        header.style.background = 'rgba(255, 255, 255, 0.98)';
-        header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
-    } else {
-        header.style.background = 'rgba(255, 255, 255, 0.95)';
-        header.style.boxShadow = 'none';
-    }
-});
+
 
 // Prevent zoom on double tap for better mobile UX
 let lastTouchEnd = 0;
@@ -131,6 +121,88 @@ document.addEventListener('touchend', function (event) {
     }
     lastTouchEnd = now;
 }, false);
+
+// Handle viewport height changes on mobile (especially for iOS Safari)
+function setViewportHeight() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+setViewportHeight();
+window.addEventListener('resize', setViewportHeight);
+window.addEventListener('orientationchange', () => {
+    setTimeout(setViewportHeight, 100);
+});
+
+// Improve scroll performance on mobile
+let ticking = false;
+let lastScrollY = window.scrollY;
+
+function updateHeaderOnScroll() {
+    const header = document.querySelector('header');
+    if (window.scrollY > 100) {
+        header.style.background = 'rgba(255, 255, 255, 0.98)';
+        header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+    } else {
+        header.style.background = 'rgba(255, 255, 255, 0.95)';
+        header.style.boxShadow = 'none';
+    }
+    ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+    lastScrollY = window.scrollY;
+    if (!ticking) {
+        window.requestAnimationFrame(updateHeaderOnScroll);
+        ticking = true;
+    }
+});
+
+// Add touch feedback for better mobile UX
+document.querySelectorAll('.cta-btn, .book-now-btn, .plan-trip-btn, .contact-method, .experience-card').forEach(element => {
+    element.addEventListener('touchstart', function() {
+        this.style.opacity = '0.7';
+    }, { passive: true });
+    
+    element.addEventListener('touchend', function() {
+        this.style.opacity = '';
+    }, { passive: true });
+    
+    element.addEventListener('touchcancel', function() {
+        this.style.opacity = '';
+    }, { passive: true });
+});
+
+// Lazy load images when they come into view
+if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                    imageObserver.unobserve(img);
+                }
+            }
+        });
+    });
+    
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
+}
+
+// Close mobile menu on window resize
+let resizeTimer;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        if (window.innerWidth > 900 && mobileMenu.classList.contains('active')) {
+            toggleMobileMenu();
+        }
+    }, 250);
+});
 
 // Add active class to current page nav link
 document.addEventListener('DOMContentLoaded', () => {

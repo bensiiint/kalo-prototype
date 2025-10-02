@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kalo Villa Siargao - Your Serene Sanctuary by the Sea</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
     <!-- Header -->
@@ -100,7 +101,13 @@
     <section class="testimonials-home">
         <div class="container">
             <div class="testimonial-box">
-                <div class="stars">★★★★★</div>
+                <div class="stars">
+                    <i data-lucide="star" class="star-icon"></i>
+                    <i data-lucide="star" class="star-icon"></i>
+                    <i data-lucide="star" class="star-icon"></i>
+                    <i data-lucide="star" class="star-icon"></i>
+                    <i data-lucide="star" class="star-icon"></i>
+                </div>
                 <div class="testimonial-text">
                     "Kalo Villa exceeded all our expectations! The floating breakfast was magical, Joy and her team were incredibly welcoming, and the beachfront location was perfect."
                 </div>
@@ -116,15 +123,15 @@
             <p class="fade-in-up">Contact us for availability and special offers</p>
             <div class="contact-methods">
                 <a href="https://wa.me/639176223916" class="contact-method">
-                    <span>💬</span>
+                    <i data-lucide="message-circle" class="contact-icon"></i>
                     <div>WhatsApp</div>
                 </a>
                 <a href="mailto:kalovillasiargao@gmail.com" class="contact-method">
-                    <span>📧</span>
+                    <i data-lucide="mail" class="contact-icon"></i>
                     <div>Email</div>
                 </a>
                 <a href="tel:+639176223916" class="contact-method">
-                    <span>📞</span>
+                    <i data-lucide="phone" class="contact-icon"></i>
                     <div>Call Us</div>
                 </a>
             </div>
@@ -148,7 +155,7 @@
                 
                 <div class="social-links">
                     <a href="#" aria-label="Facebook">f</a>
-                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="Instagram">IG</a>
                     <a href="#" aria-label="YouTube">▶</a>
                 </div>
             </div>
@@ -161,11 +168,20 @@
 
     <!-- Floating Contact Buttons -->
     <div class="floating-contact">
-        <a href="https://wa.me/639176223916" class="float-btn whatsapp" title="WhatsApp">💬</a>
-        <a href="mailto:kalovillasiargao@gmail.com" class="float-btn email" title="Email">📧</a>
-        <a href="tel:+639176223916" class="float-btn phone" title="Call">📞</a>
+        <a href="https://wa.me/639176223916" class="float-btn whatsapp" title="WhatsApp">
+            <i data-lucide="message-circle"></i>
+        </a>
+        <a href="mailto:kalovillasiargao@gmail.com" class="float-btn email" title="Email">
+            <i data-lucide="mail"></i>
+        </a>
+        <a href="tel:+639176223916" class="float-btn phone" title="Call">
+            <i data-lucide="phone"></i>
+        </a>
     </div>
 
     <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
