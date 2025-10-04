@@ -1,3 +1,86 @@
+/* Gallery Home Section */
+.gallery-home {
+    padding: clamp(2.5rem, 8vw, 4rem) 0;
+    background: white;
+}
+
+.gallery-home h2 {
+    text-align: center;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 300;
+    color: #8B7355;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: clamp(1rem, 3vw, 1.5rem);
+    margin-top: 2rem;
+}
+
+.gallery-item {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: white;
+    padding: clamp(1rem, 3vw, 1.5rem);
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-weight: 500;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-item:hover .gallery-overlay {
+    transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .gallery-item {
+        aspect-ratio: 3/2;
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -835,6 +918,7 @@ nav {
 .feature-package-home {
     padding: clamp(2.5rem, 8vw, 4rem) 0;
     background: #fafafa;
+    overflow: visible;
 }
 
 .feature-package-home h2 {
@@ -852,6 +936,7 @@ nav {
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
     gap: clamp(2rem, 5vw, 3rem);
     align-items: center;
+    overflow: visible;
 }
 
 .package-info {
@@ -898,19 +983,132 @@ nav {
 .package-image {
     min-height: clamp(250px, 50vw, 350px);
     height: 100%;
-    background: linear-gradient(135deg, rgba(139, 115, 85, 0.3), rgba(218, 195, 162, 0.2)), 
-                url('KALO%20VILLA%20PICTURES/5.%20Pool/7-pool.jpg');
-    background-size: cover;
-    background-position: center;
     border-radius: 0.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-weight: 300;
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+}
+
+/* Image Carousel */
+.image-carousel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: visible;
+    border-radius: 0.75rem;
+    perspective: 1000px;
+    cursor: grab;
+    user-select: none;
+}
+
+.image-carousel:active {
+    cursor: grabbing;
+}
+
+.carousel-track {
+    display: flex;
+    height: 100%;
+    position: relative;
+}
+
+.carousel-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 0.75rem;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    filter: brightness(0.95) contrast(1.05) saturate(1.1);
+}
+
+/* Stack effect - each slide is positioned behind the active one */
+.carousel-slide {
+    transform: translateX(0) scale(0.95);
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Active slide */
+.carousel-slide.active {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+    z-index: 10;
+}
+
+/* Next slides (stacked on the right) */
+.carousel-slide.next {
+    transform: translateX(8%) scale(0.95);
+    opacity: 0.7;
+    z-index: 5;
+}
+
+.carousel-slide.next-next {
+    transform: translateX(12%) scale(0.9);
+    opacity: 0.4;
+    z-index: 4;
+}
+
+/* Previous slides (hidden on the left) */
+.carousel-slide.prev {
+    transform: translateX(-100%) scale(0.95);
+    opacity: 0;
+    z-index: 2;
+}
+
+.carousel-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(139, 115, 85, 0.15), rgba(218, 195, 162, 0.1));
+    border-radius: 0.75rem;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: white;
+    width: 24px;
+    border-radius: 5px;
+}
+
+.dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 768px) {
+    /* Reduce stacking effect on mobile */
+    .carousel-slide.next {
+        transform: translateX(5%) scale(0.96);
+    }
+    
+    .carousel-slide.next-next {
+        transform: translateX(8%) scale(0.92);
+    }
 }
 
 /* Testimonials Home */
@@ -1440,6 +1638,52 @@ nav {
     background: white;
 }
 
+.about-featured-image {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: clamp(2.5rem, 8vw, 4rem);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    min-height: clamp(180px, 35vw, 280px);
+    height: clamp(180px, 35vw, 280px);
+    position: relative;
+}
+
+.about-featured-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(139, 115, 85, 0.15), rgba(218, 195, 162, 0.1));
+    z-index: 1;
+    pointer-events: none;
+}
+
+.about-featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.95) contrast(1.05) saturate(1.1);
+}
+
+@media (max-width: 768px) {
+    .about-featured-image {
+        min-height: clamp(150px, 35vw, 220px);
+        height: clamp(150px, 35vw, 220px);
+    }
+}
+
+@media (max-width: 480px) {
+    .about-featured-image {
+        min-height: clamp(120px, 35vw, 180px);
+        height: clamp(120px, 35vw, 180px);
+    }
+}
+
 .about-section {
     margin-bottom: clamp(2.5rem, 8vw, 4rem);
 }
@@ -1658,66 +1902,36 @@ nav {
     margin-bottom: 2rem;
 }
 
-.instagram-grid-large {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
-    gap: clamp(0.75rem, 2vw, 1rem);
-    margin-bottom: clamp(1.5rem, 4vw, 2rem);
-}
-
-.instagram-post {
-    aspect-ratio: 1;
-    background: linear-gradient(135deg, #DAC3A2, #C4A676);
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.instagram-carousel-container {
+    max-width: min(600px, 90%);
+    margin: 0 auto 2rem;
+    min-height: 400px;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
 }
 
-.instagram-post:nth-child(1) {
-    background: url('KALO%20VILLA%20PICTURES/5.%20Pool/6-pool.jpg');
-    background-size: cover;
-    background-position: center;
+.instagram-carousel {
+    width: 100%;
+    height: 400px;
 }
 
-.instagram-post:nth-child(2) {
-    background: url('KALO%20VILLA%20PICTURES/1.%20Dining%20Area/E3E9CCFB-9327-4DD3-A816-E211C6B6DA02_4_5005_c.jpeg');
-    background-size: cover;
-    background-position: center;
+@media (max-width: 768px) {
+    .instagram-carousel {
+        height: 350px;
+    }
+    
+    .instagram-carousel-container {
+        min-height: 350px;
+    }
 }
 
-.instagram-post:nth-child(3) {
-    background: url('KALO%20VILLA%20PICTURES/6.%20Outdoor/ocean%20view.jpg');
-    background-size: cover;
-    background-position: center;
-}
-
-.instagram-post:nth-child(4) {
-    background: url('KALO%20VILLA%20PICTURES/3.%20Bedroom%201/Bedroom%201/2-br1.JPEG');
-    background-size: cover;
-    background-position: center;
-}
-
-.instagram-post:nth-child(5) {
-    background: url('KALO%20VILLA%20PICTURES/1.%20Dining%20Area/dining%202.jpg');
-    background-size: cover;
-    background-position: center;
-}
-
-.instagram-post:nth-child(6) {
-    background: url('KALO%20VILLA%20PICTURES/cover%20photo.jpg');
-    background-size: cover;
-    background-position: center;
-}
-
-.instagram-post:hover {
-    transform: scale(1.05);
+@media (max-width: 480px) {
+    .instagram-carousel {
+        height: 300px;
+    }
+    
+    .instagram-carousel-container {
+        min-height: 300px;
+    }
 }
 
 /* Newsletter Section */

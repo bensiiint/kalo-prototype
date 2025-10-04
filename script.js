@@ -215,3 +215,346 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// ============================================
+// CAROUSEL FUNCTIONALITY
+// ============================================
+
+let currentSlide = 0;
+let isAnimating = false;
+
+// Move carousel to next or previous slide
+function moveCarousel(direction) {
+    // Prevent rapid consecutive clicks
+    if (isAnimating) return;
+    
+    const track = document.querySelector('.carousel-track');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dots .dot');
+    
+    if (!track || slides.length === 0) return;
+    
+    isAnimating = true;
+    
+    // Update current slide
+    currentSlide += direction;
+    
+    // Loop around
+    if (currentSlide < 0) {
+        currentSlide = slides.length - 1;
+    } else if (currentSlide >= slides.length) {
+        currentSlide = 0;
+    }
+    
+    // Update carousel position
+    updateCarousel(track, dots);
+    
+    // Allow next animation after transition completes
+    setTimeout(() => {
+        isAnimating = false;
+    }, 500); // Match the CSS transition duration
+}
+
+// Go to specific slide
+function goToSlide(index) {
+    // Prevent rapid consecutive clicks
+    if (isAnimating) return;
+    
+    const track = document.querySelector('.carousel-track');
+    const dots = document.querySelectorAll('.carousel-dots .dot');
+    
+    if (!track) return;
+    
+    isAnimating = true;
+    currentSlide = index;
+    updateCarousel(track, dots);
+    
+    // Allow next animation after transition completes
+    setTimeout(() => {
+        isAnimating = false;
+    }, 500);
+}
+
+// Update carousel position and active dot
+function updateCarousel(track, dots) {
+    const slides = document.querySelectorAll('.carousel-slide');
+    
+    // Remove all classes from all slides
+    slides.forEach((slide) => {
+        slide.classList.remove('active', 'next', 'next-next', 'prev');
+    });
+    
+    // Add classes based on position relative to current slide
+    slides.forEach((slide, index) => {
+        if (index === currentSlide) {
+            slide.classList.add('active');
+        } else if (index === (currentSlide + 1) % slides.length) {
+            slide.classList.add('next');
+        } else if (index === (currentSlide + 2) % slides.length) {
+            slide.classList.add('next-next');
+        } else {
+            slide.classList.add('prev');
+        }
+    });
+    
+    // Update dots
+    dots.forEach((dot, index) => {
+        if (index === currentSlide) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+}
+
+// Touch/Swipe support for mobile
+let touchStartX = 0;
+let touchEndX = 0;
+const SWIPE_THRESHOLD = 50; // Minimum distance for swipe
+
+function handleTouchStart(e) {
+    touchStartX = e.touches[0].clientX;
+}
+
+function handleTouchMove(e) {
+    touchEndX = e.touches[0].clientX;
+}
+
+function handleTouchEnd() {
+    const swipeDistance = touchStartX - touchEndX;
+    
+    if (Math.abs(swipeDistance) > SWIPE_THRESHOLD) {
+        if (swipeDistance > 0) {
+            // Swiped left - go to next
+            moveCarousel(1);
+        } else {
+            // Swiped right - go to previous
+            moveCarousel(-1);
+        }
+    }
+}
+
+// Mouse drag support for desktop
+let mouseStartX = 0;
+let mouseEndX = 0;
+let isDragging = false;
+
+function handleMouseDown(e) {
+    isDragging = true;
+    mouseStartX = e.clientX;
+    mouseEndX = e.clientX;
+}
+
+function handleMouseMove(e) {
+    if (!isDragging) return;
+    mouseEndX = e.clientX;
+}
+
+function handleMouseUp() {
+    if (!isDragging) return;
+    isDragging = false;
+    
+    const swipeDistance = mouseStartX - mouseEndX;
+    
+    if (Math.abs(swipeDistance) > SWIPE_THRESHOLD) {
+        if (swipeDistance > 0) {
+            // Dragged left - go to next
+            moveCarousel(1);
+        } else {
+            // Dragged right - go to previous
+            moveCarousel(-1);
+        }
+    }
+}
+
+function handleMouseLeave() {
+    isDragging = false;
+}
+
+// ============================================
+// INSTAGRAM CAROUSEL FUNCTIONALITY
+// ============================================
+
+let currentSlideInstagram = 0;
+let isAnimatingInstagram = false;
+
+// Move Instagram carousel
+function moveCarouselInstagram(direction) {
+    if (isAnimatingInstagram) return;
+    
+    const carousel = document.querySelector('.instagram-carousel');
+    const track = carousel.querySelector('.carousel-track');
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const dots = carousel.querySelectorAll('.carousel-dots .dot');
+    
+    if (!track || slides.length === 0) return;
+    
+    isAnimatingInstagram = true;
+    currentSlideInstagram += direction;
+    
+    if (currentSlideInstagram < 0) {
+        currentSlideInstagram = slides.length - 1;
+    } else if (currentSlideInstagram >= slides.length) {
+        currentSlideInstagram = 0;
+    }
+    
+    updateCarouselInstagram(track, dots, slides);
+    
+    setTimeout(() => {
+        isAnimatingInstagram = false;
+    }, 500);
+}
+
+// Go to specific slide in Instagram carousel
+function goToSlideInstagram(index) {
+    if (isAnimatingInstagram) return;
+    
+    const carousel = document.querySelector('.instagram-carousel');
+    const track = carousel.querySelector('.carousel-track');
+    const dots = carousel.querySelectorAll('.carousel-dots .dot');
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    
+    if (!track) return;
+    
+    isAnimatingInstagram = true;
+    currentSlideInstagram = index;
+    updateCarouselInstagram(track, dots, slides);
+    
+    setTimeout(() => {
+        isAnimatingInstagram = false;
+    }, 500);
+}
+
+// Update Instagram carousel position
+function updateCarouselInstagram(track, dots, slides) {
+    slides.forEach((slide) => {
+        slide.classList.remove('active', 'next', 'next-next', 'prev');
+    });
+    
+    slides.forEach((slide, index) => {
+        if (index === currentSlideInstagram) {
+            slide.classList.add('active');
+        } else if (index === (currentSlideInstagram + 1) % slides.length) {
+            slide.classList.add('next');
+        } else if (index === (currentSlideInstagram + 2) % slides.length) {
+            slide.classList.add('next-next');
+        } else {
+            slide.classList.add('prev');
+        }
+    });
+    
+    dots.forEach((dot, index) => {
+        if (index === currentSlideInstagram) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+}
+
+// Instagram carousel touch/mouse handlers
+let touchStartXInstagram = 0;
+let touchEndXInstagram = 0;
+let mouseStartXInstagram = 0;
+let mouseEndXInstagram = 0;
+let isDraggingInstagram = false;
+
+function handleTouchStartInstagram(e) {
+    touchStartXInstagram = e.touches[0].clientX;
+}
+
+function handleTouchMoveInstagram(e) {
+    touchEndXInstagram = e.touches[0].clientX;
+}
+
+function handleTouchEndInstagram() {
+    const swipeDistance = touchStartXInstagram - touchEndXInstagram;
+    
+    if (Math.abs(swipeDistance) > SWIPE_THRESHOLD) {
+        if (swipeDistance > 0) {
+            moveCarouselInstagram(1);
+        } else {
+            moveCarouselInstagram(-1);
+        }
+    }
+}
+
+function handleMouseDownInstagram(e) {
+    isDraggingInstagram = true;
+    mouseStartXInstagram = e.clientX;
+    mouseEndXInstagram = e.clientX;
+}
+
+function handleMouseMoveInstagram(e) {
+    if (!isDraggingInstagram) return;
+    mouseEndXInstagram = e.clientX;
+}
+
+function handleMouseUpInstagram() {
+    if (!isDraggingInstagram) return;
+    isDraggingInstagram = false;
+    
+    const swipeDistance = mouseStartXInstagram - mouseEndXInstagram;
+    
+    if (Math.abs(swipeDistance) > SWIPE_THRESHOLD) {
+        if (swipeDistance > 0) {
+            moveCarouselInstagram(1);
+        } else {
+            moveCarouselInstagram(-1);
+        }
+    }
+}
+
+function handleMouseLeaveInstagram() {
+    isDraggingInstagram = false;
+}
+
+// Initialize Instagram carousel
+function initializeInstagramCarousel() {
+    const carousel = document.querySelector('.instagram-carousel');
+    const track = carousel.querySelector('.carousel-track');
+    const dots = carousel.querySelectorAll('.carousel-dots .dot');
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    
+    updateCarouselInstagram(track, dots, slides);
+    
+    // Touch events
+    carousel.addEventListener('touchstart', handleTouchStartInstagram, { passive: true });
+    carousel.addEventListener('touchmove', handleTouchMoveInstagram, { passive: true });
+    carousel.addEventListener('touchend', handleTouchEndInstagram);
+    
+    // Mouse events
+    carousel.addEventListener('mousedown', handleMouseDownInstagram);
+    carousel.addEventListener('mousemove', handleMouseMoveInstagram);
+    carousel.addEventListener('mouseup', handleMouseUpInstagram);
+    carousel.addEventListener('mouseleave', handleMouseLeaveInstagram);
+}
+
+// Initialize carousel
+document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.querySelector('.image-carousel');
+    
+    if (carousel) {
+        // Initialize carousel state
+        const track = document.querySelector('.carousel-track');
+        const dots = document.querySelectorAll('.carousel-dots .dot');
+        updateCarousel(track, dots);
+        
+        // Add touch event listeners for mobile swipe support
+        carousel.addEventListener('touchstart', handleTouchStart, { passive: true });
+        carousel.addEventListener('touchmove', handleTouchMove, { passive: true });
+        carousel.addEventListener('touchend', handleTouchEnd);
+        
+        // Add mouse event listeners for desktop drag support
+        carousel.addEventListener('mousedown', handleMouseDown);
+        carousel.addEventListener('mousemove', handleMouseMove);
+        carousel.addEventListener('mouseup', handleMouseUp);
+        carousel.addEventListener('mouseleave', handleMouseLeave);
+    }
+    
+    // Initialize Instagram carousel if it exists
+    const instagramCarousel = document.querySelector('.instagram-carousel');
+    if (instagramCarousel) {
+        initializeInstagramCarousel();
+    }
+});
