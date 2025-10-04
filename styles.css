@@ -651,14 +651,14 @@ nav {
     min-height: 100vh;
     min-height: 100svh;
     height: auto;
-    background: linear-gradient(135deg, rgba(139, 115, 85, 0.7), rgba(218, 195, 162, 0.5)), 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><linearGradient id="ocean" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%2387CEEB"/><stop offset="50%" stop-color="%234682B4"/><stop offset="100%" stop-color="%23191970"/></linearGradient><linearGradient id="sand" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%23F5DEB3"/><stop offset="100%" stop-color="%23DEB887"/></linearGradient></defs><rect fill="url(%23ocean)" width="1200" height="400"/><ellipse fill="%23FFD700" cx="900" cy="120" rx="60" ry="50"/><polygon fill="url(%23sand)" points="0,350 300,320 600,340 900,310 1200,330 1200,600 0,600"/><rect fill="%23228B22" x="100" y="380" width="15" height="220" rx="7"/><rect fill="%23228B22" x="200" y="370" width="12" height="230" rx="6"/><rect fill="%23228B22" x="300" y="385" width="18" height="215" rx="9"/><polygon fill="%234682B4" points="0,450 400,430 800,440 1200,425 1200,500 0,500"/></svg>');
+    background: linear-gradient(135deg, rgba(139, 115, 85, 0.6), rgba(218, 195, 162, 0.4)), 
+                url('KALO%20VILLA%20PICTURES/aerial%202.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     text-align: center;
     color: white;
     position: relative;
@@ -669,6 +669,10 @@ nav {
     max-width: min(50rem, 90%);
     z-index: 2;
     width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .hero-subtitle {
@@ -894,9 +898,10 @@ nav {
 .package-image {
     min-height: clamp(250px, 50vw, 350px);
     height: 100%;
-    background: linear-gradient(135deg, rgba(139, 115, 85, 0.2), rgba(218, 195, 162, 0.2)), 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 350"><defs><linearGradient id="villaOcean" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%2387CEEB"/><stop offset="100%" stop-color="%234682B4"/></linearGradient></defs><rect fill="url(%23villaOcean)" width="400" height="250"/><rect fill="%23F5DEB3" x="0" y="250" width="400" height="100"/><rect fill="%23DAC3A2" x="150" y="200" width="100" height="80" rx="5"/><rect fill="%238B7355" x="140" y="190" width="120" height="10" rx="5"/><rect fill="%234682B4" x="50" y="220" width="80" height="60" rx="40" opacity="0.7"/><rect fill="%234682B4" x="270" y="230" width="60" height="40" rx="30" opacity="0.7"/><rect fill="%23228B22" x="80" y="280" width="6" height="70" rx="3"/><rect fill="%23228B22" x="320" y="285" width="8" height="65" rx="4"/><circle fill="%23FFD700" cx="320" cy="60" r="30"/></svg>');
+    background: linear-gradient(135deg, rgba(139, 115, 85, 0.3), rgba(218, 195, 162, 0.2)), 
+                url('KALO%20VILLA%20PICTURES/5.%20Pool/7-pool.jpg');
     background-size: cover;
+    background-position: center;
     border-radius: 0.75rem;
     display: flex;
     align-items: center;
@@ -930,6 +935,14 @@ nav {
     display: flex;
     justify-content: center;
     gap: 0.25rem;
+}
+
+.star-icon {
+    width: 20px;
+    height: 20px;
+    stroke: #DAC3A2;
+    fill: none;
+    stroke-width: 2;
 }
 
 .testimonial-text {
@@ -1030,26 +1043,30 @@ nav {
 
 .experience-card.beach {
     background: linear-gradient(135deg, rgba(139, 115, 85, 0.3), rgba(218, 195, 162, 0.3)), 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600"><defs><linearGradient id="beachOcean" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%2387CEEB"/><stop offset="100%" stop-color="%234682B4"/></linearGradient><linearGradient id="beachSand" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%23F5DEB3"/><stop offset="100%" stop-color="%23DEB887"/></linearGradient></defs><rect fill="url(%23beachOcean)" width="400" height="400"/><ellipse fill="%23FFD700" cx="320" cy="80" rx="40" ry="30"/><polygon fill="url(%23beachSand)" points="0,350 100,320 200,340 300,310 400,330 400,600 0,600"/><rect fill="%23228B22" x="50" y="400" width="8" height="200" rx="4"/><rect fill="%23228B22" x="120" y="390" width="6" height="210" rx="3"/><rect fill="%23228B22" x="200" y="405" width="10" height="195" rx="5"/><circle fill="%23FFFFFF" cx="200" cy="200" r="80" opacity="0.3"/><rect fill="%234682B4" x="0" y="450" width="400" height="30" opacity="0.7"/></svg>');
+                url('KALO%20VILLA%20PICTURES/5.%20Pool/5-pool.jpg');
     background-size: cover;
+    background-position: center;
 }
 
 .experience-card.wellness {
     background: linear-gradient(135deg, rgba(139, 115, 85, 0.3), rgba(218, 195, 162, 0.3)), 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600"><defs><linearGradient id="spa" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%2398FB98"/><stop offset="100%" stop-color="%2390EE90"/></linearGradient></defs><rect fill="url(%23spa)" width="400" height="600"/><circle fill="%23FFFFFF" cx="200" cy="150" r="60" opacity="0.4"/><circle fill="%23FFFFFF" cx="200" cy="300" r="40" opacity="0.3"/><circle fill="%23FFFFFF" cx="200" cy="450" r="30" opacity="0.2"/><rect fill="%23228B22" x="50" y="500" width="300" height="8" rx="4" opacity="0.6"/><rect fill="%23228B22" x="80" y="480" width="240" height="6" rx="3" opacity="0.5"/><circle fill="%23DAC3A2" cx="100" cy="100" r="20" opacity="0.4"/><circle fill="%23DAC3A2" cx="300" cy="200" r="25" opacity="0.4"/><circle fill="%23DAC3A2" cx="150" cy="350" r="15" opacity="0.4"/></svg>');
+                url('KALO%20VILLA%20PICTURES/1.%20Dining%20Area/E3E9CCFB-9327-4DD3-A816-E211C6B6DA02_4_5005_c.jpeg');
     background-size: cover;
+    background-position: center;
 }
 
 .experience-card.adventure {
     background: linear-gradient(135deg, rgba(139, 115, 85, 0.3), rgba(218, 195, 162, 0.3)), 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600"><defs><linearGradient id="surfOcean" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%2300CED1"/><stop offset="50%" stop-color="%2320B2AA"/><stop offset="100%" stop-color="%23008B8B"/></linearGradient></defs><rect fill="url(%23surfOcean)" width="400" height="600"/><ellipse fill="%23FFD700" cx="320" cy="80" rx="40" ry="30"/><path fill="%23FFFFFF" d="M50 200 Q150 180 250 200 Q350 220 400 200 L400 250 Q350 270 250 250 Q150 230 50 250 Z" opacity="0.8"/><path fill="%23FFFFFF" d="M0 300 Q100 280 200 300 Q300 320 400 300 L400 350 Q300 370 200 350 Q100 330 0 350 Z" opacity="0.6"/><path fill="%23FFFFFF" d="M80 420 Q180 400 280 420 Q380 440 400 420 L400 470 Q380 490 280 470 Q180 450 80 470 Z" opacity="0.7"/><ellipse fill="%23DEB887" cx="200" cy="550" rx="60" ry="20" opacity="0.4"/><rect fill="%238B4513" x="195" y="480" width="10" height="80" rx="5" opacity="0.8"/></svg>');
+                url('KALO%20VILLA%20PICTURES/6.%20Outdoor/ocean%20view.jpg');
     background-size: cover;
+    background-position: center;
 }
 
 .experience-card.island-hopping {
     background: linear-gradient(135deg, rgba(139, 115, 85, 0.3), rgba(218, 195, 162, 0.3)), 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600"><defs><linearGradient id="islandOcean" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%2320B2AA"/><stop offset="50%" stop-color="%2348D1CC"/><stop offset="100%" stop-color="%2340E0D0"/></linearGradient></defs><rect fill="url(%23islandOcean)" width="400" height="600"/><ellipse fill="%23FFD700" cx="300" cy="70" rx="35" ry="25"/><ellipse fill="%23F5DEB3" cx="80" cy="200" rx="60" ry="30" opacity="0.9"/><ellipse fill="%23F5DEB3" cx="320" cy="180" rx="45" ry="25" opacity="0.9"/><ellipse fill="%23F5DEB3" cx="200" cy="350" rx="70" ry="35" opacity="0.9"/><rect fill="%23228B22" x="70" y="190" width="4" height="30" rx="2"/><rect fill="%23228B22" x="85" y="185" width="6" height="35" rx="3"/><rect fill="%23228B22" x="315" y="170" width="5" height="25" rx="2"/><rect fill="%23228B22" x="190" y="340" width="6" height="25" rx="3"/><rect fill="%23228B22" x="210" y="335" width="8" height="30" rx="4"/><path fill="%23FFFFFF" d="M150 450 Q200 440 250 450 Q300 460 350 450 L350 480 Q300 490 250 480 Q200 470 150 480 Z" opacity="0.6"/><circle fill="%23FFFFFF" cx="120" cy="400" r="15" opacity="0.4"/><circle fill="%23FFFFFF" cx="280" cy="420" r="20" opacity="0.4"/></svg>');
+                url('KALO%20VILLA%20PICTURES/aerial%202.jpg');
     background-size: cover;
+    background-position: center;
 }
 
 .experience-card::before {
@@ -1255,9 +1272,10 @@ nav {
 
 .package-image-large {
     height: 450px;
-    background: linear-gradient(135deg, rgba(139, 115, 85, 0.2), rgba(218, 195, 162, 0.2)), 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 450"><defs><linearGradient id="villaOcean2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%2387CEEB"/><stop offset="100%" stop-color="%234682B4"/></linearGradient></defs><rect fill="url(%23villaOcean2)" width="400" height="300"/><rect fill="%23F5DEB3" x="0" y="300" width="400" height="150"/><rect fill="%23DAC3A2" x="120" y="220" width="160" height="120" rx="8"/><rect fill="%238B7355" x="100" y="205" width="200" height="15" rx="7"/><rect fill="%234682B4" x="30" y="260" width="70" height="60" rx="35" opacity="0.7"/><rect fill="%234682B4" x="300" y="270" width="60" height="50" rx="30" opacity="0.7"/><rect fill="%23228B22" x="60" y="350" width="8" height="100" rx="4"/><rect fill="%23228B22" x="340" y="360" width="10" height="90" rx="5"/><circle fill="%23FFD700" cx="320" cy="70" r="35"/></svg>');
+    background: linear-gradient(135deg, rgba(139, 115, 85, 0.3), rgba(218, 195, 162, 0.2)), 
+                url('KALO%20VILLA%20PICTURES/BR1%20exterior.jpg');
     background-size: cover;
+    background-position: center;
     border-radius: 0.75rem;
     display: flex;
     align-items: center;
@@ -1510,6 +1528,16 @@ nav {
     justify-content: center;
     font-size: 1.2rem;
     margin-bottom: 1rem;
+    display: flex;
+    gap: 0.25rem;
+}
+
+.testimonial-card .star-icon {
+    width: 18px;
+    height: 18px;
+    stroke: #DAC3A2;
+    fill: none;
+    stroke-width: 2;
 }
 
 .testimonial-card p {
@@ -1648,19 +1676,44 @@ nav {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    background-size: cover;
+    background-position: center;
 }
 
-.instagram-post::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40%;
-    height: 40%;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
-    border: 3px solid rgba(255, 255, 255, 0.3);
+.instagram-post:nth-child(1) {
+    background: url('KALO%20VILLA%20PICTURES/5.%20Pool/6-pool.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.instagram-post:nth-child(2) {
+    background: url('KALO%20VILLA%20PICTURES/1.%20Dining%20Area/E3E9CCFB-9327-4DD3-A816-E211C6B6DA02_4_5005_c.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+.instagram-post:nth-child(3) {
+    background: url('KALO%20VILLA%20PICTURES/6.%20Outdoor/ocean%20view.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.instagram-post:nth-child(4) {
+    background: url('KALO%20VILLA%20PICTURES/3.%20Bedroom%201/Bedroom%201/2-br1.JPEG');
+    background-size: cover;
+    background-position: center;
+}
+
+.instagram-post:nth-child(5) {
+    background: url('KALO%20VILLA%20PICTURES/1.%20Dining%20Area/dining%202.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.instagram-post:nth-child(6) {
+    background: url('KALO%20VILLA%20PICTURES/cover%20photo.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 .instagram-post:hover {
