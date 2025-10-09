@@ -81,6 +81,9 @@
     }
 }
 
+/* Import Hubballi Font */
+@import url('https://fonts.googleapis.com/css2?family=Hubballi&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -741,78 +744,32 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     text-align: center;
     color: white;
     position: relative;
-    padding: clamp(4rem, 10vw, 6rem) clamp(1rem, 3vw, 1.25rem) 0;
+    padding: clamp(4rem, 10vw, 6rem) clamp(1rem, 3vw, 1.25rem);
 }
 
 .hero-content {
-    max-width: min(50rem, 90%);
+    max-width: min(600px, 90%);
     z-index: 2;
     width: 100%;
-    flex: 1;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
 }
 
-.hero-subtitle {
-    font-size: clamp(0.7rem, 2vw, 0.875rem);
-    font-weight: 500;
-    letter-spacing: clamp(1px, 0.5vw, 3px);
-    text-transform: uppercase;
-    margin-bottom: clamp(0.75rem, 2vw, 1rem);
-    opacity: 0.9;
-}
-
-.hero h1 {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-    font-weight: 300;
-    margin-bottom: 1.5rem;
-    letter-spacing: 4px;
-    text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
-}
-
-.hero-tagline {
-    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
-    font-weight: 300;
-    margin-bottom: clamp(2rem, 5vw, 3rem);
-    opacity: 0.85;
-    font-style: italic;
-}
-
-/* Tour Categories */
-.tour-categories {
-    position: relative;
+.hero-logo {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(15px);
-    margin-top: auto;
+    max-width: 450px;
 }
 
-.tour-category {
-    padding: clamp(1rem, 3vw, 1.5rem) clamp(0.5rem, 1vw, 1rem);
-    text-align: center;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border-right: 1px solid rgba(255,255,255,0.2);
-    font-size: clamp(0.65rem, 2vw, 0.9rem);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: clamp(0.5px, 0.2vw, 1px);
-}
-
-.tour-category:last-child {
-    border-right: none;
-}
-
-.tour-category:hover {
-    background: rgba(255, 255, 255, 0.25);
+.hero-logo img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.15));
 }
 
 
@@ -2299,35 +2256,8 @@ footer {
         margin-bottom: 1rem;
     }
     
-    .hero-tagline {
-        font-size: 1rem;
-        margin-bottom: 2rem;
-    }
-    
-    /* Tour Categories - 2 on top, 1 on bottom layout */
-    .tour-categories {
-        grid-template-columns: 1fr 1fr;
-        gap: 0;
-    }
-    
-    .tour-category {
-        padding: 1rem;
-        font-size: 0.65rem;
-        border-right: 1px solid rgba(255,255,255,0.2);
-        border-bottom: 1px solid rgba(255,255,255,0.2);
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-    
-    .tour-category:nth-child(2) {
-        border-right: none;
-    }
-    
-    .tour-category:nth-child(3) {
-        grid-column: 1 / -1;
-        border-bottom: none;
-        border-right: none;
+    .hero-logo {
+        max-width: 300px;
     }
     
     /* All Grids - Single column layout EXCEPT tour categories */
