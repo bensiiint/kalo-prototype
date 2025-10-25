@@ -984,6 +984,7 @@ nav {
     display: flex;
     height: 100%;
     position: relative;
+    width: 100%;
 }
 
 .carousel-slide {
@@ -1001,6 +1002,16 @@ nav {
     -webkit-backface-visibility: hidden;
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
+    left: 0;
+    top: 0;
+}
+
+/* Override for testimonial slides - no background styling */
+.testimonial-carousel .carousel-slide {
+    background: transparent !important;
+    box-shadow: none !important;
+    filter: none !important;
+    border-radius: 0 !important;
 }
 
 /* Stack effect - each slide is positioned behind the active one */
@@ -1018,16 +1029,16 @@ nav {
     z-index: 10;
 }
 
-/* Next slides (stacked on the right) */
+/* Next slides (hidden on the right) */
 .carousel-slide.next {
-    transform: translate3d(8%, 0, 0) scale(0.95);
-    opacity: 0.7;
+    transform: translate3d(100%, 0, 0) scale(0.95);
+    opacity: 0;
     z-index: 5;
 }
 
 .carousel-slide.next-next {
-    transform: translate3d(12%, 0, 0) scale(0.9);
-    opacity: 0.4;
+    transform: translate3d(100%, 0, 0) scale(0.9);
+    opacity: 0;
     z-index: 4;
 }
 
@@ -1049,9 +1060,14 @@ nav {
     border-radius: 0.75rem;
 }
 
+/* Remove overlay for testimonial carousel */
+.testimonial-carousel .carousel-slide::before {
+    display: none;
+}
+
 .carousel-dots {
     position: absolute;
-    bottom: 1rem;
+    bottom: -2.5rem;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -1063,19 +1079,19 @@ nav {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(139, 115, 85, 0.3);
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .dot.active {
-    background: white;
-    width: 24px;
+    background: #8B7355;
+    width: 28px;
     border-radius: 5px;
 }
 
 .dot:hover {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(139, 115, 85, 0.6);
 }
 
 @media (max-width: 768px) {
@@ -1726,59 +1742,98 @@ nav {
 }
 
 .testimonials-section {
-    background: #fafafa;
-    padding: clamp(2rem, 5vw, 3rem);
-    border-radius: 1rem;
-    margin-bottom: clamp(2rem, 6vw, 3rem);
+    background: transparent;
+    padding: clamp(3rem, 6vw, 4rem) 0;
+    border-radius: 0;
+    margin-bottom: clamp(2rem, 5vw, 3rem);
+    min-height: auto;
 }
 
 .testimonials-section h2 {
     text-align: center;
     font-size: clamp(1.5rem, 3vw, 2rem);
     color: #8B7355;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     font-weight: 300;
 }
 
-.testimonial-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
-    gap: clamp(1.5rem, 4vw, 2rem);
+.testimonial-carousel-container {
+    max-width: min(650px, 90%);
+    margin: 0 auto;
+    height: 350px;
+    position: relative;
+    overflow: visible;
+    padding: 0;
+    background: transparent;
 }
 
-.testimonial-card {
+.testimonial-carousel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: visible;
+    cursor: grab;
+    user-select: none;
+    will-change: transform;
+    padding: 0;
+    background: transparent;
+}
+
+.testimonial-carousel:active {
+    cursor: grabbing;
+}
+
+.testimonial-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent !important;
+    box-shadow: none !important;
+    filter: none !important;
+    padding: 1rem;
+    height: 100%;
+}
+
+.testimonial-slide .testimonial-card {
     background: white;
-    padding: clamp(1.5rem, 4vw, 2rem);
-    border-radius: 0.75rem;
+    padding: clamp(2.5rem, 5vw, 3rem);
+    border-radius: 1rem;
     text-align: center;
+    width: 100%;
+    max-width: 100%;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+    margin: 0 auto;
 }
 
-.testimonial-card .stars {
+.testimonial-slide .stars {
     justify-content: center;
     font-size: 1.2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     display: flex;
     gap: 0.25rem;
 }
 
-.testimonial-card .star-icon {
-    width: 18px;
-    height: 18px;
+.testimonial-slide .star-icon {
+    width: 20px;
+    height: 20px;
     stroke: #DAC3A2;
-    fill: none;
+    fill: #DAC3A2;
     stroke-width: 2;
 }
 
-.testimonial-card p {
+.testimonial-slide p {
     color: #666;
     font-style: italic;
-    margin-bottom: 1rem;
-    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
 }
 
-.testimonial-card .author {
+.testimonial-slide .author {
     color: #8B7355;
     font-weight: 600;
+    font-size: 1rem;
 }
 
 /* Contact Page */

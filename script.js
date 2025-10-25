@@ -619,4 +619,253 @@ document.addEventListener('DOMContentLoaded', () => {
     if (instagramCarousel) {
         initializeInstagramCarousel();
     }
+    
+    // Initialize Testimonial carousel if it exists
+    const testimonialCarousel = document.querySelector('.testimonial-carousel');
+    if (testimonialCarousel) {
+        initializeTestimonialCarousel();
+    }
 });
+
+// ============================================
+// TESTIMONIAL CAROUSEL FUNCTIONALITY
+// ============================================
+
+let currentSlideTestimonial = 0;
+let isAnimatingTestimonial = false;
+let isDraggingTestimonial = false;
+let startXTestimonial = 0;
+let currentXTestimonial = 0;
+let dragOffsetTestimonial = 0;
+const SWIPE_THRESHOLD = 50;
+
+// Go to specific slide in testimonial carousel
+function goToSlideTestimonial(index) {
+    if (isAnimatingTestimonial) return;
+    
+    const carousel = document.querySelector('.testimonial-carousel');
+    if (!carousel) return;
+    
+    const track = carousel.querySelector('.carousel-track');
+    const dots = carousel.querySelectorAll('.carousel-dots .dot');
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    
+    if (!track || slides.length === 0) return;
+    
+    isAnimatingTestimonial = true;
+    currentSlideTestimonial = index;
+    updateCarouselTestimonial(track, dots, slides);
+    
+    setTimeout(() => {
+        isAnimatingTestimonial = false;
+    }, 500);
+}
+
+// Update testimonial carousel position
+function updateCarouselTestimonial(track, dots, slides) {
+    // Remove all classes from all slides
+    slides.forEach((slide) => {
+        slide.classList.remove('active', 'next', 'next-next', 'prev');
+    });
+    
+    // Add classes based on position relative to current slide
+    slides.forEach((slide, index) => {
+        if (index === currentSlideTestimonial) {
+            slide.classList.add('active');
+        } else if (index === (currentSlideTestimonial + 1) % slides.length) {
+            slide.classList.add('next');
+        } else if (index === (currentSlideTestimonial + 2) % slides.length) {
+            slide.classList.add('next-next');
+        } else {
+            slide.classList.add('prev');
+        }
+    });
+    
+    // Update dots
+    dots.forEach((dot, index) => {
+        if (index === currentSlideTestimonial) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+}
+
+// Apply drag transform for testimonials
+function applyDragTransformTestimonial(offset) {
+    const slides = document.querySelectorAll('.testimonial-carousel .carousel-slide');
+    const carousel = document.querySelector('.testimonial-carousel');
+    const width = carousel.offsetWidth;
+    
+    // Calculate percentage for smooth dragging
+    const percentage = (offset / width) * 100;
+    
+    requestAnimationFrame(() => {
+        slides.forEach((slide) => {
+            if (slide.classList.contains('active')) {
+                slide.style.transform = `translate3d(${percentage}%, 0, 0) scale(1)`;
+                slide.style.opacity = 1 - (Math.abs(offset) / width) * 0.3;
+            } else if (slide.classList.contains('next')) {
+                slide.style.transform = 'translate3d(8%, 0, 0) scale(0.95)';
+                slide.style.opacity = 0.7;
+            } else if (slide.classList.contains('next-next')) {
+                slide.style.transform = 'translate3d(12%, 0, 0) scale(0.9)';
+                slide.style.opacity = 0.4;
+            } else if (slide.classList.contains('prev')) {
+                slide.style.transform = 'translate3d(-100%, 0, 0) scale(0.95)';
+                slide.style.opacity = 0;
+            }
+        });
+    });
+}
+
+// Reset transforms for testimonials
+function resetDragTransformTestimonial() {
+    const slides = document.querySelectorAll('.testimonial-carousel .carousel-slide');
+    
+    requestAnimationFrame(() => {
+        slides.forEach((slide) => {
+            slide.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            
+            if (slide.classList.contains('active')) {
+                slide.style.transform = 'translate3d(0, 0, 0) scale(1)';
+                slide.style.opacity = '1';
+            } else if (slide.classList.contains('next')) {
+                slide.style.transform = 'translate3d(8%, 0, 0) scale(0.95)';
+                slide.style.opacity = '0.7';
+            } else if (slide.classList.contains('next-next')) {
+                slide.style.transform = 'translate3d(12%, 0, 0) scale(0.9)';
+                slide.style.opacity = '0.4';
+            } else if (slide.classList.contains('prev')) {
+                slide.style.transform = 'translate3d(-100%, 0, 0) scale(0.95)';
+                slide.style.opacity = '0';
+            }
+        });
+    });
+    
+    // Remove inline transition after animation
+    setTimeout(() => {
+        slides.forEach(slide => {
+            slide.style.transition = '';
+        });
+    }, 500);
+}
+
+// Handle start of drag (touch or mouse) for testimonials
+function handleDragStartTestimonial(e) {
+    if (isAnimatingTestimonial) return;
+    
+    isDraggingTestimonial = true;
+    startXTestimonial = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+    currentXTestimonial = startXTestimonial;
+    dragOffsetTestimonial = 0;
+    
+    const carousel = document.querySelector('.testimonial-carousel');
+    carousel.style.cursor = 'grabbing';
+    
+    // Disable transitions during drag
+    const slides = document.querySelectorAll('.testimonial-carousel .carousel-slide');
+    slides.forEach(slide => {
+        slide.style.transition = 'none';
+    });
+}
+
+// Handle drag movement for testimonials
+function handleDragMoveTestimonial(e) {
+    if (!isDraggingTestimonial) return;
+    
+    e.preventDefault();
+    currentXTestimonial = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+    dragOffsetTestimonial = currentXTestimonial - startXTestimonial;
+    
+    // Add resistance at the edges
+    const carousel = document.querySelector('.testimonial-carousel');
+    const maxOffset = carousel.offsetWidth * 0.3; // 30% max drag
+    
+    // Apply resistance curve
+    if (Math.abs(dragOffsetTestimonial) > maxOffset) {
+        const excess = Math.abs(dragOffsetTestimonial) - maxOffset;
+        const resistance = maxOffset + (excess * 0.3); // 30% of excess movement
+        dragOffsetTestimonial = dragOffsetTestimonial > 0 ? resistance : -resistance;
+    }
+    
+    // Apply transform immediately
+    applyDragTransformTestimonial(dragOffsetTestimonial);
+}
+
+// Handle end of drag for testimonials
+function handleDragEndTestimonial(e) {
+    if (!isDraggingTestimonial) return;
+    
+    isDraggingTestimonial = false;
+    
+    const carousel = document.querySelector('.testimonial-carousel');
+    carousel.style.cursor = 'grab';
+    
+    const slides = document.querySelectorAll('.testimonial-carousel .carousel-slide');
+    const track = carousel.querySelector('.carousel-track');
+    const dots = carousel.querySelectorAll('.carousel-dots .dot');
+    
+    // Determine if swipe was strong enough
+    if (Math.abs(dragOffsetTestimonial) > SWIPE_THRESHOLD) {
+        isAnimatingTestimonial = true;
+        
+        if (dragOffsetTestimonial < 0) {
+            // Swiped left - go to next
+            currentSlideTestimonial = (currentSlideTestimonial + 1) % slides.length;
+        } else {
+            // Swiped right - go to previous
+            currentSlideTestimonial = (currentSlideTestimonial - 1 + slides.length) % slides.length;
+        }
+        
+        updateCarouselTestimonial(track, dots, slides);
+        resetDragTransformTestimonial();
+        
+        setTimeout(() => {
+            isAnimatingTestimonial = false;
+        }, 500);
+    } else {
+        // Snap back to original position
+        resetDragTransformTestimonial();
+    }
+    
+    dragOffsetTestimonial = 0;
+}
+
+// Handle drag cancel for testimonials
+function handleDragCancelTestimonial() {
+    if (!isDraggingTestimonial) return;
+    
+    isDraggingTestimonial = false;
+    const carousel = document.querySelector('.testimonial-carousel');
+    carousel.style.cursor = 'grab';
+    resetDragTransformTestimonial();
+    dragOffsetTestimonial = 0;
+}
+
+// Initialize testimonial carousel
+function initializeTestimonialCarousel() {
+    const carousel = document.querySelector('.testimonial-carousel');
+    if (!carousel) return;
+    
+    const track = carousel.querySelector('.carousel-track');
+    const dots = carousel.querySelectorAll('.carousel-dots .dot');
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    
+    if (!track || slides.length === 0) return;
+    
+    // Set initial state
+    updateCarouselTestimonial(track, dots, slides);
+    
+    // Add touch event listeners for mobile
+    carousel.addEventListener('touchstart', handleDragStartTestimonial, { passive: true });
+    carousel.addEventListener('touchmove', handleDragMoveTestimonial, { passive: false });
+    carousel.addEventListener('touchend', handleDragEndTestimonial);
+    carousel.addEventListener('touchcancel', handleDragCancelTestimonial);
+    
+    // Add mouse event listeners for desktop
+    carousel.addEventListener('mousedown', handleDragStartTestimonial);
+    carousel.addEventListener('mousemove', handleDragMoveTestimonial);
+    carousel.addEventListener('mouseup', handleDragEndTestimonial);
+    carousel.addEventListener('mouseleave', handleDragCancelTestimonial);
+}
