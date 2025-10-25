@@ -286,22 +286,24 @@ function applyDragTransform(offset) {
     // Calculate percentage for smooth dragging
     const percentage = (offset / width) * 100;
     
-    slides.forEach((slide, index) => {
-        if (slide.classList.contains('active')) {
-            // Only move the active slide
-            slide.style.transform = `translateX(${percentage}%) scale(1)`;
-            slide.style.opacity = 1 - (Math.abs(offset) / width) * 0.3; // Fade slightly as you drag
-        } else if (slide.classList.contains('next')) {
-            // Keep next slides in their original position
-            slide.style.transform = 'translateX(8%) scale(0.95)';
-            slide.style.opacity = 0.7;
-        } else if (slide.classList.contains('next-next')) {
-            slide.style.transform = 'translateX(12%) scale(0.9)';
-            slide.style.opacity = 0.4;
-        } else if (slide.classList.contains('prev')) {
-            slide.style.transform = 'translateX(-100%) scale(0.95)';
-            slide.style.opacity = 0;
-        }
+    // Use requestAnimationFrame for smoother animations
+    requestAnimationFrame(() => {
+        slides.forEach((slide) => {
+            if (slide.classList.contains('active')) {
+                // Only move the active slide using translate3d for GPU acceleration
+                slide.style.transform = `translate3d(${percentage}%, 0, 0) scale(1)`;
+                slide.style.opacity = 1 - (Math.abs(offset) / width) * 0.3;
+            } else if (slide.classList.contains('next')) {
+                slide.style.transform = 'translate3d(8%, 0, 0) scale(0.95)';
+                slide.style.opacity = 0.7;
+            } else if (slide.classList.contains('next-next')) {
+                slide.style.transform = 'translate3d(12%, 0, 0) scale(0.9)';
+                slide.style.opacity = 0.4;
+            } else if (slide.classList.contains('prev')) {
+                slide.style.transform = 'translate3d(-100%, 0, 0) scale(0.95)';
+                slide.style.opacity = 0;
+            }
+        });
     });
 }
 
@@ -309,22 +311,24 @@ function applyDragTransform(offset) {
 function resetDragTransform() {
     const slides = document.querySelectorAll('.carousel-slide');
     
-    slides.forEach((slide) => {
-        slide.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-        
-        if (slide.classList.contains('active')) {
-            slide.style.transform = 'translateX(0) scale(1)';
-            slide.style.opacity = '1';
-        } else if (slide.classList.contains('next')) {
-            slide.style.transform = 'translateX(8%) scale(0.95)';
-            slide.style.opacity = '0.7';
-        } else if (slide.classList.contains('next-next')) {
-            slide.style.transform = 'translateX(12%) scale(0.9)';
-            slide.style.opacity = '0.4';
-        } else if (slide.classList.contains('prev')) {
-            slide.style.transform = 'translateX(-100%) scale(0.95)';
-            slide.style.opacity = '0';
-        }
+    requestAnimationFrame(() => {
+        slides.forEach((slide) => {
+            slide.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            
+            if (slide.classList.contains('active')) {
+                slide.style.transform = 'translate3d(0, 0, 0) scale(1)';
+                slide.style.opacity = '1';
+            } else if (slide.classList.contains('next')) {
+                slide.style.transform = 'translate3d(8%, 0, 0) scale(0.95)';
+                slide.style.opacity = '0.7';
+            } else if (slide.classList.contains('next-next')) {
+                slide.style.transform = 'translate3d(12%, 0, 0) scale(0.9)';
+                slide.style.opacity = '0.4';
+            } else if (slide.classList.contains('prev')) {
+                slide.style.transform = 'translate3d(-100%, 0, 0) scale(0.95)';
+                slide.style.opacity = '0';
+            }
+        });
     });
     
     // Remove inline transition after animation
@@ -364,7 +368,6 @@ function handleDragMove(e) {
     
     // Add resistance at the edges
     const carousel = document.querySelector('.image-carousel');
-    const slides = document.querySelectorAll('.carousel-slide');
     const maxOffset = carousel.offsetWidth * 0.3; // 30% max drag
     
     // Apply resistance curve
@@ -374,6 +377,7 @@ function handleDragMove(e) {
         dragOffset = dragOffset > 0 ? resistance : -resistance;
     }
     
+    // Apply transform immediately (requestAnimationFrame is inside applyDragTransform)
     applyDragTransform(dragOffset);
 }
 

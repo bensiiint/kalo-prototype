@@ -973,6 +973,7 @@ nav {
     perspective: 1000px;
     cursor: grab;
     user-select: none;
+    will-change: transform;
 }
 
 .image-carousel:active {
@@ -995,11 +996,16 @@ nav {
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 10px 40px rgba(0,0,0,0.2);
     filter: brightness(0.95) contrast(1.05) saturate(1.1);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
 /* Stack effect - each slide is positioned behind the active one */
 .carousel-slide {
-    transform: translateX(0) scale(0.95);
+    transform: translate3d(0, 0, 0) scale(0.95);
     opacity: 0;
     z-index: 1;
     pointer-events: none;
@@ -1007,27 +1013,27 @@ nav {
 
 /* Active slide */
 .carousel-slide.active {
-    transform: translateX(0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
     opacity: 1;
     z-index: 10;
 }
 
 /* Next slides (stacked on the right) */
 .carousel-slide.next {
-    transform: translateX(8%) scale(0.95);
+    transform: translate3d(8%, 0, 0) scale(0.95);
     opacity: 0.7;
     z-index: 5;
 }
 
 .carousel-slide.next-next {
-    transform: translateX(12%) scale(0.9);
+    transform: translate3d(12%, 0, 0) scale(0.9);
     opacity: 0.4;
     z-index: 4;
 }
 
 /* Previous slides (hidden on the left) */
 .carousel-slide.prev {
-    transform: translateX(-100%) scale(0.95);
+    transform: translate3d(-100%, 0, 0) scale(0.95);
     opacity: 0;
     z-index: 2;
 }
@@ -1073,13 +1079,19 @@ nav {
 }
 
 @media (max-width: 768px) {
-    /* Reduce stacking effect on mobile */
+    /* Reduce stacking effect on mobile for better performance */
     .carousel-slide.next {
-        transform: translateX(5%) scale(0.96);
+        transform: translate3d(5%, 0, 0) scale(0.96);
     }
     
     .carousel-slide.next-next {
-        transform: translateX(8%) scale(0.92);
+        transform: translate3d(8%, 0, 0) scale(0.92);
+        display: none; /* Hide third slide on mobile to improve performance */
+    }
+    
+    /* Simplify filters on mobile */
+    .carousel-slide {
+        filter: brightness(1) contrast(1) saturate(1);
     }
 }
 
