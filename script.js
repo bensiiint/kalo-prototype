@@ -217,47 +217,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ============================================
-// CAROUSEL FUNCTIONALITY
+// CAROUSEL FUNCTIONALITY WITH REALISTIC DRAG
 // ============================================
 
 let currentSlide = 0;
 let isAnimating = false;
-
-// Move carousel to next or previous slide
-function moveCarousel(direction) {
-    // Prevent rapid consecutive clicks
-    if (isAnimating) return;
-    
-    const track = document.querySelector('.carousel-track');
-    const slides = document.querySelectorAll('.carousel-slide');
-    const dots = document.querySelectorAll('.carousel-dots .dot');
-    
-    if (!track || slides.length === 0) return;
-    
-    isAnimating = true;
-    
-    // Update current slide
-    currentSlide += direction;
-    
-    // Loop around
-    if (currentSlide < 0) {
-        currentSlide = slides.length - 1;
-    } else if (currentSlide >= slides.length) {
-        currentSlide = 0;
-    }
-    
-    // Update carousel position
-    updateCarousel(track, dots);
-    
-    // Allow next animation after transition completes
-    setTimeout(() => {
-        isAnimating = false;
-    }, 500); // Match the CSS transition duration
-}
+let isDragging = false;
+let startX = 0;
+let currentX = 0;
+let dragOffset = 0;
 
 // Go to specific slide
 function goToSlide(index) {
-    // Prevent rapid consecutive clicks
     if (isAnimating) return;
     
     const track = document.querySelector('.carousel-track');
@@ -269,7 +240,6 @@ function goToSlide(index) {
     currentSlide = index;
     updateCarousel(track, dots);
     
-    // Allow next animation after transition completes
     setTimeout(() => {
         isAnimating = false;
     }, 500);
@@ -307,68 +277,155 @@ function updateCarousel(track, dots) {
     });
 }
 
-// Touch/Swipe support for mobile
-let touchStartX = 0;
-let touchEndX = 0;
-const SWIPE_THRESHOLD = 50; // Minimum distance for swipe
-
-function handleTouchStart(e) {
-    touchStartX = e.touches[0].clientX;
-}
-
-function handleTouchMove(e) {
-    touchEndX = e.touches[0].clientX;
-}
-
-function handleTouchEnd() {
-    const swipeDistance = touchStartX - touchEndX;
+// Apply drag transform to create smooth following effect
+function applyDragTransform(offset) {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const carousel = document.querySelector('.image-carousel');
+    const width = carousel.offsetWidth;
     
-    if (Math.abs(swipeDistance) > SWIPE_THRESHOLD) {
-        if (swipeDistance > 0) {
+    // Calculate percentage for smooth dragging
+    const percentage = (offset / width) * 100;
+    
+    slides.forEach((slide, index) => {
+        if (slide.classList.contains('active')) {
+            // Only move the active slide
+            slide.style.transform = `translateX(${percentage}%) scale(1)`;
+            slide.style.opacity = 1 - (Math.abs(offset) / width) * 0.3; // Fade slightly as you drag
+        } else if (slide.classList.contains('next')) {
+            // Keep next slides in their original position
+            slide.style.transform = 'translateX(8%) scale(0.95)';
+            slide.style.opacity = 0.7;
+        } else if (slide.classList.contains('next-next')) {
+            slide.style.transform = 'translateX(12%) scale(0.9)';
+            slide.style.opacity = 0.4;
+        } else if (slide.classList.contains('prev')) {
+            slide.style.transform = 'translateX(-100%) scale(0.95)';
+            slide.style.opacity = 0;
+        }
+    });
+}
+
+// Reset transforms with smooth transition
+function resetDragTransform() {
+    const slides = document.querySelectorAll('.carousel-slide');
+    
+    slides.forEach((slide) => {
+        slide.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+        
+        if (slide.classList.contains('active')) {
+            slide.style.transform = 'translateX(0) scale(1)';
+            slide.style.opacity = '1';
+        } else if (slide.classList.contains('next')) {
+            slide.style.transform = 'translateX(8%) scale(0.95)';
+            slide.style.opacity = '0.7';
+        } else if (slide.classList.contains('next-next')) {
+            slide.style.transform = 'translateX(12%) scale(0.9)';
+            slide.style.opacity = '0.4';
+        } else if (slide.classList.contains('prev')) {
+            slide.style.transform = 'translateX(-100%) scale(0.95)';
+            slide.style.opacity = '0';
+        }
+    });
+    
+    // Remove inline transition after animation
+    setTimeout(() => {
+        slides.forEach(slide => {
+            slide.style.transition = '';
+        });
+    }, 500);
+}
+
+// Handle start of drag (touch or mouse)
+function handleDragStart(e) {
+    if (isAnimating) return;
+    
+    isDragging = true;
+    startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+    currentX = startX;
+    dragOffset = 0;
+    
+    const carousel = document.querySelector('.image-carousel');
+    carousel.style.cursor = 'grabbing';
+    
+    // Disable transitions during drag
+    const slides = document.querySelectorAll('.carousel-slide');
+    slides.forEach(slide => {
+        slide.style.transition = 'none';
+    });
+}
+
+// Handle drag movement
+function handleDragMove(e) {
+    if (!isDragging) return;
+    
+    e.preventDefault();
+    currentX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+    dragOffset = currentX - startX;
+    
+    // Add resistance at the edges
+    const carousel = document.querySelector('.image-carousel');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const maxOffset = carousel.offsetWidth * 0.3; // 30% max drag
+    
+    // Apply resistance curve
+    if (Math.abs(dragOffset) > maxOffset) {
+        const excess = Math.abs(dragOffset) - maxOffset;
+        const resistance = maxOffset + (excess * 0.3); // 30% of excess movement
+        dragOffset = dragOffset > 0 ? resistance : -resistance;
+    }
+    
+    applyDragTransform(dragOffset);
+}
+
+// Handle end of drag
+function handleDragEnd(e) {
+    if (!isDragging) return;
+    
+    isDragging = false;
+    
+    const carousel = document.querySelector('.image-carousel');
+    carousel.style.cursor = 'grab';
+    
+    const SWIPE_THRESHOLD = 50;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const track = document.querySelector('.carousel-track');
+    const dots = document.querySelectorAll('.carousel-dots .dot');
+    
+    // Determine if swipe was strong enough
+    if (Math.abs(dragOffset) > SWIPE_THRESHOLD) {
+        isAnimating = true;
+        
+        if (dragOffset < 0) {
             // Swiped left - go to next
-            moveCarousel(1);
+            currentSlide = (currentSlide + 1) % slides.length;
         } else {
             // Swiped right - go to previous
-            moveCarousel(-1);
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
         }
+        
+        updateCarousel(track, dots);
+        resetDragTransform();
+        
+        setTimeout(() => {
+            isAnimating = false;
+        }, 500);
+    } else {
+        // Snap back to original position
+        resetDragTransform();
     }
-}
-
-// Mouse drag support for desktop
-let mouseStartX = 0;
-let mouseEndX = 0;
-let isDragging = false;
-
-function handleMouseDown(e) {
-    isDragging = true;
-    mouseStartX = e.clientX;
-    mouseEndX = e.clientX;
-}
-
-function handleMouseMove(e) {
-    if (!isDragging) return;
-    mouseEndX = e.clientX;
-}
-
-function handleMouseUp() {
-    if (!isDragging) return;
-    isDragging = false;
     
-    const swipeDistance = mouseStartX - mouseEndX;
-    
-    if (Math.abs(swipeDistance) > SWIPE_THRESHOLD) {
-        if (swipeDistance > 0) {
-            // Dragged left - go to next
-            moveCarousel(1);
-        } else {
-            // Dragged right - go to previous
-            moveCarousel(-1);
-        }
-    }
+    dragOffset = 0;
 }
 
-function handleMouseLeave() {
+// Handle drag cancel
+function handleDragCancel() {
+    if (!isDragging) return;
+    
     isDragging = false;
+    const carousel = document.querySelector('.image-carousel');
+    carousel.style.cursor = 'grab';
+    resetDragTransform();
+    dragOffset = 0;
 }
 
 // ============================================
@@ -540,16 +597,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const dots = document.querySelectorAll('.carousel-dots .dot');
         updateCarousel(track, dots);
         
-        // Add touch event listeners for mobile swipe support
-        carousel.addEventListener('touchstart', handleTouchStart, { passive: true });
-        carousel.addEventListener('touchmove', handleTouchMove, { passive: true });
-        carousel.addEventListener('touchend', handleTouchEnd);
+        // Add touch event listeners for mobile
+        carousel.addEventListener('touchstart', handleDragStart, { passive: true });
+        carousel.addEventListener('touchmove', handleDragMove, { passive: false });
+        carousel.addEventListener('touchend', handleDragEnd);
+        carousel.addEventListener('touchcancel', handleDragCancel);
         
-        // Add mouse event listeners for desktop drag support
-        carousel.addEventListener('mousedown', handleMouseDown);
-        carousel.addEventListener('mousemove', handleMouseMove);
-        carousel.addEventListener('mouseup', handleMouseUp);
-        carousel.addEventListener('mouseleave', handleMouseLeave);
+        // Add mouse event listeners for desktop
+        carousel.addEventListener('mousedown', handleDragStart);
+        carousel.addEventListener('mousemove', handleDragMove);
+        carousel.addEventListener('mouseup', handleDragEnd);
+        carousel.addEventListener('mouseleave', handleDragCancel);
     }
     
     // Initialize Instagram carousel if it exists
