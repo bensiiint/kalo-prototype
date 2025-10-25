@@ -889,6 +889,7 @@ nav {
 /* Featured Package Home */
 .feature-package-home {
     padding: clamp(2.5rem, 8vw, 4rem) 0;
+    padding-bottom: clamp(4rem, 10vw, 5rem);
     background: #fafafa;
     overflow: visible;
 }
@@ -1944,6 +1945,10 @@ nav {
 .instagram-section-full p {
     color: #666;
     margin-bottom: 2rem;
+}
+
+.instagram-section-full .cta-btn {
+    margin-top: 4rem;
 }
 
 .instagram-carousel-container {
