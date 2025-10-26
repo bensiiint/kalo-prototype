@@ -2182,80 +2182,21 @@ footer {
 
 .float-btn.whatsapp {
     background: #25D366;
-    position: relative;
-}
-
-.float-btn.whatsapp::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 18px;
-    height: 18px;
-    border: 2.5px solid white;
-    border-radius: 50%;
-}
-
-.float-btn.whatsapp::after {
-    content: '';
-    position: absolute;
-    bottom: 10px;
-    right: 8px;
-    width: 0;
-    height: 0;
-    border-left: 5px solid white;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
 }
 
 .float-btn.email {
     background: #8B7355;
-    position: relative;
-}
-
-.float-btn.email::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 22px;
-    height: 16px;
-    border: 2px solid white;
-    border-radius: 2px;
-}
-
-.float-btn.email::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 0;
-    height: 0;
-    border-left: 11px solid transparent;
-    border-right: 11px solid transparent;
-    border-top: 8px solid white;
-    margin-top: -2px;
 }
 
 .float-btn.phone {
     background: #DAC3A2;
-    position: relative;
 }
 
-.float-btn.phone::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(135deg);
-    width: 16px;
-    height: 16px;
-    border-right: 2.5px solid white;
-    border-bottom: 2.5px solid white;
-    border-radius: 0 0 6px 0;
+.float-btn i {
+    width: 20px;
+    height: 20px;
+    stroke: white;
+    stroke-width: 2;
 }
 
 /* Animations */
