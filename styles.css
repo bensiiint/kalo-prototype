@@ -914,6 +914,7 @@ nav {
 
 .package-info {
     padding: 0 clamp(1rem, 4vw, 1.5rem);
+    text-align: center;
 }
 
 .package-info h3 {
@@ -935,15 +936,17 @@ nav {
     font-size: clamp(0.9rem, 2vw, 1rem);
     font-weight: 300;
     position: relative;
-    padding-left: clamp(1.5rem, 4vw, 2rem);
+    padding-left: 0;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .package-info li::before {
     content: '';
-    position: absolute;
-    left: 0;
+    position: relative;
+    left: auto;
+    margin-right: 0.5rem;
 }
 
 .package-price {
