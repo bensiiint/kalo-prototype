@@ -531,7 +531,8 @@ header.scrolled-light .hamburger span {
 
 /* Smart Adaptive Mobile Menu */
 header.menu-open {
-    max-height: 35rem;
+    max-height: 40rem; /* Snugger height for 6 tabs */
+    padding-bottom: 0.5rem; /* Reduced padding */
     background: rgba(255, 255, 255, 0.1); /* Subtle blur over video */
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
@@ -634,13 +635,8 @@ nav {
 }
 
 .mobile-menu.active {
-    max-height: 30rem;
-    padding-bottom: 1.5rem;
-}
-
-.mobile-menu.active {
-    max-height: 20rem;
-    padding: 1rem 0;
+    max-height: 40rem;
+    padding: 0.5rem 0 1rem 0;
 }
 
 .mobile-menu-overlay {
@@ -671,21 +667,15 @@ nav {
 }
 
 .mobile-nav-links li {
-    transform: translateY(-1rem);
-    opacity: 0;
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.mobile-menu.active .mobile-nav-links li {
-    transform: translateY(0);
     opacity: 1;
 }
 
-.mobile-menu.active .mobile-nav-links li:nth-child(1) { transition-delay: 0.1s; }
-.mobile-menu.active .mobile-nav-links li:nth-child(2) { transition-delay: 0.2s; }
-.mobile-menu.active .mobile-nav-links li:nth-child(3) { transition-delay: 0.3s; }
-.mobile-menu.active .mobile-nav-links li:nth-child(4) { transition-delay: 0.4s; }
-.mobile-menu.active .mobile-nav-links li:nth-child(5) { transition-delay: 0.5s; }
+.mobile-menu.active .mobile-nav-links li {
+    transform: none;
+    opacity: 1;
+}
+
+/* Removed transition delays for snappier feel */
 
 .mobile-nav-links a {
     display: block;
@@ -2895,7 +2885,7 @@ footer {
 }
 
 .form-group label {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-weight: 600;
     color: #8B7355;
     font-size: 0.9rem;
@@ -2927,16 +2917,26 @@ footer {
 .input-with-icon input,
 .input-with-icon select {
     width: 100%;
-    padding: 1.25rem 1.25rem 1.25rem 3.8rem;
+    padding: 1.25rem 3rem 1.25rem 3.8rem; /* Space on right for custom arrow if it's a select */
     background: white;
     border: 1px solid rgba(139, 115, 85, 0.15);
     border-radius: 1.5rem;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-size: 1.05rem;
     color: #333;
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
     cursor: pointer;
+}
+
+.input-with-icon select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%238B7355' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1.25rem center;
+    background-size: 1.1rem;
 }
 
 .input-with-icon input:focus,
