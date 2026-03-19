@@ -145,11 +145,37 @@ let lastScrollY = window.scrollY;
 
 function updateHeaderOnScroll() {
     const header = document.querySelector('header');
+    const hero = document.querySelector('.hero');
+    const pageHeader = document.querySelector('.page-header');
+    
+    // Determine which section defines the 'top' area
+    const heroHeight = hero ? hero.offsetHeight : (pageHeader ? pageHeader.offsetHeight : window.innerHeight);
+    
+    // Add 'scrolled' class when passing 50px (subtle pill adjustment)
     if (window.scrollY > 50) {
         header.classList.add('scrolled');
     } else {
         header.classList.remove('scrolled');
     }
+
+    // Dynamic Theme Switching (scrolled-light class)
+    if (hero) {
+        // Home Page Logic: Turn white after the hero video
+        if (window.scrollY > (heroHeight - 100)) {
+            header.classList.add('scrolled-light');
+        } else {
+            header.classList.remove('scrolled-light');
+        }
+    } else {
+        // All Other Pages: Turn white immediately after the page header section
+        const triggerPoint = pageHeader ? pageHeader.offsetHeight - 50 : 100;
+        if (window.scrollY > triggerPoint) {
+            header.classList.add('scrolled-light');
+        } else {
+            header.classList.remove('scrolled-light');
+        }
+    }
+    
     ticking = false;
 }
 
