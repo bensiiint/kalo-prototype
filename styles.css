@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
 /* Gallery Home Section */
 .gallery-home {
     padding: clamp(2.5rem, 8vw, 4rem) 0;
@@ -7,10 +9,11 @@
 .gallery-home h2 {
     text-align: center;
     font-size: clamp(1.8rem, 4vw, 2.5rem);
-    font-weight: 300;
+    font-weight: 700;
     color: #8B7355;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
     letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .gallery-grid {
@@ -81,8 +84,7 @@
     }
 }
 
-/* Import Hubballi Font */
-@import url('https://fonts.googleapis.com/css2?family=Hubballi&display=swap');
+/* Font configurations moved to top */
 
 * {
     margin: 0;
@@ -97,13 +99,24 @@ html {
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
     color: #333;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     max-width: 100vw;
+    background-color: #f7f8f9;
+}
+
+/* Heading font stabilization */
+h1, h2, h3, h4, h5, h6, .logo {
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* Ensure buttons and inputs inherit the 'Quicksand' font */
+button, input, select, textarea {
+    font-family: inherit;
 }
 
 .container {
@@ -472,32 +485,53 @@ body {
     gap: 0.5rem;
 }
 
-/* Header */
+/* Header - Floating Pill Style */
 header {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
     position: fixed;
-    width: 100%;
-    top: 0;
+    width: min(1200px, 94%);
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1000;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
+    border-radius: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    max-height: clamp(3.2rem, 10vw, 4.2rem);
+    overflow: hidden;
+}
+
+header.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    top: 0.75rem;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+header.menu-open {
+    max-height: 35rem;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 2rem;
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: clamp(0.75rem, 2vw, 1rem) 0;
-    min-height: clamp(3.5rem, 10vw, 4rem);
+    padding: 0.5rem 1.5rem;
+    min-height: clamp(3.2rem, 8vw, 3.8rem);
+    position: relative;
 }
 
 .logo {
-    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
     font-weight: 700;
     color: #8B7355;
-    letter-spacing: clamp(1px, 0.3vw, 2px);
+    letter-spacing: 2px;
     flex-shrink: 0;
+    text-transform: uppercase;
 }
 
 .nav-links {
@@ -515,7 +549,7 @@ nav {
 .nav-links a {
     color: #666;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     transition: color 0.3s ease;
 }
 
@@ -524,20 +558,19 @@ nav {
     color: #8B7355;
 }
 
-/* Mobile Dropdown Menu */
+/* Mobile Dropdown Menu - Unified with Floating Header */
 .mobile-menu {
-    position: fixed;
-    top: 4rem;
-    left: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(20px);
+    width: 100%;
+    background: transparent;
     z-index: 999;
     max-height: 0;
     overflow: hidden;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    margin-top: -1px;
+}
+
+.mobile-menu.active {
+    max-height: 30rem;
+    padding-bottom: 1.5rem;
 }
 
 .mobile-menu.active {
@@ -681,8 +714,7 @@ nav {
 .book-now-btn,
 .plan-trip-btn {
     padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(0.75rem, 2vw, 1.25rem);
-    border: none;
-    border-radius: 0.5rem;
+    border-radius: 1.25rem;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -737,7 +769,7 @@ nav {
     min-height: 100vh;
     min-height: 100svh;
     height: auto;
-    background: linear-gradient(135deg, rgba(139, 115, 85, 0.6), rgba(218, 195, 162, 0.4)), 
+    background: linear-gradient(135deg, rgba(139, 115, 85, 0.4), rgba(218, 195, 162, 0.2)), 
                 url('KALO%20VILLA%20PICTURES/aerial%202.jpg');
     background-size: cover;
     background-position: center;
@@ -758,10 +790,12 @@ nav {
     right: 0;
     top: 0;
     bottom: 0;
-    background: rgba(218, 195, 162, 0.3);
+    background: rgba(218, 195, 162, 0.15);
     z-index: 1;
     pointer-events: none;
 }
+
+
 
 .hero-content {
     max-width: min(600px, 90%);
@@ -785,32 +819,42 @@ nav {
     opacity: 1;
     position: relative;
     z-index: 2;
+    filter: brightness(0) invert(1);
 }
 
 
 
-/* Quick Overview */
+/* Quick Overview - Card Style */
 .quick-overview {
-    padding: clamp(2.5rem, 8vw, 4rem) 0;
+    padding: clamp(2rem, 5vw, 2.5rem) 1.5rem;
     background: white;
     text-align: center;
+    width: min(1200px, 94%);
+    margin: 1.25rem auto;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 
 .overview-content h2 {
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    font-weight: 300;
+    font-size: clamp(2.2rem, 6vw, 3.5rem);
+    font-weight: 700;
     color: #8B7355;
     margin-bottom: 1.5rem;
+    line-height: 1.1;
     letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .overview-content p {
-    font-size: clamp(0.95rem, 2.2vw, 1.1rem);
-    color: #666;
+    font-size: clamp(1rem, 2.5vw, 1.15rem);
+    color: #555;
     max-width: min(800px, 95%);
     margin: 0 auto clamp(1.5rem, 4vw, 2rem) auto;
-    line-height: 1.8;
+    line-height: 1.6;
     padding: 0 1rem;
+    font-weight: 500;
+
 }
 
 .overview-buttons {
@@ -824,7 +868,7 @@ nav {
 /* CTA Buttons */
 .cta-btn {
     padding: clamp(0.75rem, 2vw, 0.875rem) clamp(1.25rem, 3vw, 1.75rem);
-    border-radius: 0.5rem;
+    border-radius: 1.25rem;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -832,6 +876,7 @@ nav {
     text-transform: uppercase;
     letter-spacing: clamp(0.3px, 0.1vw, 0.5px);
     display: inline-block;
+
 }
 
 .cta-btn.primary {
@@ -864,14 +909,15 @@ nav {
 
 .cta-center {
     text-align: center;
-    padding: 3rem 0;
+    padding: 4rem 0;
 }
 
 .cta-center h2 {
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: clamp(2rem, 5vw, 2.5rem);
     color: #8B7355;
     margin-bottom: 0.5rem;
-    font-weight: 300;
+    font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
 .cta-center p {
@@ -886,20 +932,25 @@ nav {
     flex-wrap: wrap;
 }
 
-/* Featured Package Home */
+/* Featured Package Home - Card Style */
 .feature-package-home {
-    padding: clamp(2.5rem, 8vw, 4rem) 0;
-    padding-bottom: clamp(4rem, 10vw, 5rem);
-    background: #fafafa;
+    padding: clamp(2rem, 5vw, 2.5rem) 1.5rem;
+    padding-bottom: 3.5rem;
+    background: white;
+    width: min(1200px, 94%);
+    margin: 1.25rem auto;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
     overflow: visible;
 }
 
 .feature-package-home h2 {
     text-align: center;
     font-size: clamp(1.8rem, 4vw, 2.5rem);
-    font-weight: 300;
+    font-weight: 700;
     color: #8B7355;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
@@ -918,11 +969,12 @@ nav {
 }
 
 .package-info h3 {
-    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
     color: #8B7355;
     margin-bottom: clamp(1rem, 3vw, 1.5rem);
-    font-weight: 300;
-    letter-spacing: clamp(0.5px, 0.2vw, 1px);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 .package-info ul {
@@ -933,8 +985,8 @@ nav {
 .package-info li {
     padding: clamp(0.375rem, 1vw, 0.5rem) 0;
     color: #666;
-    font-size: clamp(0.9rem, 2vw, 1rem);
-    font-weight: 300;
+    font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+    font-weight: 400;
     position: relative;
     padding-left: 0;
     display: flex;
@@ -1071,7 +1123,7 @@ nav {
 
 .carousel-dots {
     position: absolute;
-    bottom: -2.5rem;
+    bottom: -1.75rem;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -1115,19 +1167,30 @@ nav {
     }
 }
 
-/* Testimonials Home */
+/* Testimonials Home - Card Style */
 .testimonials-home {
-    padding: clamp(2rem, 6vw, 3rem) 0;
-    background: white;
+    padding: 0;
+    margin: 1.25rem auto;
+    width: min(1200px, 94%);
 }
 
 .testimonial-box {
-    max-width: min(800px, 95%);
-    margin: 0 auto;
+    background: white;
+    padding: clamp(2.5rem, 6vw, 3.5rem) 1.5rem;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
     text-align: center;
-    padding: clamp(1.5rem, 4vw, 2rem);
-    background: #fafafa;
-    border-radius: 0.75rem;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.testimonial-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 .stars {
@@ -1143,7 +1206,7 @@ nav {
     width: 20px;
     height: 20px;
     stroke: #DAC3A2;
-    fill: none;
+    fill: #DAC3A2;
     stroke-width: 2;
 }
 
@@ -1160,18 +1223,26 @@ nav {
     color: #8B7355;
 }
 
-/* Quick Contact */
+/* Quick Contact - Card Style */
 .quick-contact {
-    padding: clamp(2.5rem, 8vw, 4rem) 0;
-    background: #fafafa;
+    padding: clamp(2rem, 5vw, 2.5rem) 1.5rem;
+    background: white;
     text-align: center;
+    width: min(1200px, 94%);
+    margin: 1.25rem auto 3rem;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 
 .quick-contact h2 {
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    font-weight: 300;
+    font-size: clamp(2.2rem, 6vw, 3.2rem);
+    font-weight: 700;
     color: #8B7355;
     margin-bottom: clamp(0.5rem, 2vw, 0.75rem);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 1.1;
 }
 
 .quick-contact > .container > p {
@@ -1190,16 +1261,17 @@ nav {
 .contact-method {
     padding: clamp(1.5rem, 4vw, 2rem) clamp(0.75rem, 2vw, 1rem);
     background: white;
-    border-radius: 0.75rem;
+    border-radius: 1.25rem;
     text-decoration: none;
     color: #8B7355;
     transition: all 0.3s ease;
-    border: 1px solid rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.08);
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 140px;
     justify-content: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 
 .contact-method:hover {
@@ -1221,8 +1293,14 @@ nav {
 
 /* Experience Cards */
 .experiences-page {
-    padding: clamp(2rem, 6vw, 3rem) 0;
+    padding: clamp(2rem, 6vw, 3rem) 0 0 0;
     background: white;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    margin-top: -1.5rem;
+    position: relative;
+    z-index: 5;
+    border: 1px solid rgba(0,0,0,0.08);
 }
 
 .experience-cards {
@@ -1238,9 +1316,10 @@ nav {
     overflow: hidden;
     cursor: pointer;
     transition: all 0.4s ease;
-    border-radius: 0.75rem;
+    border-radius: 2rem;
     background-size: cover;
     background-position: center;
+    border: 1px solid rgba(0,0,0,0.08);
 }
 
 .experience-card.beach {
@@ -1319,8 +1398,8 @@ nav {
 }
 
 .experience-content p {
-    font-size: 0.95rem;
-    font-weight: 300;
+    font-size: 1rem;
+    font-weight: 400;
     line-height: 1.6;
     opacity: 0;
     transform: translateY(20px);
@@ -1340,11 +1419,11 @@ nav {
 
 .detailed-activities h2 {
     text-align: center;
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    font-weight: 300;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 700;
     color: #8B7355;
     margin-bottom: 3rem;
-    letter-spacing: 1px;
+    letter-spacing: -0.5px;
 }
 
 .activity-grid {
@@ -1357,9 +1436,10 @@ nav {
 .activity-item {
     background: white;
     padding: clamp(1.5rem, 4vw, 2rem);
-    border-radius: 0.75rem;
+    border-radius: 1.25rem;
     transition: all 0.3s ease;
-    border: 1px solid rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 
 .activity-item:hover {
@@ -1381,15 +1461,23 @@ nav {
 
 /* Packages Page */
 .packages-section {
-    padding: 3rem 0 4rem 0;
+    padding: clamp(3rem, 6vw, 4rem) 0 0 0;
     background: white;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    margin-top: -1.5rem;
+    position: relative;
+    z-index: 5;
+    border: 1px solid rgba(0,0,0,0.08);
 }
 
 .package-detail {
-    background: #fafafa;
-    border-radius: 1rem;
+    background: white;
+    border-radius: 1.25rem;
     padding: clamp(2rem, 5vw, 3rem);
-    margin-bottom: clamp(2rem, 6vw, 3rem);
+    margin-bottom: 2rem;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 
 .package-header {
@@ -1402,10 +1490,10 @@ nav {
 }
 
 .package-header h2 {
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: clamp(1.8rem, 4.5vw, 2.5rem);
     color: #8B7355;
-    font-weight: 300;
-    letter-spacing: 1px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
 .package-price-large {
@@ -1446,7 +1534,7 @@ nav {
 .package-details li {
     padding: 0.4rem 0;
     color: #666;
-    font-weight: 300;
+    font-weight: 400;
     position: relative;
     padding-left: 2rem;
     display: flex;
@@ -1461,10 +1549,11 @@ nav {
 
 .package-note {
     background: white;
-    padding: clamp(1.25rem, 3vw, 1.5rem);
-    border-radius: 0.5rem;
+    padding: clamp(1.5rem, 4vw, 2rem);
+    border-radius: 1.25rem;
     margin: clamp(1.5rem, 4vw, 2rem) 0;
-    border-left: clamp(3px, 0.5vw, 4px) solid #DAC3A2;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 
 .package-note p {
@@ -1483,24 +1572,28 @@ nav {
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.3rem;
-    font-weight: 300;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 /* Booking Info */
 .booking-info {
-    padding: clamp(2rem, 5vw, 3rem);
+    padding: clamp(2rem, 5vw, 3rem) 1.5rem;
     background: white;
-    border-radius: 1rem;
-    margin-bottom: clamp(2rem, 6vw, 3rem);
+    border-radius: 1.25rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 
 .booking-info h2 {
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
     color: #8B7355;
     margin-bottom: 2rem;
-    font-weight: 300;
+    font-weight: 700;
     text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .info-grid {
@@ -1510,9 +1603,17 @@ nav {
 }
 
 .info-item {
-    padding: clamp(1.25rem, 3vw, 1.5rem);
-    background: #fafafa;
-    border-radius: 0.75rem;
+    background: white;
+    padding: clamp(1.5rem, 4vw, 2rem);
+    border-radius: 1.25rem;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+}
+
+.info-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 .info-item h3 {
@@ -1528,18 +1629,22 @@ nav {
 
 /* Nearby Section */
 .nearby-section {
-    padding: clamp(2rem, 5vw, 3rem);
-    background: #fafafa;
-    border-radius: 1rem;
-    margin-bottom: clamp(2rem, 6vw, 3rem);
+    padding: clamp(2rem, 5vw, 3rem) 1.5rem;
+    background: white;
+    border-radius: 1.25rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 
 .nearby-section h2 {
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
     color: #8B7355;
     margin-bottom: 2rem;
-    font-weight: 300;
+    font-weight: 700;
     text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .nearby-grid {
@@ -1550,15 +1655,17 @@ nav {
 
 .nearby-item {
     background: white;
-    padding: clamp(1.25rem, 3vw, 1.5rem);
-    border-radius: 0.75rem;
+    padding: clamp(1.5rem, 4vw, 2rem);
+    border-radius: 1.25rem;
     text-align: center;
     transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 
 .nearby-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 .nearby-item h4 {
@@ -1574,18 +1681,23 @@ nav {
 
 /* FAQ Section */
 .faq-section {
-    padding: clamp(2rem, 5vw, 3rem);
+    padding: clamp(2rem, 5vw, 3rem) 1.5rem;
     background: white;
-    border-radius: 1rem;
-    margin-bottom: clamp(2rem, 6vw, 3rem);
+    border-radius: 1.25rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 
 .faq-section h2 {
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
     color: #8B7355;
     margin-bottom: 2rem;
-    font-weight: 300;
+    font-weight: 700;
     text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
 }
 
 .faq-container {
@@ -1594,45 +1706,78 @@ nav {
 }
 
 .faq-item {
-    margin-bottom: 1rem;
-    border-radius: 0.5rem;
+    margin-bottom: 0;
+    border-radius: 0;
     overflow: hidden;
-    border: 1px solid rgba(0,0,0,0.1);
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.faq-item:last-child {
+    border-bottom: none;
 }
 
 .faq-question {
-    background: #8B7355;
-    color: white;
-    padding: clamp(1rem, 2.5vw, 1.2rem) clamp(1.25rem, 3vw, 1.5rem);
+    background: transparent;
+    color: #444;
+    padding: 1.25rem 0.5rem;
     cursor: pointer;
-    font-weight: 500;
-    transition: background 0.3s ease;
+    font-weight: 600;
+    transition: all 0.3s ease;
     border: none;
     width: 100%;
     text-align: left;
-    font-size: clamp(0.9rem, 2vw, 0.95rem);
+    font-size: clamp(0.95rem, 2vw, 1rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    letter-spacing: 0.3px;
 }
 
 .faq-question:hover {
-    background: #6d5a43;
+    background: transparent;
+    color: #8B7355;
+    padding-left: 1rem;
+}
+
+.faq-question::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-right: 1.5px solid #8B7355;
+    border-bottom: 1.5px solid #8B7355;
+    transform: rotate(-45deg); /* Point right by default */
+    transition: transform 0.3s ease;
+    margin-right: 0.5rem;
+}
+
+.faq-item.active .faq-question::after {
+    transform: rotate(45deg); /* Point down when active */
+    margin-top: -3px;
+}
+
+.faq-item.active .faq-question {
+    color: #8B7355;
+    padding-left: 0.75rem;
 }
 
 .faq-answer {
-    background: #fafafa;
+    background: transparent;
     padding: 0;
     max-height: 0;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .faq-answer.active {
-    padding: clamp(1rem, 2.5vw, 1.2rem) clamp(1.25rem, 3vw, 1.5rem);
-    max-height: 300px;
+    padding: 0.5rem 0.75rem 1.5rem;
+    max-height: 400px;
 }
 
 .faq-answer p {
     color: #666;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.8;
 }
 
@@ -1640,13 +1785,19 @@ nav {
 .about-content {
     padding: clamp(2rem, 6vw, 3rem) 0;
     background: white;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    margin-top: -1.5rem;
+    position: relative;
+    z-index: 5;
+    border: 1px solid rgba(0,0,0,0.08);
 }
 
 .about-featured-image {
     width: 100%;
     max-width: 100%;
     margin-bottom: clamp(2.5rem, 8vw, 4rem);
-    border-radius: 0.75rem;
+    border-radius: 2rem;
     overflow: hidden;
     box-shadow: 0 10px 40px rgba(0,0,0,0.15);
     min-height: clamp(180px, 35vw, 280px);
@@ -1694,10 +1845,12 @@ nav {
 }
 
 .about-section h2 {
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
     color: #8B7355;
     margin-bottom: 1.5rem;
-    font-weight: 300;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .about-section p {
@@ -1715,16 +1868,24 @@ nav {
 }
 
 .feature-box {
-    background: #fafafa;
-    padding: clamp(1.5rem, 4vw, 2rem);
-    border-radius: 0.75rem;
+    background: white;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    border-radius: 1.25rem;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .feature-box:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    border-color: rgba(139, 115, 85, 0.2);
 }
 
 .feature-icon {
@@ -1755,10 +1916,12 @@ nav {
 
 .testimonials-section h2 {
     text-align: center;
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
     color: #8B7355;
     margin-bottom: 3rem;
-    font-weight: 300;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .testimonial-carousel-container {
@@ -1846,9 +2009,17 @@ nav {
 
 /* Contact Page */
 .contact-page {
-    padding: clamp(2rem, 6vw, 3rem) 0;
+    padding: clamp(2rem, 6vw, 3rem) 0 0 0;
     background: white;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    margin-top: -1.5rem;
+    position: relative;
+    z-index: 5;
+    border: 1px solid rgba(0,0,0,0.08);
 }
+
+
 
 .contact-grid-large {
     display: grid;
@@ -1858,21 +2029,24 @@ nav {
 }
 
 .contact-card {
-    background: #fafafa;
+    background: white;
     padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 4vw, 2rem);
-    border-radius: 1rem;
+    border-radius: 1.25rem;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 200px;
     justify-content: center;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 
 .contact-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    border-color: rgba(139, 115, 85, 0.2);
 }
 
 .contact-icon-large {
@@ -1893,17 +2067,21 @@ nav {
 
 /* Location Section */
 .location-section {
-    background: #fafafa;
-    padding: clamp(2rem, 5vw, 3rem);
-    border-radius: 1rem;
+    background: white;
+    padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 3vw, 2.5rem);
+    border-radius: 1.25rem;
     margin-bottom: clamp(2.5rem, 8vw, 4rem);
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 
 .location-section h2 {
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
     color: #8B7355;
     margin-bottom: 2rem;
-    font-weight: 300;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .location-grid {
@@ -1939,10 +2117,12 @@ nav {
 }
 
 .instagram-section-full h2 {
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
     color: #8B7355;
     margin-bottom: 0.5rem;
-    font-weight: 300;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .instagram-section-full p {
@@ -1997,9 +2177,11 @@ nav {
 }
 
 .newsletter-section h2 {
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
     margin-bottom: 0.5rem;
-    font-weight: 300;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .newsletter-section p {
@@ -2045,16 +2227,19 @@ nav {
 /* Quick Booking */
 .quick-booking {
     text-align: center;
-    padding: clamp(2rem, 5vw, 3rem);
-    background: #fafafa;
-    border-radius: 1rem;
+    padding: clamp(2rem, 5vw, 4rem) 1rem;
+    background: transparent;
+    border-radius: 0;
 }
 
 .quick-booking h2 {
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: clamp(2rem, 5vw, 2.5rem);
     color: #8B7355;
     margin-bottom: 0.5rem;
-    font-weight: 300;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
 }
 
 .quick-booking p {
@@ -2062,18 +2247,21 @@ nav {
     margin-bottom: 2rem;
 }
 
-/* Footer */
+/* Footer - Original Style */
 footer {
     background: #2c2c2c;
     color: white;
-    padding: clamp(2rem, 5vw, 2.5rem) 0;
+    padding: clamp(3rem, 6vw, 4rem) 0;
+    width: 100%;
+    margin-top: 0;
 }
 
 .footer-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
     gap: clamp(1.5rem, 4vw, 2rem);
-    align-items: center;
+    align-items: start;
+    margin-bottom: clamp(1.5rem, 4vw, 2rem);
 }
 
 .footer-logo {
@@ -2081,6 +2269,7 @@ footer {
     font-weight: 700;
     color: #DAC3A2;
     letter-spacing: clamp(1px, 0.3vw, 2px);
+    text-transform: uppercase;
 }
 
 .footer-links {
@@ -2094,8 +2283,8 @@ footer {
     color: #ccc;
     text-decoration: none;
     transition: color 0.3s ease;
-    font-weight: 300;
-    font-size: 0.9rem;
+    font-weight: 500;
+    font-size: 0.95rem;
 }
 
 .footer-links a:hover {
@@ -2133,8 +2322,8 @@ footer {
     padding-top: clamp(1.25rem, 3vw, 1.5rem);
     border-top: 1px solid #444;
     color: #999;
-    font-weight: 300;
-    font-size: clamp(0.8rem, 2vw, 0.85rem);
+    font-weight: 400;
+    font-size: clamp(0.85rem, 2vw, 0.9rem);
 }
 
 /* Floating Contact */
@@ -2169,6 +2358,7 @@ footer {
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     flex-shrink: 0;
+
 }
 
 @media (max-width: 500px) {
@@ -2221,17 +2411,20 @@ footer {
 
 /* Page Header */
 .page-header {
-    padding: clamp(6rem, 15vw, 8rem) clamp(1rem, 3vw, 2rem) clamp(2rem, 5vw, 3rem);
+    padding: clamp(6rem, 15vw, 8rem) clamp(1rem, 3vw, 2rem) clamp(4rem, 8vw, 6rem);
     background: linear-gradient(135deg, #8B7355, #DAC3A2);
     color: white;
     text-align: center;
 }
 
 .page-header h1 {
-    font-size: clamp(1.75rem, 5vw, 3rem);
-    font-weight: 300;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 700;
     margin-bottom: clamp(0.75rem, 2vw, 1rem);
-    letter-spacing: clamp(1px, 0.3vw, 2px);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 1.1;
+
 }
 
 .page-header p {
@@ -2369,15 +2562,24 @@ footer {
     
     /* Typography - Consistent across all phones */
     h1 {
-        font-size: 2rem !important;
+        font-size: 2.2rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 1px;
+        text-transform: uppercase;
     }
     
     h2 {
-        font-size: 1.5rem !important;
+        font-size: 1.8rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 1px;
+        text-transform: uppercase;
     }
     
     h3 {
-        font-size: 1.2rem !important;
+        font-size: 1.4rem !important;
+        font-weight: 500 !important;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
     }
     
     p, li {
@@ -2413,19 +2615,30 @@ footer {
     }
     
     /* Footer - Mobile layout */
+    footer {
+        padding: 2.5rem 0 1.5rem;
+    }
+
     .footer-content {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 1.5rem;
+        gap: 1.25rem;
     }
     
     .footer-links {
-        flex-direction: column;
-        gap: 1rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem 0.5rem;
+        padding: 0 1.5rem;
+    }
+
+    .footer-links a {
+        font-size: 0.85rem;
     }
     
     .social-links {
         justify-content: center;
+        margin-bottom: 0.5rem;
     }
     
     .footer-logo {
