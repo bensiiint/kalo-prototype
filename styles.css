@@ -603,7 +603,8 @@ nav {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: clamp(1rem, 3vw, 2rem);
+    gap: 2rem;
+    margin: 0 2rem;
 }
 
 @media (max-width: 900px) {
@@ -1657,12 +1658,9 @@ nav {
 
 /* Booking Info */
 .booking-info {
-    padding: clamp(2rem, 5vw, 3rem) 1.5rem;
-    background: white;
-    border-radius: 1.25rem;
-    margin-bottom: 1.25rem;
-    border: 1px solid rgba(0,0,0,0.08);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    text-align: center;
+    margin-bottom: clamp(2.5rem, 6vw, 4rem);
+    width: 100%;
 }
 
 .booking-info h2 {
@@ -2674,8 +2672,16 @@ footer {
     }
     
     /* Cards and sections - Consistent padding */
+    .booking-section {
+        margin-top: -1.5rem !important;
+        padding-top: 0.5rem !important;
+    }
+
+    .booking-wrapper {
+        padding: 0.5rem 0 !important;
+    }
+
     .package-detail,
-    .booking-info,
     .nearby-section,
     .faq-section,
     .location-section,
@@ -2796,16 +2802,27 @@ footer {
     }
     
     .page-header {
-        padding: 6rem 1rem 2rem;
+        padding: 5.8rem 1rem 2.3rem; /* Compensates for the -1.5rem margin-top of the next section to keep an equal 0.8rem gap */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: auto;
     }
     
     .page-header h1 {
         font-size: 2rem;
-        margin-bottom: 1rem;
+        margin-bottom: 0.75rem;
     }
     
     .page-header p {
         font-size: 1rem;
+    }
+
+    /* Extra padding for sections to clear the fixed floating header */
+    .booking-section, 
+    .experiences-section,
+    .packages-section {
+        padding-top: 5rem !important; 
     }
     
     /* Touch targets */
@@ -2830,20 +2847,25 @@ footer {
 
 /* Booking Page Styles */
 .booking-section {
-    padding: clamp(3rem, 8vw, 6rem) 0;
+    padding: clamp(1.5rem, 4vw, 2.5rem) 0;
     background: #fff;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    margin-top: -1.5rem;
     position: relative;
     z-index: 10;
+    scroll-margin-top: 6rem;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.booking-shared-wrapper {
+    /* Helper class in case we want shared styles later, but applying to current wrapper */
 }
 
 .booking-wrapper {
     max-width: 900px;
     margin: 0 auto;
-    padding: clamp(2rem, 5vw, 4rem);
-    background: rgba(139, 115, 85, 0.03);
-    border-radius: 3rem;
-    border: 1px solid rgba(139, 115, 85, 0.1);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.02);
+    padding: clamp(1rem, 3.5vw, 2.5rem);
     width: 100%;
 }
 
@@ -2917,8 +2939,11 @@ footer {
 
 .input-with-icon input,
 .input-with-icon select {
-    width: 100%;
-    padding: 1.25rem 3rem 1.25rem 3.8rem; /* Space on right for custom arrow if it's a select */
+    width: 100% !important;
+    max-width: 100% !important; /* Force compliance for iOS */
+    display: block; 
+    box-sizing: border-box; 
+    padding: 1.25rem 3.2rem 1.25rem 3.8rem; /* Fine-tuned padding */
     background: white;
     border: 1px solid rgba(139, 115, 85, 0.15);
     border-radius: 1.5rem;
@@ -2974,8 +2999,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 @media (max-width: 768px) {
+    .booking-info {
+        margin-top: -2.5rem !important;
+    }
     .booking-wrapper {
-        padding: 2.5rem 1.5rem;
+        padding: 0.5rem 0; /* Tightest possible padding */
         border-radius: 2rem;
     }
 
@@ -3007,7 +3035,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 @media (max-width: 480px) {
     .booking-wrapper {
-        padding: 2rem 1.25rem;
+        padding: 0.25rem 0;
         border-radius: 1.5rem;
     }
 
@@ -3017,7 +3045,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
     .booking-info h2 {
         font-size: 1.75rem;
-        margin-bottom: 1rem;
+        margin-bottom: 0.75rem;
     }
 
     .input-with-icon input,
