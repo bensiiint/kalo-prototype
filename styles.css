@@ -797,26 +797,23 @@ nav {
 }
 
 .book-now-btn {
-    background: #C4A676;
+    background: #8B7355; /* Solid brand color */
     color: white;
-    border: 2px solid transparent;
 }
 
 .book-now-btn:hover {
-    background: #8B7355;
+    background: #7a654a;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(218, 195, 162, 0.4);
 }
 
 .plan-trip-btn {
-    background: transparent;
+    border: 1px solid #FFFFFF;
     color: #FFFFFF;
-    border: 2px solid #FFFFFF;
+    background: transparent;
 }
 
 .plan-trip-btn:hover {
-    background: rgba(255, 255, 255, 0.15);
-    color: white;
+    background: rgba(255, 255, 255, 0.1);
     transform: translateY(-1px);
 }
 
@@ -960,20 +957,22 @@ nav {
 }
 
 .cta-btn.primary {
-    background: linear-gradient(135deg, #DAC3A2, #C4A676);
+    background: #8B7355;
     color: white;
+    border: 1px solid #8B7355;
 }
 
 .cta-btn.primary:hover {
-    background: linear-gradient(135deg, #C4A676, #8B7355);
+    background: #7a654a;
+    border-color: #7a654a;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(218, 195, 162, 0.4);
+    box-shadow: 0 5px 15px rgba(139, 115, 85, 0.2);
 }
 
 .cta-btn.secondary {
     background: transparent;
     color: #8B7355;
-    border: 2px solid #8B7355;
+    border: 1px solid #8B7355;
 }
 
 .cta-btn.secondary:hover {
@@ -2858,20 +2857,102 @@ footer {
     border: 1px solid rgba(0,0,0,0.05);
 }
 
-.booking-shared-wrapper {
-    /* Helper class in case we want shared styles later, but applying to current wrapper */
-}
-
-.booking-wrapper {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: clamp(1rem, 3.5vw, 2.5rem);
-    width: 100%;
-}
-
-.booking-info {
+/* Multi-step Booking Progress */
+.booking-progress {
+    max-width: 400px;
+    margin: 0 auto 3rem;
     text-align: center;
-    margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.progress-track {
+    height: 3px;
+    background: rgba(139, 115, 85, 0.1);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 10%; /* Initial Step 1 position */
+    background: #8B7355;
+    transition: width 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2px; /* Subtle offset to align with track edges */
+}
+
+.step-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #999;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.step-label.active {
+    color: #8B7355;
+}
+
+/* Step Transitions */
+.booking-step {
+    display: none;
+    animation: fadeInStep 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.booking-step.active {
+    display: block;
+}
+
+@keyframes fadeInStep {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.step-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.step-header h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    color: #8B7355;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.step-header p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.step-footer {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.step-footer.split {
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.step-footer .cta-btn {
+    min-width: 160px;
 }
 
 .booking-info h2 {
@@ -2893,28 +2974,30 @@ footer {
 .booking-form .form-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: clamp(1.5rem, 3vw, 2.5rem);
-    margin-bottom: 3rem;
+    gap: 2rem 2.5rem; /* Wider horizontal gap for cleaner separation */
+    margin-bottom: 3.5rem;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.6rem;
 }
 
 .form-group.full-width {
     grid-column: span 2;
+    margin-top: 1rem; /* Slight separation for the contact block */
 }
 
 .form-group label {
     font-family: 'Quicksand', sans-serif;
-    font-weight: 600;
+    font-weight: 700;
     color: #8B7355;
-    font-size: 0.9rem;
+    font-size: 0.75rem; /* Smaller, more elegant labels */
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-left: 0.5rem;
+    letter-spacing: 2px; /* Increased letter-spacing for premium feel */
+    margin-left: 0.25rem;
+    opacity: 0.85;
 }
 
 .input-with-icon {
@@ -2940,18 +3023,17 @@ footer {
 .input-with-icon input,
 .input-with-icon select {
     width: 100% !important;
-    max-width: 100% !important; /* Force compliance for iOS */
+    max-width: 100% !important;
     display: block; 
     box-sizing: border-box; 
-    padding: 1.25rem 3.2rem 1.25rem 3.8rem; /* Fine-tuned padding */
-    background: white;
-    border: 1px solid rgba(139, 115, 85, 0.15);
-    border-radius: 1.5rem;
+    padding: 1.15rem 3.2rem 1.15rem 3.5rem;
+    background: #fdfdfd;
+    border: 1px solid rgba(139, 115, 85, 0.12);
+    border-radius: 0.75rem;
     font-family: 'Quicksand', sans-serif;
-    font-size: 1.05rem;
+    font-size: 1rem;
     color: #333;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
 }
 
@@ -2977,9 +3059,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .input-with-icon select:focus {
     outline: none;
     border-color: #8B7355;
-    background: white;
-    box-shadow: 0 10px 40px rgba(139, 115, 85, 0.1);
-    transform: translateY(-2px);
+    background: #fff;
+    box-shadow: 0 8px 30px rgba(139, 115, 85, 0.08);
+    transform: translateY(-1px);
 }
 
 .input-with-icon input:focus + i {
