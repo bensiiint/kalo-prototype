@@ -96,6 +96,9 @@
                             <div class="calendar-grid" id="inCalendar"></div>
                         </div>
                         <input type="hidden" id="check-in" name="check-in" required>
+                        <div class="step-footer">
+                            <button type="button" class="cta-btn primary next-btn" id="confirmIn" disabled>Confirm Arrival</button>
+                        </div>
                     </div>
 
                     <!-- Step 2: Check-out -->
@@ -116,8 +119,9 @@
                             <div class="calendar-grid" id="outCalendar"></div>
                         </div>
                         <input type="hidden" id="check-out" name="check-out" required>
-                        <div class="step-footer">
+                        <div class="step-footer split">
                             <button type="button" class="cta-btn secondary prev-btn">Back</button>
+                            <button type="button" class="cta-btn primary next-btn" id="confirmOut" disabled>Confirm Stay</button>
                         </div>
                     </div>
 
@@ -247,48 +251,66 @@
             function renderCalendar(calendarId, step) {
                 const calendarGrid = document.getElementById(calendarId);
                 const monthDisplay = calendarGrid.parentElement.querySelector('.current-month');
+                const confirmBtn = step === 1 ? document.getElementById('confirmIn') : document.getElementById('confirmOut');
+                
+                // Keep button enabled if we already have a value
+                if (step === 1 && checkInInput.value) confirmBtn.disabled = false;
+                if (step === 2 && checkOutInput.value) confirmBtn.disabled = false;
                 
                 let firstDayofMonth = new Date(currYear, currMonth, 1).getDay();
                 let lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate();
-                let lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay();
                 let lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate();
                 
                 let liTag = "";
 
-                // Previous month days
                 for (let i = firstDayofMonth; i > 0; i--) {
                     liTag += `<div class="cal-day disabled">${lastDateofLastMonth - i + 1}</div>`;
                 }
 
-                // Current month days
                 for (let i = 1; i <= lastDateofMonth; i++) {
                     let isToday = i === date.getDate() && currMonth === new Date().getMonth() && currYear === new Date().getFullYear() ? "today" : "";
                     
-                    // Logic for active dates
                     let isActive = "";
+                    let isRange = "";
+                    let dataTypeAttr = "";
                     let selectedDate = new Date(currYear, currMonth, i).toISOString().split('T')[0];
-                    if (step === 1 && checkInInput.value === selectedDate) isActive = "active";
-                    if (step === 2 && checkOutInput.value === selectedDate) isActive = "active";
+                    
+                    if (selectedDate === checkInInput.value) {
+                        isActive = "active";
+                        dataTypeAttr = 'data-type="in"';
+                    }
+                    if (selectedDate === checkOutInput.value) {
+                        isActive = "active";
+                        dataTypeAttr = 'data-type="out"';
+                    }
+                    
+                    if (checkInInput.value && checkOutInput.value) {
+                        if (selectedDate > checkInInput.value && selectedDate < checkOutInput.value) {
+                            isRange = "in-range";
+                        }
+                    }
 
-                    // Logic for disabled past dates
                     let isDisabled = new Date(currYear, currMonth, i) < new Date().setHours(0,0,0,0) ? "disabled" : "";
+                    // Step 2 specifically disables dates before Check-in
+                    if (step === 2 && checkInInput.value && selectedDate <= checkInInput.value) isDisabled = "disabled";
 
-                    liTag += `<div class="cal-day ${isToday} ${isActive} ${isDisabled}" data-date="${selectedDate}">${i}</div>`;
+                    liTag += `<div class="cal-day ${isToday} ${isActive} ${isRange} ${isDisabled}" ${dataTypeAttr} data-date="${selectedDate}">${i}</div>`;
                 }
 
                 monthDisplay.innerText = `${months[currMonth]} ${currYear}`;
                 calendarGrid.innerHTML = liTag;
 
-                // Add selection listener
                 calendarGrid.querySelectorAll('.cal-day:not(.disabled)').forEach(day => {
                     day.addEventListener('click', () => {
                         const selectedDate = day.getAttribute('data-date');
                         if (step === 1) {
                             checkInInput.value = selectedDate;
-                            setTimeout(() => { currentStep = 2; updateStep(2); }, 300);
+                            confirmBtn.disabled = false;
+                            renderCalendar('inCalendar', 1);
                         } else if (step === 2) {
                             checkOutInput.value = selectedDate;
-                            setTimeout(() => { currentStep = 3; updateStep(3); }, 300);
+                            confirmBtn.disabled = false;
+                            renderCalendar('outCalendar', 2);
                         }
                     });
                 });

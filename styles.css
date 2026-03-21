@@ -2954,6 +2954,29 @@ footer {
 .cal-day.active {
     background: #8B7355;
     color: #fff;
+    z-index: 2;
+}
+
+.cal-day.in-range {
+    background: rgba(139, 115, 85, 0.1);
+    border-radius: 0; /* Creates the bridge effect */
+}
+
+/* Ensure round ends for the range */
+.cal-day.active[data-type="in"] {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.cal-day.active[data-type="out"] {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.cta-btn:disabled {
+    opacity: 0.5;
+    background: #ccc;
+    cursor: not-allowed;
 }
 
 .cal-day.disabled {
