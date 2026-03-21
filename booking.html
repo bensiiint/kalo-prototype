@@ -70,37 +70,54 @@
                         <div class="progress-bar" id="progressBar"></div>
                     </div>
                     <div class="progress-steps">
-                        <span class="step-label active">Stay</span>
+                        <span class="step-label active">In</span>
+                        <span class="step-label">Out</span>
                         <span class="step-label">Guests</span>
                         <span class="step-label">Contact</span>
                     </div>
                 </div>
 
                 <form id="bookingForm" class="booking-form">
-                    <!-- Step 1: Dates -->
+                    <!-- Step 1: Check-in -->
                     <div class="booking-step active" id="step1">
                         <div class="step-header">
                             <h2>The Sanctuary Awaits</h2>
-                            <p>When would you like to escape to Siargao?</p>
+                            <p>Pick your arrival date</p>
                         </div>
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="check-in">Check-in Date</label>
-                                <div class="input-with-icon">
-                                    <i data-lucide="calendar"></i>
-                                    <input type="date" id="check-in" name="check-in" required>
-                                </div>
+                        <div class="calendar-container">
+                            <div class="calendar-header">
+                                <button type="button" class="cal-prev">&lsaquo;</button>
+                                <h3 class="current-month">March 2026</h3>
+                                <button type="button" class="cal-next">&rsaquo;</button>
                             </div>
-                            <div class="form-group">
-                                <label for="check-out">Check-out Date</label>
-                                <div class="input-with-icon">
-                                    <i data-lucide="calendar"></i>
-                                    <input type="date" id="check-out" name="check-out" required>
-                                </div>
+                            <div class="calendar-weekdays">
+                                <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
                             </div>
+                            <div class="calendar-grid" id="inCalendar"></div>
                         </div>
+                        <input type="hidden" id="check-in" name="check-in" required>
+                    </div>
+
+                    <!-- Step 2: Check-out -->
+                    <div class="booking-step" id="step2">
+                        <div class="step-header">
+                            <h2>Plan Your Stay</h2>
+                            <p>When will you be heading home?</p>
+                        </div>
+                        <div class="calendar-container">
+                            <div class="calendar-header">
+                                <button type="button" class="cal-prev">&lsaquo;</button>
+                                <h3 class="current-month">March 2026</h3>
+                                <button type="button" class="cal-next">&rsaquo;</button>
+                            </div>
+                            <div class="calendar-weekdays">
+                                <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+                            </div>
+                            <div class="calendar-grid" id="outCalendar"></div>
+                        </div>
+                        <input type="hidden" id="check-out" name="check-out" required>
                         <div class="step-footer">
-                            <button type="button" class="cta-btn primary next-btn">Continue to Guests</button>
+                            <button type="button" class="cta-btn secondary prev-btn">Back</button>
                         </div>
                     </div>
 
@@ -219,40 +236,113 @@
             const progressBar = document.getElementById('progressBar');
             let currentStep = 1;
 
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            let date = new Date();
+            let currYear = date.getFullYear();
+            let currMonth = date.getMonth();
+
+            const checkInInput = document.getElementById('check-in');
+            const checkOutInput = document.getElementById('check-out');
+
+            function renderCalendar(calendarId, step) {
+                const calendarGrid = document.getElementById(calendarId);
+                const monthDisplay = calendarGrid.parentElement.querySelector('.current-month');
+                
+                let firstDayofMonth = new Date(currYear, currMonth, 1).getDay();
+                let lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate();
+                let lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay();
+                let lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate();
+                
+                let liTag = "";
+
+                // Previous month days
+                for (let i = firstDayofMonth; i > 0; i--) {
+                    liTag += `<div class="cal-day disabled">${lastDateofLastMonth - i + 1}</div>`;
+                }
+
+                // Current month days
+                for (let i = 1; i <= lastDateofMonth; i++) {
+                    let isToday = i === date.getDate() && currMonth === new Date().getMonth() && currYear === new Date().getFullYear() ? "today" : "";
+                    
+                    // Logic for active dates
+                    let isActive = "";
+                    let selectedDate = new Date(currYear, currMonth, i).toISOString().split('T')[0];
+                    if (step === 1 && checkInInput.value === selectedDate) isActive = "active";
+                    if (step === 2 && checkOutInput.value === selectedDate) isActive = "active";
+
+                    // Logic for disabled past dates
+                    let isDisabled = new Date(currYear, currMonth, i) < new Date().setHours(0,0,0,0) ? "disabled" : "";
+
+                    liTag += `<div class="cal-day ${isToday} ${isActive} ${isDisabled}" data-date="${selectedDate}">${i}</div>`;
+                }
+
+                monthDisplay.innerText = `${months[currMonth]} ${currYear}`;
+                calendarGrid.innerHTML = liTag;
+
+                // Add selection listener
+                calendarGrid.querySelectorAll('.cal-day:not(.disabled)').forEach(day => {
+                    day.addEventListener('click', () => {
+                        const selectedDate = day.getAttribute('data-date');
+                        if (step === 1) {
+                            checkInInput.value = selectedDate;
+                            setTimeout(() => { currentStep = 2; updateStep(2); }, 300);
+                        } else if (step === 2) {
+                            checkOutInput.value = selectedDate;
+                            setTimeout(() => { currentStep = 3; updateStep(3); }, 300);
+                        }
+                    });
+                });
+            }
+
+            // Month navigation
+            document.querySelectorAll('.cal-prev').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    currMonth--;
+                    if (currMonth < 0) {
+                        currMonth = 11;
+                        currYear--;
+                    }
+                    renderAll();
+                });
+            });
+
+            document.querySelectorAll('.cal-next').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    currMonth++;
+                    if (currMonth > 11) {
+                        currMonth = 0;
+                        currYear++;
+                    }
+                    renderAll();
+                });
+            });
+
+            function renderAll() {
+                renderCalendar('inCalendar', 1);
+                renderCalendar('outCalendar', 2);
+            }
+
             function updateStep(step) {
-                // Update Step Visibility
                 steps.forEach((s, idx) => {
                     s.classList.remove('active');
-                    if (idx + 1 === step) {
-                        s.classList.add('active');
-                    }
+                    if (idx + 1 === step) s.classList.add('active');
                 });
 
-                // Update Progress Bar
-                let progress = 10;
-                if (step === 2) progress = 50;
-                if (step === 3) progress = 100;
+                // Update Progress Bar (4 steps centered: approx 5%, 33.3%, 66.6%, 100%)
+                let progress = 5;
+                if (step === 2) progress = 33.33;
+                if (step === 3) progress = 66.66;
+                if (step === 4) progress = 100;
                 progressBar.style.width = `${progress}%`;
 
                 // Update Step Labels
                 progressSteps.forEach((label, idx) => {
-                    if (idx + 1 <= step) {
-                        label.classList.add('active');
-                    } else {
-                        label.classList.remove('active');
-                    }
+                    if (idx + 1 <= step) label.classList.add('active');
+                    else label.classList.remove('active');
                 });
-            }
 
-            nextBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    if (currentStep < steps.length) {
-                        currentStep++;
-                        updateStep(currentStep);
-                        window.scrollTo({ top: document.querySelector('.booking-section').offsetTop - 100, behavior: 'smooth' });
-                    }
-                });
-            });
+                if (step === 1 || step === 2) renderAll();
+            }
 
             prevBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
@@ -263,20 +353,26 @@
                 });
             });
 
-            // Form Submit Simulation
+            nextBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                   if (currentStep < 4) {
+                       currentStep++;
+                       updateStep(currentStep);
+                   }
+                });
+            });
+
+            renderAll();
+
+            // Submission logic
             bookingForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const btn = e.target.querySelector('button[type="submit"]');
-                const originalText = btn.textContent;
                 btn.textContent = 'Contacting Concierge...';
-                
                 setTimeout(() => {
-                    alert('Your inquiry has been sent to our concierge. We will respond shortly.');
-                    currentStep = 1;
-                    updateStep(currentStep);
-                    bookingForm.reset();
-                    btn.textContent = originalText;
-                }, 2000);
+                    alert('Inquiry sent! Our concierge will contact you shortly.');
+                    window.location.reload();
+                }, 1500);
             });
         });
     </script>
