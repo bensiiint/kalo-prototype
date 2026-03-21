@@ -73,7 +73,8 @@
                         <span class="step-label active">In</span>
                         <span class="step-label">Out</span>
                         <span class="step-label">Guests</span>
-                        <span class="step-label">Contact</span>
+                        <span class="step-label">Info</span>
+                        <span class="step-label">Pay</span>
                     </div>
                 </div>
 
@@ -153,8 +154,8 @@
                         </div>
                     </div>
 
-                    <!-- Step 3: Contact Info -->
-                    <div class="booking-step" id="step3">
+                    <!-- Step 4: Contact Info -->
+                    <div class="booking-step" id="step4">
                         <div class="step-header">
                             <h2>The Final Detail</h2>
                             <p>How should our concierge reach you?</p>
@@ -177,9 +178,59 @@
                         </div>
                         <div class="step-footer split">
                             <button type="button" class="cta-btn secondary prev-btn">Back</button>
-                            <button type="submit" class="cta-btn primary">Send Inquiry</button>
+                            <button type="button" class="cta-btn primary next-btn" id="confirmInfo">Continue to Payment</button>
                         </div>
-                        <p class="form-footer">Our team will respond within 24 hours.</p>
+                    </div>
+
+                    <!-- Step 5: Payment (Placeholder) -->
+                    <div class="booking-step" id="step5">
+                        <div class="step-header">
+                            <h2>Confirm Your Sanctuary</h2>
+                            <p>Secure your stay at Kalo Villa</p>
+                        </div>
+                        
+                        <div class="booking-summary-card">
+                            <div class="summary-item">
+                                <span>Stay Duration</span>
+                                <span id="summaryDates">-- to --</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Total Nights</span>
+                                <span id="summaryNights">0</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Guests</span>
+                                <span id="summaryGuests">--</span>
+                            </div>
+                            <div class="summary-divider"></div>
+                            <div class="summary-total">
+                                <span>Total Amount</span>
+                                <span id="summaryTotal">₱0</span>
+                            </div>
+                        </div>
+
+                        <div class="payment-methods">
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="card" checked>
+                                <span class="payment-box">
+                                    <i data-lucide="credit-card"></i>
+                                    Credit Card
+                                </span>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="paypal">
+                                <span class="payment-box">
+                                    <i data-lucide="wallet"></i>
+                                    PayPal / Digital
+                                </span>
+                            </label>
+                        </div>
+
+                        <div class="step-footer split">
+                            <button type="button" class="cta-btn secondary prev-btn">Back</button>
+                            <button type="submit" class="cta-btn primary">Complete Booking</button>
+                        </div>
+                        <p class="form-footer">Secure payment processed by Kalo Concierge.</p>
                     </div>
                 </form>
             </div>
@@ -350,11 +401,12 @@
                     if (idx + 1 === step) s.classList.add('active');
                 });
 
-                // Update Progress Bar (4 steps centered: approx 5%, 33.3%, 66.6%, 100%)
+                // Update Progress Bar (5 steps: 5%, 25%, 50%, 75%, 100%)
                 let progress = 5;
-                if (step === 2) progress = 33.33;
-                if (step === 3) progress = 66.66;
-                if (step === 4) progress = 100;
+                if (step === 2) progress = 25;
+                if (step === 3) progress = 50;
+                if (step === 4) progress = 75;
+                if (step === 5) progress = 100;
                 progressBar.style.width = `${progress}%`;
 
                 // Update Step Labels
@@ -364,6 +416,25 @@
                 });
 
                 if (step === 1 || step === 2) renderAll();
+                if (step === 5) updateSummary();
+            }
+
+            function updateSummary() {
+                const start = checkInInput.value;
+                const end = checkOutInput.value;
+                const guestVal = document.getElementById('guests').value;
+                
+                if (start && end) {
+                    const s = new Date(start);
+                    const e = new Date(end);
+                    const diff = Math.ceil((e - s) / (1000 * 60 * 60 * 24));
+                    const total = diff * 12310;
+                    
+                    document.getElementById('summaryDates').innerText = `${start} to ${end}`;
+                    document.getElementById('summaryNights').innerText = diff;
+                    document.getElementById('summaryGuests').innerText = guestVal || '--';
+                    document.getElementById('summaryTotal').innerText = `₱${total.toLocaleString()}`;
+                }
             }
 
             prevBtns.forEach(btn => {
@@ -377,9 +448,10 @@
 
             nextBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
-                   if (currentStep < 4) {
+                   if (currentStep < 5) {
                        currentStep++;
                        updateStep(currentStep);
+                       window.scrollTo({ top: document.querySelector('.booking-section').offsetTop - 100, behavior: 'smooth' });
                    }
                 });
             });
