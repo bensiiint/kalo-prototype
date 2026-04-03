@@ -823,8 +823,7 @@ nav {
     min-height: 100svh;
     height: auto;
     /* Restored original warm tan gradient and image fallback */
-    background: linear-gradient(135deg, rgba(139, 115, 85, 0.4), rgba(218, 195, 162, 0.2)), 
-                url('KALO%20VILLA%20PICTURES/aerial%202.jpg');
+    background: #2c2c2c;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -2377,14 +2376,19 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2rem;
-    height: 2rem;
+    width: 2.2rem;
+    height: 2.2rem;
     background: #DAC3A2;
-    color: #2c2c2c;
+    color: #333;
     border-radius: 50%;
     text-decoration: none;
     transition: all 0.3s ease;
-    font-size: 0.8rem;
+}
+
+.social-links a i {
+    width: 1rem;
+    height: 1rem;
+    stroke-width: 2.5px;
 }
 
 .social-links a:hover {
@@ -2487,7 +2491,7 @@ footer {
 
 /* Page Header */
 .page-header {
-    padding: clamp(6rem, 15vw, 8rem) clamp(1rem, 3vw, 2rem) clamp(4rem, 8vw, 6rem);
+    padding: clamp(5rem, 12vw, 7rem) 1.25rem clamp(1.5rem, 4vw, 2.5rem);
     background: linear-gradient(135deg, #8B7355, #DAC3A2);
     color: white;
     text-align: center;
@@ -2801,7 +2805,7 @@ footer {
     }
     
     .page-header {
-        padding: 5.8rem 1rem 2.3rem; /* Compensates for the -1.5rem margin-top of the next section to keep an equal 0.8rem gap */
+        padding: 5rem 1rem 2rem; /* Reduced even more for mobile */
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -2821,7 +2825,7 @@ footer {
     .booking-section, 
     .experiences-section,
     .packages-section {
-        padding-top: 5rem !important; 
+        padding-top: 2.5rem !important; /* Increased back slightly to match other pages */
     }
     
     /* Touch targets */
@@ -2982,6 +2986,24 @@ footer {
 .cal-day.disabled {
     color: #ccc;
     cursor: default;
+}
+
+.cal-day.booked {
+    color: #bbb;
+    background: rgba(139, 115, 85, 0.03);
+    cursor: not-allowed;
+    position: relative;
+}
+
+.cal-day.booked::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    right: 15%;
+    height: 1px;
+    background: rgba(139, 115, 85, 0.3);
+    transform: rotate(-45deg);
 }
 
 .cal-day.today {
@@ -3378,4 +3400,174 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         font-size: 0.8rem;
         margin-left: 0.25rem;
     }
+}
+
+/* ============================================
+   COMING SOON PAGE STYLES
+   ============================================ */
+
+.coming-soon-card {
+    background: white;
+    border-radius: 2rem;
+    padding: clamp(2.5rem, 6vw, 3.5rem) clamp(1.5rem, 5vw, 3rem);
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid rgba(139, 115, 85, 0.1);
+    max-width: 800px;
+    margin: 1.5rem auto 3rem; /* Positive margin for proper gap */
+    position: relative;
+    overflow: visible;
+}
+
+/* Ensure the negative margins for the old booking form don't apply here */
+.coming-soon-card.booking-wrapper {
+    margin-top: 0 !important; /* Removed negative margin overlap */
+    padding: clamp(2.5rem, 6vw, 3.5rem) clamp(1.5rem, 5vw, 3rem) !important;
+}
+
+.coming-soon-content.booking-info {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.coming-soon-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.coming-soon-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(139, 115, 85, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8B7355;
+    margin-bottom: 0.5rem;
+}
+
+.coming-soon-icon i {
+    width: 40px;
+    height: 40px;
+}
+
+.coming-soon-content h2 {
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    color: #8B7355;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.coming-soon-content p {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: #666;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.coming-soon-divider {
+    width: 60px;
+    height: 3px;
+    background: #DAC3A2;
+    border-radius: 2px;
+    margin: 1rem 0;
+}
+
+.manual-booking-options {
+    width: 100%;
+}
+
+.manual-booking-options h3 {
+    font-size: 1.25rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.booking-action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.booking-action-buttons .cta-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    font-weight: 600;
+}
+
+.alternative-booking {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.alternative-booking p {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
+}
+
+.airbnb-pill {
+    display: inline-block;
+    padding: 0.6rem 2.5rem;
+    background: #8B7355; 
+    color: white;
+    text-decoration: none;
+    border-radius: 2rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(139, 115, 85, 0.2);
+}
+
+.airbnb-pill:hover {
+    background: #6d5a43;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(139, 115, 85, 0.3);
+    color: white;
+}
+
+@media (max-width: 600px) {
+    .booking-action-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .booking-action-buttons .cta-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ============================================
+   SOCIAL ICON VISIBILITY FIX
+   ============================================ */
+.social-links a i, 
+.social-links a svg {
+    display: inline-block !important;
+    width: 1.15rem !important;
+    height: 1.15rem !important;
+    color: #433422 !important;
+    stroke: #433422 !important;
+    stroke-width: 2.2px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.social-links a:hover i,
+.social-links a:hover svg {
+    color: #8B7355 !important;
+    stroke: #8B7355 !important;
 }
