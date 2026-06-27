@@ -1,290 +1,339 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Packages - Kalo Villa Siargao</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="icon" type="image/png" sizes="192x192" href="favicon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
-    <link rel="apple-touch-icon" sizes="192x192" href="favicon.png" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Packages — Kalo Villa Siargao</title>
+  <meta name="description" content="The Premium Villa Package at Kalo Villa Siargao — 5 private beachfront villas, daily floating breakfast, free airport shuttle, Starlink WiFi, and 24/7 assistance from Joy and the team.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-      <nav class="container">
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="logo">KALO VILLA</div>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="experiences.html">Experiences</a></li>
-          <li><a href="packages.html" class="active">Packages</a></li>
-          <li><a href="booking.html">Booking (Soon)</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <div class="nav-buttons">
-          <a
-            href="https://www.airbnb.com/p/kalovillasiargao"
-            target="_blank"
-            class="book-now-btn"
-            >Book Now</a
-          >
-          <a href="contact.html" class="plan-trip-btn">Plan Trip</a>
-        </div>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header site-header--solid">
+    <div class="nav-pill">
+      <a href="index.html" class="wordmark">KALO VILLA</a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="experiences.html">Experiences</a>
+        <a href="packages.html" class="active" aria-current="page">Packages</a>
+        <a href="booking.html">Booking <span class="soon">(Soon)</span></a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
       </nav>
-
-      <!-- Mobile Menu - Now part of the header card -->
-      <div class="mobile-menu">
-        <ul class="mobile-nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="experiences.html">Experiences</a></li>
-          <li><a href="packages.html">Packages</a></li>
-          <li><a href="booking.html">Booking (Soon)</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
+      <div class="nav-actions">
+        <a href="https://www.airbnb.com/p/kalovillasiargao" target="_blank" rel="noopener noreferrer" class="btn btn--clay btn--small">Book Now</a>
+        <a href="contact.html" class="btn btn--outline btn--small">Plan Trip</a>
       </div>
-    </header>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
 
-    <div class="mobile-menu-overlay"></div>
+  <!-- ================= MOBILE NAV OVERLAY ================= -->
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <nav class="mobile-nav-links" aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <a href="experiences.html">Experiences</a>
+      <a href="packages.html" class="active" aria-current="page">Packages</a>
+      <a href="booking.html">Booking <span class="soon">(Soon)</span></a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="https://www.airbnb.com/p/kalovillasiargao" target="_blank" rel="noopener noreferrer" class="btn mobile-nav-cta">Book Now</a>
+    <div class="mobile-nav-social">
+      <a href="https://www.facebook.com/p/Kalo-Villa-Siargao-61559021537174/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+      <a href="https://www.instagram.com/kalovillasiargao" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+    </div>
+  </div>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1 class="fade-in-up">Our Packages</h1>
-            <p class="fade-in-up">Choose the perfect villa experience for your Siargao adventure</p>
-        </div>
+  <main id="main">
+
+    <!-- ================= PAGE HERO ================= -->
+    <section class="page-hero grain">
+      <div class="page-hero-bg" style="background-image: url('https://res.cloudinary.com/dsdlbb86v/image/upload/f_auto,q_auto,w_1600,c_limit/Kalo_Exterior_5_twilight_towffq');"></div>
+      <div class="page-hero-content">
+        <h1>Our Packages</h1>
+        <p>Everything you need for the perfect Siargao escape</p>
+      </div>
     </section>
 
-    <!-- Packages Section -->
-    <section class="packages-section">
+    <!-- ================= PREMIUM VILLA PACKAGE ================= -->
+    <section class="package-feature package-feature--detail">
+      <div class="package-feature-panel" data-reveal>
+        <span class="eyebrow">Premium Villa Package 2025</span>
+        <h2 data-words>Premium Villa Package</h2>
+        <p class="package-feature-price">Contact for Pricing</p>
+        <div class="package-feature-rule" aria-hidden="true"></div>
 
-        <!-- Premium Package -->
-        <div class="container">
-            <div class="package-detail fade-in-up">
-                <div class="package-header">
-                    <h2>Premium Villa Package 2025</h2>
-                    <div class="package-price-large">Contact for Pricing</div>
-                </div>
-                <div class="pkg-layout">
-                    <div class="package-details">
-                        <h3>Locations & Experience</h3>
-                        <ul>
-                            <li>Cabitoonan Beachfront (5 Private Villas)</li>
-                            <li>3.9km from General Luna Center</li>
-                            <li>Direct pool and beach access</li>
-                            <li>Daily floating breakfast service</li>
-                            <li>King-sized beds with premium linens</li>
-                            <li>Full kitchen and modern amenities</li>
-                        </ul>
-                        <h3>Included Services</h3>
-                        <ul>
-                            <li>Free airport shuttle (Sayak Airport - 33km)</li>
-                            <li>Daily housekeeping and breakfast</li>
-                            <li>High-speed Starlink Wi-Fi</li>
-                            <li>In-villa massage (by request)</li>
-                            <li>24/7 Joy & team assistance</li>
-                            <li>Welcome drinks upon arrival</li>
-                        </ul>
-                        <div class="package-note">
-                            <p><strong>Price includes:</strong> Accommodation for 2 people with all amenities</p>
-                            <p><strong>Deposit:</strong> Refundable deposit required at check-in</p>
-                        </div>
-                        <div style="text-align: center;">
-                            <a href="https://www.airbnb.com/p/kalovillasiargao" target="_blank" class="cta-btn primary">Book on Airbnb</a>
-                        </div>
-                    </div>
-                    <div class="package-image-large"></div>
-                </div>
-            </div>
+        <h3>Locations &amp; Experience</h3>
+        <ul class="dash-list">
+          <li>Cabitoonan Beachfront (5 Private Villas)</li>
+          <li>3.9km from General Luna Center</li>
+          <li>Direct pool and beach access</li>
+          <li>Daily floating breakfast service</li>
+          <li>King-sized beds with premium linens</li>
+          <li>Full kitchen and modern amenities</li>
+        </ul>
+
+        <h3>Included Services</h3>
+        <ul class="dash-list">
+          <li>Free airport shuttle (Sayak Airport - 33km)</li>
+          <li>Daily housekeeping and breakfast</li>
+          <li>High-speed Starlink Wi-Fi</li>
+          <li>In-villa massage (by request)</li>
+          <li>24/7 Joy &amp; team assistance</li>
+          <li>Welcome drinks upon arrival</li>
+        </ul>
+
+        <div class="package-feature-note">
+          <p><strong>Price includes:</strong> Accommodation for 2 people with all amenities</p>
+          <p><strong>Deposit:</strong> Refundable deposit required at check-in</p>
         </div>
 
-        <!-- Palm Divider -->
-        <div class="palm-divider" aria-hidden="true">
-          <span class="rule"></span>
-          <svg viewBox="0 0 80 56" xmlns="http://www.w3.org/2000/svg">
-            <path d="M40 50 C40 30 40 18 40 8" stroke="#8B7355" fill="none" stroke-width="1.2"/>
-            <path d="M40 20 C30 16 22 18 16 12 C26 12 34 14 40 20Z" fill="#C4A676"/>
-            <path d="M40 20 C50 16 58 18 64 12 C54 12 46 14 40 20Z" fill="#C4A676"/>
-            <path d="M40 32 C31 28 24 30 19 25 C28 25 35 27 40 32Z" fill="#DAC3A2"/>
-            <path d="M40 32 C49 28 56 30 61 25 C52 25 45 27 40 32Z" fill="#DAC3A2"/>
-          </svg>
-          <span class="rule right"></span>
-        </div>
+        <a href="https://www.airbnb.com/p/kalovillasiargao" target="_blank" rel="noopener noreferrer" class="package-feature-cta">Book on Airbnb</a>
+      </div>
 
-        <!-- Booking Info - full-width warm band -->
-        <div class="warm-band">
-            <div class="container">
-                <div class="booking-info fade-in-up">
-                    <h2>Booking Information</h2>
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <h3>Check-in / Check-out</h3>
-                            <p><strong>Check-in:</strong> 3:00 PM - 8:00 PM<br>
-                            <strong>Check-out:</strong> 11:00 AM - 11:30 AM</p>
-                        </div>
-                        <div class="info-item">
-                            <h3>House Rules</h3>
-                            <p>Children of all ages welcome<br>
-                            Pets stay free<br>
-                            No smoking inside villas<br>
-                            Quiet hours: 10 PM - 7 AM</p>
-                        </div>
-                        <div class="info-item">
-                            <h3>Cancellation Policy</h3>
-                            <p>Free cancellation up to 48 hours before check-in<br>
-                            Full refund minus deposit for cancellations within policy<br>
-                            Contact us for special circumstances</p>
-                        </div>
-                        <div class="info-item">
-                            <h3>Payment Methods</h3>
-                            <p>Credit/Debit Cards<br>
-                            Bank Transfer<br>
-                            GCash / PayMaya<br>
-                            Cash payment accepted</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Palm Divider -->
-        <div class="palm-divider" aria-hidden="true">
-          <span class="rule"></span>
-          <svg viewBox="0 0 80 56" xmlns="http://www.w3.org/2000/svg">
-            <path d="M40 50 C40 30 40 18 40 8" stroke="#8B7355" fill="none" stroke-width="1.2"/>
-            <path d="M40 20 C30 16 22 18 16 12 C26 12 34 14 40 20Z" fill="#C4A676"/>
-            <path d="M40 20 C50 16 58 18 64 12 C54 12 46 14 40 20Z" fill="#C4A676"/>
-            <path d="M40 32 C31 28 24 30 19 25 C28 25 35 27 40 32Z" fill="#DAC3A2"/>
-            <path d="M40 32 C49 28 56 30 61 25 C52 25 45 27 40 32Z" fill="#DAC3A2"/>
-          </svg>
-          <span class="rule right"></span>
-        </div>
-
-        <!-- Nearby + FAQ + CTA -->
-        <div class="container">
-            <div class="nearby-section fade-in-up">
-                <h2>What's Nearby</h2>
-                <div class="nearby-grid">
-                    <div class="nearby-item">
-                        <h4>Cloud 9 Surf Break</h4>
-                        <p>5.2 km - 10 minute drive</p>
-                    </div>
-                    <div class="nearby-item">
-                        <h4>General Luna Beach</h4>
-                        <p>3.9 km - 5 minute drive</p>
-                    </div>
-                    <div class="nearby-item">
-                        <h4>Sayak Airport</h4>
-                        <p>33 km - Free shuttle provided</p>
-                    </div>
-                    <div class="nearby-item">
-                        <h4>General Luna Restaurants</h4>
-                        <p>3.9 km - 5 minute drive</p>
-                    </div>
-                    <div class="nearby-item">
-                        <h4>Island Hopping Tours</h4>
-                        <p>Pickup from villa available</p>
-                    </div>
-                    <div class="nearby-item">
-                        <h4>Convenience Stores</h4>
-                        <p>Walking distance from villa</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-section fade-in-up">
-                <h2>Frequently Asked Questions</h2>
-                <div class="faq-container">
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFAQ(this)">What are your check-in and check-out times?</button>
-                        <div class="faq-answer"><p>Check-in: 3:00 PM to 8:00 PM<br>Check-out: 11:00 AM to 11:30 AM</p></div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFAQ(this)">Do you accept kids or pets?</button>
-                        <div class="faq-answer"><p>Yes! Children of all ages are welcome, and pets stay for free at Kalo Villa.</p></div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFAQ(this)">Is airport shuttle included?</button>
-                        <div class="faq-answer"><p>Yes, we provide free airport shuttle service from Sayak Airport (33km away) for all our guests.</p></div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFAQ(this)">Can I extend my stay?</button>
-                        <div class="faq-answer"><p>Yes! Contact us during your stay to check availability for extensions. We'll do our best to accommodate you.</p></div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFAQ(this)">What's included in the floating breakfast?</button>
-                        <div class="faq-answer"><p>Our floating breakfast includes fresh fruits, pastries, eggs, coffee/tea, and juice, beautifully presented on a floating tray in your private pool.</p></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cta-center">
-                <h2>Ready to Experience Paradise?</h2>
-                <p>Book your stay at Kalo Villa today</p>
-                <div class="cta-buttons">
-                    <a href="https://www.airbnb.com/p/kalovillasiargao" target="_blank" class="cta-btn primary">Book Now</a>
-                    <a href="contact.html" class="cta-btn secondary">Contact Us</a>
-                </div>
-            </div>
-        </div>
-
+      <div class="package-feature-photo" style="background-image: url('https://res.cloudinary.com/dsdlbb86v/image/upload/f_auto,q_auto,w_1600,c_limit/Room_2_ueepjx');" role="img" aria-label="Exterior of a private villa at Kalo Villa Siargao"></div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">KALO VILLA</div>
-                
-                <div class="footer-links">
-                    <a href="index.html">Home</a>
-                    <a href="experiences.html">Experiences</a>
-                    <a href="packages.html">Packages</a>
-                    <a href="booking.html">Booking (Soon)</a>
-                    <a href="about.html">About</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-                
-                <div class="social-links">
-            <a href="https://www.facebook.com/p/Kalo-Villa-Siargao-61559021537174/" target="_blank" aria-label="Facebook">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            </a>
-            <a href="https://www.instagram.com/kalovillasiargao" target="_blank" aria-label="Instagram">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            </a>
-          </div>
-            
-            <div class="footer-bottom">
-                © 2025 Kalo Villa Siargao. All rights reserved
-            </div>
+    <!-- ================= BOOKING INFORMATION ================= -->
+    <section class="section bg-linen">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <h2 class="section-title section-title--serif" data-words>Booking Information</h2>
+          <p class="lead">Everything you need to know before you arrive</p>
         </div>
-    </footer>
 
-    <!-- Floating Contact Buttons -->
-    <div class="floating-contact">
-        <a href="https://wa.me/639176223916" class="float-btn whatsapp" title="WhatsApp">
-            <i data-lucide="message-circle"></i>
-        </a>
-        <a href="mailto:kalovillasiargao@gmail.com" class="float-btn email" title="Email">
-            <i data-lucide="mail"></i>
-        </a>
-        <a href="tel:+639176223916" class="float-btn phone" title="Call">
-            <i data-lucide="phone"></i>
-        </a>
+        <div class="info-grid" data-reveal-group>
+          <article class="info-card">
+            <i data-lucide="clock"></i>
+            <h3>Check-in / Check-out</h3>
+            <ul>
+              <li>Check-in: 3:00 PM &ndash; 8:00 PM</li>
+              <li>Check-out: 11:00 AM &ndash; 11:30 AM</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <i data-lucide="home"></i>
+            <h3>House Rules</h3>
+            <ul>
+              <li>Children of all ages welcome</li>
+              <li>Pets stay free</li>
+              <li>No smoking inside</li>
+              <li>Quiet hours 10PM &ndash; 7AM</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <i data-lucide="calendar-check"></i>
+            <h3>Cancellation Policy</h3>
+            <ul>
+              <li>Free cancellation up to 48 hours before check-in</li>
+              <li>Full refund minus deposit</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <i data-lucide="wallet"></i>
+            <h3>Payment Methods</h3>
+            <ul>
+              <li>Credit/Debit Cards</li>
+              <li>Bank Transfer</li>
+              <li>GCash/PayMaya</li>
+              <li>Cash accepted</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= NEARBY ================= -->
+    <section class="section bg-cream">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <h2 class="section-title section-title--serif" data-words>What's Nearby</h2>
+          <p class="lead">The best of Siargao, all within easy reach</p>
+        </div>
+
+        <div class="nearby-grid" data-reveal-group>
+          <article class="nearby-card">
+            <i data-lucide="waves"></i>
+            <div>
+              <h3>Cloud 9 Surf Break</h3>
+              <p>5.2 km &middot; 10 min drive</p>
+            </div>
+          </article>
+          <article class="nearby-card">
+            <i data-lucide="sun"></i>
+            <div>
+              <h3>General Luna Beach</h3>
+              <p>3.9 km &middot; 5 min drive</p>
+            </div>
+          </article>
+          <article class="nearby-card">
+            <i data-lucide="plane"></i>
+            <div>
+              <h3>Sayak Airport</h3>
+              <p>33 km &middot; free shuttle</p>
+            </div>
+          </article>
+          <article class="nearby-card">
+            <i data-lucide="utensils"></i>
+            <div>
+              <h3>General Luna Restaurants</h3>
+              <p>3.9 km &middot; 5 min drive</p>
+            </div>
+          </article>
+          <article class="nearby-card">
+            <i data-lucide="ship"></i>
+            <div>
+              <h3>Island Hopping Tours</h3>
+              <p>Pickup from villa</p>
+            </div>
+          </article>
+          <article class="nearby-card">
+            <i data-lucide="shopping-bag"></i>
+            <div>
+              <h3>Convenience Stores</h3>
+              <p>Walking distance</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="palm-divider" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V8"/><path d="M12 9C10 7 7.5 6.5 5 7.5 7 9.5 9.5 10 12 9Z"/><path d="M12 9C14 7 16.5 6.5 19 7.5 17 9.5 14.5 10 12 9Z"/><path d="M12 13C10.5 11.5 8.5 11 6.5 11.8 8 13.4 10 13.8 12 13Z"/><path d="M12 13C13.5 11.5 15.5 11 17.5 11.8 16 13.4 14 13.8 12 13Z"/><path d="M12 5.5C11.5 4 12 2.8 13 2 13.6 3.3 13.3 4.7 12 5.5Z"/></svg>
     </div>
 
-    <script src="script.js"></script>
-    <script>
-        lucide.createIcons();
-    </script>
+    <!-- ================= FAQ ================= -->
+    <section class="section bg-cream" style="padding-top: 0;">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <h2 class="section-title section-title--serif" data-words>Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-list" data-reveal>
+          <div class="faq-item">
+            <button class="faq-q">
+              What are your check-in and check-out times?
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-a">
+              <p>Check-in is from 3:00 PM to 8:00 PM, and check-out is between 11:00 AM and 11:30 AM. If you're arriving outside these hours, message Joy on WhatsApp and we'll do our best to accommodate you.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              Do you accept kids or pets?
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-a">
+              <p>Absolutely. Children of all ages are welcome at Kalo Villa, and your pets stay completely free. We're a family-friendly home away from home.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              Is airport shuttle included?
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-a">
+              <p>Yes — we offer a free airport shuttle from Sayak Airport (33km away) for all our guests. Just share your flight details with us in advance and we'll be there to welcome you.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              Can I extend my stay?
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-a">
+              <p>Of course, subject to availability. Let Joy or any of the team know as early as possible during your stay and we'll arrange the extension for you.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              What's included in the floating breakfast?
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-a">
+              <p>Our signature floating breakfast is served daily in your private pool — a beautifully arranged tray of Filipino and continental favourites, fresh tropical fruit, juice, and locally brewed coffee.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CTA ================= -->
+    <section class="section cta-band bg-ink grain">
+      <div class="container" data-reveal>
+        <h2 class="section-title" data-words>Ready to Experience Paradise?</h2>
+        <p>Book your stay at Kalo Villa today</p>
+        <div class="cta-band-actions">
+          <a href="https://www.airbnb.com/p/kalovillasiargao" target="_blank" rel="noopener noreferrer" class="btn btn--clay">Book Now</a>
+          <a href="contact.html" class="btn btn--ghost">Contact Us</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <span class="wordmark-footer">KALO VILLA</span>
+        <p>Your Siargao Sanctuary</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="experiences.html">Experiences</a>
+        <a href="packages.html">Packages</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/p/Kalo-Villa-Siargao-61559021537174/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+        <a href="https://www.instagram.com/kalovillasiargao" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>&copy; 2025 Kalo Villa Siargao. All rights reserved</span>
+      <span>Siargao, Philippines</span>
+    </div>
+  </footer>
+
+  <!-- ================= FLOATING ACTION BUTTON ================= -->
+  <div class="fab">
+    <div class="fab-actions">
+      <a href="https://wa.me/639176223916" target="_blank" rel="noopener noreferrer" class="fab-sub fab-sub--whatsapp" aria-label="Chat on WhatsApp">
+        <span class="fab-label">WhatsApp</span>
+        <span class="fab-icon"><i data-lucide="message-circle"></i></span>
+      </a>
+      <a href="mailto:kalovillasiargao@gmail.com" class="fab-sub fab-sub--email" aria-label="Send an email">
+        <span class="fab-label">Email</span>
+        <span class="fab-icon"><i data-lucide="mail"></i></span>
+      </a>
+      <a href="tel:+639176223916" class="fab-sub fab-sub--phone" aria-label="Call us">
+        <span class="fab-label">Call</span>
+        <span class="fab-icon"><i data-lucide="phone"></i></span>
+      </a>
+    </div>
+    <button class="fab-main" aria-label="Contact options" aria-expanded="false">
+      <i data-lucide="plus"></i>
+    </button>
+  </div>
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <script defer src="script.js"></script>
 </body>
 </html>

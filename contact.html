@@ -1,219 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Contact Us - Kalo Villa Siargao</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="icon" type="image/png" sizes="192x192" href="favicon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
-    <link rel="apple-touch-icon" sizes="192x192" href="favicon.png" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Kalo Villa Siargao</title>
+  <meta name="description" content="Get in touch with Kalo Villa Siargao — WhatsApp, email, or call us to plan your perfect Siargao getaway. Located in Cabitoonan, General Luna, Surigao del Norte.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav class="container">
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="logo">KALO VILLA</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="experiences.html">Experiences</a></li>
-                <li><a href="packages.html">Packages</a></li>
-                <li><a href="booking.html">Booking (Soon)</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
-            </ul>
-            <div class="nav-buttons">
-                <a href="https://www.airbnb.com/p/kalovillasiargao" target="_blank" class="book-now-btn">Book Now</a>
-                <a href="contact.html" class="plan-trip-btn">Plan Trip</a>
-            </div>
-        </nav>
 
-        <!-- Mobile Menu - Now part of the header card -->
-        <div class="mobile-menu">
-            <ul class="mobile-nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="experiences.html">Experiences</a></li>
-                <li><a href="packages.html">Packages</a></li>
-                <li><a href="booking.html">Booking (Soon)</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </header>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <div class="mobile-menu-overlay"></div>
+  <!-- ================= HEADER ================= -->
+  <header class="site-header site-header--solid">
+    <div class="nav-pill">
+      <a href="index.html" class="wordmark">KALO VILLA</a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="experiences.html">Experiences</a>
+        <a href="packages.html">Packages</a>
+        <a href="booking.html">Booking <span class="soon">(Soon)</span></a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active" aria-current="page">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="https://www.airbnb.com/p/kalovillasiargao" target="_blank" rel="noopener noreferrer" class="btn btn--clay btn--small">Book Now</a>
+        <a href="contact.html" class="btn btn--outline btn--small">Plan Trip</a>
+      </div>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1 class="fade-in-up">Contact Us</h1>
-            <p class="fade-in-up">We're here to help plan your perfect Siargao getaway</p>
-        </div>
+  <!-- ================= MOBILE NAV OVERLAY ================= -->
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <nav class="mobile-nav-links" aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <a href="experiences.html">Experiences</a>
+      <a href="packages.html">Packages</a>
+      <a href="booking.html">Booking <span class="soon">(Soon)</span></a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="active" aria-current="page">Contact</a>
+    </nav>
+    <a href="https://www.airbnb.com/p/kalovillasiargao" target="_blank" rel="noopener noreferrer" class="btn mobile-nav-cta">Book Now</a>
+    <div class="mobile-nav-social">
+      <a href="https://www.facebook.com/p/Kalo-Villa-Siargao-61559021537174/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+      <a href="https://www.instagram.com/kalovillasiargao" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- ================= PAGE HERO ================= -->
+    <section class="page-hero grain">
+      <div class="page-hero-bg" style="background-image: url('https://res.cloudinary.com/dsdlbb86v/image/upload/f_auto,q_auto,w_1600,c_limit/1-pool_gfcfqn');"></div>
+      <div class="page-hero-content">
+        <h1>Contact Us</h1>
+        <p>We're here to help plan your perfect Siargao getaway</p>
+      </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact-page">
-        <div class="container">
-            <!-- Contact Methods -->
-            <div class="contact-grid-large">
-                <div class="contact-card fade-in-up">
-                    <div class="contact-icon-large"><i data-lucide="mail" class="contact-icon-lg"></i></div>
-                    <h3>Email Us</h3>
-                    <p>kalovillasiargao@gmail.com</p>
-                    <a href="mailto:kalovillasiargao@gmail.com" class="cta-btn secondary">Send Email</a>
-                </div>
-                
-                <div class="contact-card fade-in-up">
-                    <div class="contact-icon-large"><i data-lucide="message-circle" class="contact-icon-lg"></i></div>
-                    <h3>WhatsApp</h3>
-                    <p>0917 622 3916</p>
-                    <a href="https://wa.me/639176223916" class="cta-btn secondary">Chat on WhatsApp</a>
-                </div>
-                
-                <div class="contact-card fade-in-up">
-                    <div class="contact-icon-large"><i data-lucide="phone" class="contact-icon-lg"></i></div>
-                    <h3>Call Us</h3>
-                    <p>0917 622 3916</p>
-                    <a href="tel:+639176223916" class="cta-btn secondary">Make a Call</a>
-                </div>
-            </div>
-
-            <!-- Location Info -->
-            <div class="location-section fade-in-up">
-                <h2>Visit Us</h2>
-                <div class="location-info" style="max-width: 600px; margin: 0 auto; text-align: center;">
-                    <h3><i data-lucide="map-pin" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 0.5rem;"></i>Kalo Villa Siargao</h3>
-                    <p>R592+F3F, Cabitoonan<br>
-                    General Luna<br>
-                    Surigao del Norte<br>
-                    Philippines</p>
-                    
-                    <a href="https://www.google.com/maps/search/?api=1&query=Kalo+Villa+Siargao+R592%2BF3F+General+Luna+Surigao+del+Norte" target="_blank" class="cta-btn secondary" style="margin-top: 1.5rem; display: inline-block;">Open in Google Maps</a>
-                    
-                    <h3 style="margin-top: 2rem;"><i data-lucide="clock" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 0.5rem;"></i>Reception Hours</h3>
-                    <p><strong>Check-in:</strong> 3:00 PM - 8:00 PM<br>
-                    <strong>Check-out:</strong> 11:00 AM - 11:30 AM<br>
-                    <strong>24/7 Support:</strong> Available for guests</p>
-                </div>
-            </div>
-
-            <!-- Palm Divider -->
-            <div class="palm-divider" aria-hidden="true">
-              <span class="rule"></span>
-              <svg viewBox="0 0 80 56" xmlns="http://www.w3.org/2000/svg">
-                <path d="M40 50 C40 30 40 18 40 8" stroke="#8B7355" fill="none" stroke-width="1.2"/>
-                <path d="M40 20 C30 16 22 18 16 12 C26 12 34 14 40 20Z" fill="#C4A676"/>
-                <path d="M40 20 C50 16 58 18 64 12 C54 12 46 14 40 20Z" fill="#C4A676"/>
-                <path d="M40 32 C31 28 24 30 19 25 C28 25 35 27 40 32Z" fill="#DAC3A2"/>
-                <path d="M40 32 C49 28 56 30 61 25 C52 25 45 27 40 32Z" fill="#DAC3A2"/>
-              </svg>
-              <span class="rule right"></span>
-            </div>
-
-            <!-- Instagram Section -->
-            <div class="instagram-section-full section-warm fade-in-up">
-                <h2>Follow Our Journey</h2>
-                <p>See the latest from Kalo Villa on Instagram</p>
-                <div class="instagram-carousel-container">
-                    <div class="image-carousel instagram-carousel">
-                        <div class="carousel-track">
-                            <div class="carousel-slide" style="background-image: url('KALO%20VILLA%20PICTURES/BR1%20exterior.jpg');"></div>
-                            <div class="carousel-slide" style="background-image: url('KALO%20VILLA%20PICTURES/5.%20Pool/1-pool.jpg');"></div>
-                            <div class="carousel-slide" style="background-image: url('KALO%20VILLA%20PICTURES/BR5.jpg');"></div>
-                            <div class="carousel-slide" style="background-image: url('KALO%20VILLA%20PICTURES/5.%20Pool/3-pool.JPEG');"></div>
-                            <div class="carousel-slide" style="background-image: url('KALO%20VILLA%20PICTURES/6.%20Outdoor/Details-2.jpg');"></div>
-                            <div class="carousel-slide" style="background-image: url('KALO%20VILLA%20PICTURES/5.%20Pool/4-pool.JPEG');"></div>
-                        </div>
-                        <div class="carousel-dots">
-                            <span class="dot active" onclick="goToSlideInstagram(0)"></span>
-                            <span class="dot" onclick="goToSlideInstagram(1)"></span>
-                            <span class="dot" onclick="goToSlideInstagram(2)"></span>
-                            <span class="dot" onclick="goToSlideInstagram(3)"></span>
-                            <span class="dot" onclick="goToSlideInstagram(4)"></span>
-                            <span class="dot" onclick="goToSlideInstagram(5)"></span>
-                        </div>
-                    </div>
-                </div>
-                <a href="https://www.instagram.com/kalovillasiargao" target="_blank" class="cta-btn primary">Follow @KaloVillaSiargao</a>
-            </div>
-
-            <!-- Palm Divider -->
-            <div class="palm-divider" aria-hidden="true">
-              <span class="rule"></span>
-              <svg viewBox="0 0 80 56" xmlns="http://www.w3.org/2000/svg">
-                <path d="M40 50 C40 30 40 18 40 8" stroke="#8B7355" fill="none" stroke-width="1.2"/>
-                <path d="M40 20 C30 16 22 18 16 12 C26 12 34 14 40 20Z" fill="#C4A676"/>
-                <path d="M40 20 C50 16 58 18 64 12 C54 12 46 14 40 20Z" fill="#C4A676"/>
-                <path d="M40 32 C31 28 24 30 19 25 C28 25 35 27 40 32Z" fill="#DAC3A2"/>
-                <path d="M40 32 C49 28 56 30 61 25 C52 25 45 27 40 32Z" fill="#DAC3A2"/>
-              </svg>
-              <span class="rule right"></span>
-            </div>
-
-            <!-- Quick Booking -->
-            <div class="quick-booking fade-in-up">
-                <h2>Ready to Book?</h2>
-                <p>Book directly through Airbnb for the best rates</p>
-                <a href="https://www.airbnb.com/p/kalovillasiargao" target="_blank" class="cta-btn primary large">Book on Airbnb</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">KALO VILLA</div>
-                
-                <div class="footer-links">
-                    <a href="index.html">Home</a>
-                    <a href="experiences.html">Experiences</a>
-                    <a href="packages.html">Packages</a>
-                    <a href="booking.html">Booking (Soon)</a>
-                    <a href="about.html">About</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-                
-                <div class="social-links">
-            <a href="https://www.facebook.com/p/Kalo-Villa-Siargao-61559021537174/" target="_blank" aria-label="Facebook">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            </a>
-            <a href="https://www.instagram.com/kalovillasiargao" target="_blank" aria-label="Instagram">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            </a>
-          </div>
-            </div>
-            
-            <div class="footer-bottom">
-                © 2025 Kalo Villa Siargao. All rights reserved
-            </div>
-        </div>
-    </footer>
-
-    <!-- Floating Contact Buttons -->
-    <div class="floating-contact">
-        <a href="https://wa.me/639176223916" class="float-btn whatsapp" title="WhatsApp">
-            <i data-lucide="message-circle"></i>
-        </a>
-        <a href="mailto:kalovillasiargao@gmail.com" class="float-btn email" title="Email">
+    <!-- ================= CONTACT CARDS ================= -->
+    <section class="section bg-cream">
+      <div class="container">
+        <div class="contact-cards" data-reveal-group>
+          <article class="contact-card">
             <i data-lucide="mail"></i>
-        </a>
-        <a href="tel:+639176223916" class="float-btn phone" title="Call">
+            <h3>Email Us</h3>
+            <p>kalovillasiargao@gmail.com</p>
+            <a href="mailto:kalovillasiargao@gmail.com" class="btn btn--outline">Send Email</a>
+          </article>
+          <article class="contact-card">
+            <i data-lucide="message-circle"></i>
+            <h3>WhatsApp</h3>
+            <p>0917 622 3916</p>
+            <a href="https://wa.me/639176223916" target="_blank" rel="noopener noreferrer" class="btn btn--outline">Chat on WhatsApp</a>
+          </article>
+          <article class="contact-card">
             <i data-lucide="phone"></i>
-        </a>
+            <h3>Call Us</h3>
+            <p>0917 622 3916</p>
+            <a href="tel:+639176223916" class="btn btn--outline">Make a Call</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LOCATION ================= -->
+    <section class="section bg-cream" style="padding-top: 0;">
+      <div class="container">
+        <div class="location-card" data-reveal>
+          <h2 class="section-title section-title--serif" data-words>Visit Us</h2>
+
+          <div class="location-block">
+            <i data-lucide="map-pin"></i>
+            <h3>Kalo Villa Siargao</h3>
+            <p>R592+F3F, Cabitoonan, General Luna,<br>Surigao del Norte, Philippines</p>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Kalo+Villa+Siargao+R592%2BF3F+General+Luna+Surigao+del+Norte" target="_blank" rel="noopener noreferrer" class="btn btn--clay">Open in Google Maps</a>
+          </div>
+
+          <div class="location-block">
+            <i data-lucide="clock"></i>
+            <h3>Reception Hours</h3>
+            <p>Check-in: 3:00 PM - 8:00 PM<br>Check-out: 11:00 AM - 11:30 AM<br>24/7 Support: Available for guests</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="palm-divider" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V8"/><path d="M12 9C10 7 7.5 6.5 5 7.5 7 9.5 9.5 10 12 9Z"/><path d="M12 9C14 7 16.5 6.5 19 7.5 17 9.5 14.5 10 12 9Z"/><path d="M12 13C10.5 11.5 8.5 11 6.5 11.8 8 13.4 10 13.8 12 13Z"/><path d="M12 13C13.5 11.5 15.5 11 17.5 11.8 16 13.4 14 13.8 12 13Z"/><path d="M12 5.5C11.5 4 12 2.8 13 2 13.6 3.3 13.3 4.7 12 5.5Z"/></svg>
     </div>
 
-    <script src="script.js"></script>
-    <script>
-        lucide.createIcons();
-    </script>
+    <!-- ================= INSTAGRAM ================= -->
+    <section class="section bg-linen">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <h2 class="section-title section-title--serif" data-words>Follow Our Journey</h2>
+          <p class="lead">See the latest from Kalo Villa on Instagram</p>
+        </div>
+
+        <div class="ig-carousel" data-reveal>
+          <div class="ig-track">
+            <div class="ig-item">
+              <img src="https://res.cloudinary.com/dsdlbb86v/image/upload/f_auto,q_auto,w_1600,c_limit/Food-1_qf6xzd" alt="Villa exterior at Kalo Villa" width="600" height="600" loading="lazy">
+            </div>
+            <div class="ig-item">
+              <img src="https://res.cloudinary.com/dsdlbb86v/image/upload/f_auto,q_auto,w_1600,c_limit/Room_3_jrxhwr" alt="The private pool" width="600" height="600" loading="lazy">
+            </div>
+            <div class="ig-item">
+              <img src="https://res.cloudinary.com/dsdlbb86v/image/upload/f_auto,q_auto,w_1600,c_limit/Kitchen_1_mvzfbs" alt="Villa bedroom" width="600" height="600" loading="lazy">
+            </div>
+            <div class="ig-item">
+              <img src="https://res.cloudinary.com/dsdlbb86v/image/upload/f_auto,q_auto,w_1600,c_limit/3-pool_qgywmg" alt="Poolside view" width="600" height="600" loading="lazy">
+            </div>
+            <div class="ig-item">
+              <img src="https://res.cloudinary.com/dsdlbb86v/image/upload/f_auto,q_auto,w_1600,c_limit/Details-2_ai0ljj" alt="Outdoor details at the villa" width="600" height="600" loading="lazy">
+            </div>
+            <div class="ig-item">
+              <img src="https://res.cloudinary.com/dsdlbb86v/image/upload/f_auto,q_auto,w_1600,c_limit/4-pool_hgsijn" alt="The pool at golden hour" width="600" height="600" loading="lazy">
+            </div>
+          </div>
+          <div class="ig-progress" aria-hidden="true">
+            <div class="ig-progress-fill"></div>
+          </div>
+          <div class="ig-follow">
+            <a href="https://www.instagram.com/kalovillasiargao" target="_blank" rel="noopener noreferrer" class="btn btn--clay">Follow @KaloVillaSiargao</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BOOKING CTA ================= -->
+    <section class="section cta-band cta-band--clay grain">
+      <div class="container" data-reveal>
+        <h2 class="section-title" data-words>Ready to Book?</h2>
+        <p>Book directly through Airbnb for the best rates</p>
+        <div class="cta-band-actions">
+          <a href="https://www.airbnb.com/p/kalovillasiargao" target="_blank" rel="noopener noreferrer" class="btn btn--white">Book on Airbnb</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <span class="wordmark-footer">KALO VILLA</span>
+        <p>Your Siargao Sanctuary</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="experiences.html">Experiences</a>
+        <a href="packages.html">Packages</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/p/Kalo-Villa-Siargao-61559021537174/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+        <a href="https://www.instagram.com/kalovillasiargao" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>&copy; 2025 Kalo Villa Siargao. All rights reserved</span>
+      <span>Siargao, Philippines</span>
+    </div>
+  </footer>
+
+  <!-- ================= FLOATING ACTION BUTTON ================= -->
+  <div class="fab">
+    <div class="fab-actions">
+      <a href="https://wa.me/639176223916" target="_blank" rel="noopener noreferrer" class="fab-sub fab-sub--whatsapp" aria-label="Chat on WhatsApp">
+        <span class="fab-label">WhatsApp</span>
+        <span class="fab-icon"><i data-lucide="message-circle"></i></span>
+      </a>
+      <a href="mailto:kalovillasiargao@gmail.com" class="fab-sub fab-sub--email" aria-label="Send an email">
+        <span class="fab-label">Email</span>
+        <span class="fab-icon"><i data-lucide="mail"></i></span>
+      </a>
+      <a href="tel:+639176223916" class="fab-sub fab-sub--phone" aria-label="Call us">
+        <span class="fab-label">Call</span>
+        <span class="fab-icon"><i data-lucide="phone"></i></span>
+      </a>
+    </div>
+    <button class="fab-main" aria-label="Contact options" aria-expanded="false">
+      <i data-lucide="plus"></i>
+    </button>
+  </div>
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <script defer src="script.js"></script>
 </body>
 </html>

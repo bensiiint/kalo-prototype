@@ -1,321 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <title>Kalo Villa Siargao - Your Serene Sanctuary by the Sea</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="icon" type="image/png" sizes="192x192" href="favicon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
-    <link rel="apple-touch-icon" sizes="192x192" href="favicon.png" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="https://unpkg.com/lucide@latest"></script>
-  </head>
-  <body>
-    <!-- Header -->
-    <header>
-      <nav class="container">
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="logo">KALO VILLA</div>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="experiences.html">Experiences</a></li>
-          <li><a href="packages.html">Packages</a></li>
-          <li><a href="booking.html" class="active">Booking (Soon)</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <div class="nav-buttons">
-          <a
-            href="https://www.airbnb.com/p/kalovillasiargao"
-            target="_blank"
-            class="book-now-btn"
-            >Book Now</a
-          >
-          <a href="contact.html" class="plan-trip-btn">Plan Trip</a>
-        </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalo Villa Siargao — Your Siargao Sanctuary</title>
+  <meta name="description" content="5 private beachfront villas in Cabitoonan, Siargao. Floating breakfast, private pool, free airport shuttle, and warm Filipino hospitality just 3.9km from General Luna.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header site-header--transparent">
+    <div class="nav-pill">
+      <a href="index.html" class="wordmark">KALO VILLA</a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html" class="active" aria-current="page">Home</a>
+        <a href="experiences.html">Experiences</a>
+        <a href="packages.html">Packages</a>
+        <a href="booking.html">Booking <span class="soon">(Soon)</span></a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
       </nav>
-
-      <!-- Mobile Menu - Now part of the header card -->
-      <div class="mobile-menu">
-        <ul class="mobile-nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="experiences.html">Experiences</a></li>
-          <li><a href="packages.html">Packages</a></li>
-          <li><a href="booking.html">Booking (Soon)</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
+      <div class="nav-actions">
+        <a href="https://www.airbnb.com/p/kalovillasiargao" target="_blank" rel="noopener noreferrer" class="btn btn--clay btn--small">Book Now</a>
+        <a href="contact.html" class="btn btn--outline btn--small">Plan Trip</a>
       </div>
-    </header>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
 
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay"></div>
+  <!-- ================= MOBILE NAV OVERLAY ================= -->
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <nav class="mobile-nav-links" aria-label="Mobile navigation">
+      <a href="index.html" class="active" aria-current="page">Home</a>
+      <a href="experiences.html">Experiences</a>
+      <a href="packages.html">Packages</a>
+      <a href="booking.html">Booking <span class="soon">(Soon)</span></a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="https://www.airbnb.com/p/kalovillasiargao" target="_blank" rel="noopener noreferrer" class="btn mobile-nav-cta">Book Now</a>
+    <div class="mobile-nav-social">
+      <a href="https://www.facebook.com/p/Kalo-Villa-Siargao-61559021537174/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+      <a href="https://www.instagram.com/kalovillasiargao" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+    </div>
+  </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-      <video autoplay muted loop playsinline class="hero-video" id="heroVideo" aria-hidden="true" fetchpriority="high">
-        <!-- Optimized Cloudinary Link -->
-        <source src="https://res.cloudinary.com/dsdlbb86v/video/upload/f_auto,q_auto/v1773940534/hero-video_b054fx.mp4" type="video/mp4" />
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-tropical-beach-with-palm-trees-1558-large.mp4" type="video/mp4" />
-        <!-- Fallback for browsers that don't support video -->
-        Your browser does not support the video tag.
-      </video>
+  <main id="main">
+
+    <!-- ================= SECTION 1 — HERO ================= -->
+    <section class="hero grain">
+      <div class="hero-media">
+        <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="https://res.cloudinary.com/dsdlbb86v/video/upload/so_0,f_auto,q_auto,w_1600/v1781248871/Video_29.05.25_12_16_58_bslgpf.jpg">
+          <source src="https://res.cloudinary.com/dsdlbb86v/video/upload/f_auto,q_auto/v1781248871/Video_29.05.25_12_16_58_bslgpf.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-overlay-deep"></div>
+
       <div class="hero-content">
-        <div class="hero-logo">
-          <img
-            src="KALO%20&%20BALAY%20LOGO\FINAL_KALO VILLA LOGO_SIARGAO_no bg.png"
-            alt="Kalo Villa Siargao"
-          />
+        <img class="hero-logo" src="https://res.cloudinary.com/dsdlbb86v/image/upload/f_auto,q_auto,w_760,c_limit/FINAL_KALO_VILLA_LOGO_SIARGAO_no_bg_kcnz5c" alt="Kalo Villa Siargao" width="760" height="380" fetchpriority="high">
+        <p class="hero-tagline">Your Siargao Sanctuary</p>
+        <div class="hero-actions">
+          <a href="https://www.airbnb.com/p/kalovillasiargao" target="_blank" rel="noopener noreferrer" class="btn btn--clay">Book Your Stay</a>
+          <a href="#paradise" class="btn btn--ghost">Explore Villa</a>
         </div>
+      </div>
+
+      <div class="hero-scroll" aria-hidden="true">
+        <span>Scroll</span>
+        <i data-lucide="arrow-down"></i>
       </div>
     </section>
 
-    <!-- Palm Divider -->
-    <div class="palm-divider" aria-hidden="true">
-      <span class="rule"></span>
-      <svg viewBox="0 0 80 56" xmlns="http://www.w3.org/2000/svg">
-        <path d="M40 50 C40 30 40 18 40 8" stroke="#8B7355" fill="none" stroke-width="1.2"/>
-        <path d="M40 20 C30 16 22 18 16 12 C26 12 34 14 40 20Z" fill="#C4A676"/>
-        <path d="M40 20 C50 16 58 18 64 12 C54 12 46 14 40 20Z" fill="#C4A676"/>
-        <path d="M40 32 C31 28 24 30 19 25 C28 25 35 27 40 32Z" fill="#DAC3A2"/>
-        <path d="M40 32 C49 28 56 30 61 25 C52 25 45 27 40 32Z" fill="#DAC3A2"/>
-      </svg>
-      <span class="rule right"></span>
-    </div>
-
-    <!-- Quick Overview -->
-    <section class="quick-overview">
-      <div class="container">
-        <div class="overview-content">
-          <h2 class="fade-in-up">Experience Paradise</h2>
-          <p class="fade-in-up">
-            Discover 5 private beachfront villas in Siargao's peaceful
-            Cabitoonan village. Just 3.9km from General Luna, enjoy direct pool
-            access, floating breakfasts, and authentic Filipino hospitality.
-          </p>
-          <div class="overview-buttons fade-in-up">
-            <a href="experiences.html" class="cta-btn primary"
-              >Explore Experiences</a
-            >
-            <a href="packages.html" class="cta-btn secondary">View Packages</a>
-          </div>
-        </div>
+    <!-- ================= SECTION 2 — IDENTITY STRIP ================= -->
+    <section class="identity-strip">
+      <div class="identity-row" data-fade-group>
+        <span class="identity-item">5 Private Villas</span>
+        <span class="identity-sep" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V8"/><path d="M12 9C10 7 7.5 6.5 5 7.5 7 9.5 9.5 10 12 9Z"/><path d="M12 9C14 7 16.5 6.5 19 7.5 17 9.5 14.5 10 12 9Z"/><path d="M12 13C10.5 11.5 8.5 11 6.5 11.8 8 13.4 10 13.8 12 13Z"/><path d="M12 13C13.5 11.5 15.5 11 17.5 11.8 16 13.4 14 13.8 12 13Z"/><path d="M12 5.5C11.5 4 12 2.8 13 2 13.6 3.3 13.3 4.7 12 5.5Z"/></svg>
+        </span>
+        <span class="identity-item">Cabitoonan Beachfront</span>
+        <span class="identity-sep" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V8"/><path d="M12 9C10 7 7.5 6.5 5 7.5 7 9.5 9.5 10 12 9Z"/><path d="M12 9C14 7 16.5 6.5 19 7.5 17 9.5 14.5 10 12 9Z"/><path d="M12 13C10.5 11.5 8.5 11 6.5 11.8 8 13.4 10 13.8 12 13Z"/><path d="M12 13C13.5 11.5 15.5 11 17.5 11.8 16 13.4 14 13.8 12 13Z"/><path d="M12 5.5C11.5 4 12 2.8 13 2 13.6 3.3 13.3 4.7 12 5.5Z"/></svg>
+        </span>
+        <span class="identity-item">3.9km from General Luna</span>
+        <span class="identity-sep" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V8"/><path d="M12 9C10 7 7.5 6.5 5 7.5 7 9.5 9.5 10 12 9Z"/><path d="M12 9C14 7 16.5 6.5 19 7.5 17 9.5 14.5 10 12 9Z"/><path d="M12 13C10.5 11.5 8.5 11 6.5 11.8 8 13.4 10 13.8 12 13Z"/><path d="M12 13C13.5 11.5 15.5 11 17.5 11.8 16 13.4 14 13.8 12 13Z"/><path d="M12 5.5C11.5 4 12 2.8 13 2 13.6 3.3 13.3 4.7 12 5.5Z"/></svg>
+        </span>
+        <span class="identity-item">Free Airport Shuttle</span>
       </div>
     </section>
 
-    <!-- Palm Divider -->
-    <div class="palm-divider" aria-hidden="true">
-      <span class="rule"></span>
-      <svg viewBox="0 0 80 56" xmlns="http://www.w3.org/2000/svg">
-        <path d="M40 50 C40 30 40 18 40 8" stroke="#8B7355" fill="none" stroke-width="1.2"/>
-        <path d="M40 20 C30 16 22 18 16 12 C26 12 34 14 40 20Z" fill="#C4A676"/>
-        <path d="M40 20 C50 16 58 18 64 12 C54 12 46 14 40 20Z" fill="#C4A676"/>
-        <path d="M40 32 C31 28 24 30 19 25 C28 25 35 27 40 32Z" fill="#DAC3A2"/>
-        <path d="M40 32 C49 28 56 30 61 25 C52 25 45 27 40 32Z" fill="#DAC3A2"/>
-      </svg>
-      <span class="rule right"></span>
-    </div>
-
-    <!-- Gallery Masonry -->
-    <section class="gallery-masonry-section">
+    <!-- ================= SECTION 3 — EXPERIENCE PARADISE ================= -->
+    <section class="section bg-cream" id="paradise">
       <div class="container">
-        <div class="gallery-masonry-head">
-          <div>
-            <h2>Rooms, water, light.</h2>
+        <div class="paradise-grid">
+          <div class="paradise-photo" data-clip>
+            <img src="https://res.cloudinary.com/dsdlbb86v/image/upload/f_auto,q_auto,w_1600,c_limit/Kalo_Exterior_2_tswvqp" alt="Outdoor view of Kalo Villa surrounded by tropical greenery" width="1200" height="800" loading="lazy">
           </div>
-          <p>Wander the house as it moves through a single day — from first light on the deck to the last warmth on the stone.</p>
-        </div>
-        <div class="gallery-masonry">
-          <figure class="tile t1">
-            <img src="KALO%20VILLA%20PICTURES/5.%20Pool/7-pool.jpg" alt="Pool at Kalo Villa" loading="lazy" />
-            <figcaption class="cap">The pool at first light</figcaption>
-          </figure>
-          <figure class="tile t2">
-            <img src="KALO%20VILLA%20PICTURES/aerial%202.jpg" alt="Aerial view of Kalo Villa" loading="lazy" />
-            <figcaption class="cap">From above</figcaption>
-          </figure>
-          <figure class="tile t3">
-            <img src="KALO%20VILLA%20PICTURES/cover%20photo.jpg" alt="Kalo Villa exterior" loading="lazy" />
-            <figcaption class="cap">The villa</figcaption>
-          </figure>
-          <figure class="tile t4">
-            <img src="KALO%20VILLA%20PICTURES/5.%20Pool/5-pool.jpg" alt="Poolside" loading="lazy" />
-            <figcaption class="cap">Poolside</figcaption>
-          </figure>
-          <figure class="tile t5">
-            <img src="KALO%20VILLA%20PICTURES/1.%20Dining%20Area/dining%202.jpg" alt="Dining area" loading="lazy" />
-            <figcaption class="cap">The long table</figcaption>
-          </figure>
-          <figure class="tile t6">
-            <img src="KALO%20VILLA%20PICTURES/6.%20Outdoor/ocean%20view.jpg" alt="Ocean view" loading="lazy" />
-            <figcaption class="cap">Ocean view</figcaption>
-          </figure>
-          <figure class="tile t7">
-            <img src="KALO%20VILLA%20PICTURES/aerial%20view.jpg" alt="Aerial view of Siargao" loading="lazy" />
-            <figcaption class="cap">A few steps to the sea</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- Palm Divider -->
-    <div class="palm-divider" aria-hidden="true">
-      <span class="rule"></span>
-      <svg viewBox="0 0 80 56" xmlns="http://www.w3.org/2000/svg">
-        <path d="M40 50 C40 30 40 18 40 8" stroke="#8B7355" fill="none" stroke-width="1.2"/>
-        <path d="M40 20 C30 16 22 18 16 12 C26 12 34 14 40 20Z" fill="#C4A676"/>
-        <path d="M40 20 C50 16 58 18 64 12 C54 12 46 14 40 20Z" fill="#C4A676"/>
-        <path d="M40 32 C31 28 24 30 19 25 C28 25 35 27 40 32Z" fill="#DAC3A2"/>
-        <path d="M40 32 C49 28 56 30 61 25 C52 25 45 27 40 32Z" fill="#DAC3A2"/>
-      </svg>
-      <span class="rule right"></span>
-    </div>
-
-    <!-- Featured Package -->
-    <section class="feature-package-home">
-      <div class="container">
-        <h2 class="fade-in-up">Featured Package</h2>
-        <div class="package-container">
-          <div class="package-info fade-in-up">
-            <h3>Premium Villa Package 2025</h3>
-            <ul>
-              <li>5 Private Beachfront Villas</li>
-              <li>Daily Floating Breakfast</li>
-              <li>Free Airport Shuttle</li>
-              <li>Pool & Beach Access</li>
-              <li>24/7 Staff Assistance</li>
-            </ul>
-            <div class="package-price">Contact for Pricing</div>
-            <a href="packages.html" class="cta-btn primary">Learn More</a>
-          </div>
-
-          <div class="package-image fade-in-up">
-            <div class="package-grid">
-              <div class="package-grid-item">
-                <img src="KALO%20VILLA%20PICTURES/5.%20Pool/7-pool.jpg" alt="Kalo Villa pool" loading="lazy" />
-              </div>
-              <div class="package-grid-item">
-                <img src="KALO%20VILLA%20PICTURES/aerial%202.jpg" alt="Aerial view" loading="lazy" />
-              </div>
-              <div class="package-grid-item">
-                <img src="KALO%20VILLA%20PICTURES/1.%20Dining%20Area/dining%202.jpg" alt="Dining area" loading="lazy" />
-              </div>
-              <div class="package-grid-item">
-                <img src="KALO%20VILLA%20PICTURES/6.%20Outdoor/ocean%20view.jpg" alt="Ocean view" loading="lazy" />
-              </div>
+          <div class="paradise-text" data-reveal-right>
+            <span class="eyebrow">The Villa</span>
+            <h2 class="section-title" data-words>Experience Paradise</h2>
+            <p class="lead">Discover 5 private beachfront villas in Siargao's peaceful Cabitoonan village. Just 3.9km from General Luna, enjoy direct pool access, floating breakfasts, and authentic Filipino hospitality.</p>
+            <div class="paradise-actions">
+              <a href="experiences.html" class="btn btn--clay">Explore Experiences</a>
+              <a href="packages.html" class="btn btn--outline">View Packages</a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Testimonial -->
-    <section class="testimonials-home">
+    <!-- ================= SECTION 4 — GALLERY EDITORIAL ================= -->
+    <section class="section gallery-section grain">
       <div class="container">
-        <div class="testimonial-box">
-          <div class="stars">
-            <i data-lucide="star" class="star-icon"></i>
-            <i data-lucide="star" class="star-icon"></i>
-            <i data-lucide="star" class="star-icon"></i>
-            <i data-lucide="star" class="star-icon"></i>
-            <i data-lucide="star" class="star-icon"></i>
+        <div class="gallery-grid-wrap">
+          <div class="gallery-editorial" data-reveal>
+            <span class="eyebrow">The Space</span>
+            <h2 class="section-title" data-words>Rooms, water, light.</h2>
+            <p>Wander the house as it moves through a single day — from first light on the deck to the last warmth on the stone.</p>
           </div>
-          <div class="testimonial-text">
-            "Kalo Villa exceeded all our expectations! The floating breakfast
-            was magical, Joy and her team were incredibly welcoming, and the
-            beachfront location was perfect."
+          <div class="gallery-grid">
+            <figure class="gallery-tile">
+              <img src="https://res.cloudinary.com/dsdlbb86v/image/upload/f_auto,q_auto,w_1600,c_limit/7-pool_ke5trz" alt="The private pool at Kalo Villa at first light" width="800" height="600" loading="lazy">
+              <figcaption class="gallery-caption">The pool at first light</figcaption>
+            </figure>
+            <figure class="gallery-tile">
+              <img src="https://res.cloudinary.com/dsdlbb86v/image/upload/f_auto,q_auto,w_1600,c_limit/Kalo_Aerial_2_web_tv8eks" alt="Aerial view of Kalo Villa and the coastline" width="800" height="600" loading="lazy">
+              <figcaption class="gallery-caption">From above</figcaption>
+            </figure>
+            <figure class="gallery-tile">
+              <img src="https://res.cloudinary.com/dsdlbb86v/image/upload/f_auto,q_auto,w_1600,c_limit/Kalo_Exterior_3_web_xaub17" alt="The villa exterior" width="800" height="600" loading="lazy">
+              <figcaption class="gallery-caption">The villa</figcaption>
+            </figure>
+            <figure class="gallery-tile">
+              <img src="https://res.cloudinary.com/dsdlbb86v/image/upload/f_auto,q_auto,w_1600,c_limit/5-pool_zt1igw" alt="Poolside lounging area" width="800" height="600" loading="lazy">
+              <figcaption class="gallery-caption">Poolside</figcaption>
+            </figure>
+            <figure class="gallery-tile">
+              <img src="https://res.cloudinary.com/dsdlbb86v/image/upload/f_auto,q_auto,w_1600,c_limit/Dining_Area_web_z4xu21" alt="The villa dining area with a long table" width="800" height="600" loading="lazy">
+              <figcaption class="gallery-caption">The long table</figcaption>
+            </figure>
+            <figure class="gallery-tile">
+              <img src="https://res.cloudinary.com/dsdlbb86v/image/upload/f_auto,q_auto,w_1600,c_limit/ocean_view_gar83x" alt="Ocean view from the villa" width="800" height="600" loading="lazy">
+              <figcaption class="gallery-caption">Ocean view</figcaption>
+            </figure>
+            <figure class="gallery-tile">
+              <img src="https://res.cloudinary.com/dsdlbb86v/image/upload/f_auto,q_auto,w_1600,c_limit/Foto_28.05.25_06_09_16_ffwg9m" alt="Aerial view showing the villa just steps from the sea" width="800" height="600" loading="lazy">
+              <figcaption class="gallery-caption">A few steps to the sea</figcaption>
+            </figure>
           </div>
-          <div class="testimonial-author">— Sarah & Mike</div>
         </div>
       </div>
     </section>
 
-    <!-- Quick Contact -->
-    <section class="quick-contact">
+    <!-- ================= SECTION 5 — FEATURED PACKAGE ================= -->
+    <section class="package-feature">
+      <div class="package-feature-panel" data-reveal>
+        <span class="eyebrow">Featured 2025</span>
+        <h2 data-words>Premium Villa Package</h2>
+        <div class="package-feature-rule" aria-hidden="true"></div>
+        <ul class="dash-list">
+          <li>5 Private Beachfront Villas</li>
+          <li>Daily Floating Breakfast</li>
+          <li>Free Airport Shuttle</li>
+          <li>Pool &amp; Beach Access</li>
+          <li>24/7 Staff Assistance</li>
+          <li>Starlink WiFi</li>
+        </ul>
+        <p class="package-feature-price">Contact for Pricing</p>
+        <a href="packages.html" class="package-feature-cta">Learn More <i data-lucide="arrow-right"></i></a>
+      </div>
+      <div class="package-feature-photo" style="background-image: url('https://res.cloudinary.com/dsdlbb86v/image/upload/f_auto,q_auto,w_1600,c_limit/Room_1_leuy8h');" role="img" aria-label="Exterior of a private villa at Kalo Villa Siargao"></div>
+    </section>
+
+    <!-- ================= SECTION 6 — TESTIMONIAL ================= -->
+    <section class="section bg-cream">
       <div class="container">
-        <h2 class="fade-in-up">Ready to Book?</h2>
-        <p class="fade-in-up">Contact us for availability and special offers</p>
-        <div class="contact-methods">
-          <a href="https://wa.me/639176223916" class="contact-method">
-            <i data-lucide="message-circle" class="contact-icon"></i>
-            <div>WhatsApp</div>
-          </a>
-          <a href="mailto:kalovillasiargao@gmail.com" class="contact-method">
-            <i data-lucide="mail" class="contact-icon"></i>
-            <div>Email</div>
-          </a>
-          <a href="tel:+639176223916" class="contact-method">
-            <i data-lucide="phone" class="contact-icon"></i>
-            <div>Call Us</div>
-          </a>
+        <div class="testimonial-feature" data-reveal>
+          <div class="testimonial-stars" aria-label="5 star rating">
+            <i data-lucide="star"></i>
+            <i data-lucide="star"></i>
+            <i data-lucide="star"></i>
+            <i data-lucide="star"></i>
+            <i data-lucide="star"></i>
+          </div>
+          <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
+          <blockquote class="testimonial-quote">Kalo Villa exceeded all our expectations! The floating breakfast was magical, Joy and her team were incredibly welcoming, and the beachfront location was perfect.</blockquote>
+          <cite class="testimonial-author">&mdash; Sarah &amp; Mike</cite>
         </div>
-        <a href="contact.html" class="cta-btn primary">More Contact Options</a>
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-logo">KALO VILLA</div>
-
-          <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="experiences.html">Experiences</a>
-            <a href="packages.html">Packages</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-          </div>
-
-          <div class="social-links">
-            <a href="https://www.facebook.com/p/Kalo-Villa-Siargao-61559021537174/" target="_blank" aria-label="Facebook">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            </a>
-            <a href="https://www.instagram.com/kalovillasiargao" target="_blank" aria-label="Instagram">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          © 2025 Kalo Villa Siargao. All rights reserved
-        </div>
-      </div>
-    </footer>
-
-    <!-- Floating Contact Buttons -->
-    <div class="floating-contact">
-      <a
-        href="https://wa.me/639176223916"
-        class="float-btn whatsapp"
-        title="WhatsApp"
-      >
-        <i data-lucide="message-circle"></i>
-      </a>
-      <a
-        href="mailto:kalovillasiargao@gmail.com"
-        class="float-btn email"
-        title="Email"
-      >
-        <i data-lucide="mail"></i>
-      </a>
-      <a href="tel:+639176223916" class="float-btn phone" title="Call">
-        <i data-lucide="phone"></i>
-      </a>
+    <div class="palm-divider" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V8"/><path d="M12 9C10 7 7.5 6.5 5 7.5 7 9.5 9.5 10 12 9Z"/><path d="M12 9C14 7 16.5 6.5 19 7.5 17 9.5 14.5 10 12 9Z"/><path d="M12 13C10.5 11.5 8.5 11 6.5 11.8 8 13.4 10 13.8 12 13Z"/><path d="M12 13C13.5 11.5 15.5 11 17.5 11.8 16 13.4 14 13.8 12 13Z"/><path d="M12 5.5C11.5 4 12 2.8 13 2 13.6 3.3 13.3 4.7 12 5.5Z"/></svg>
     </div>
 
-    <script src="script.js"></script>
-    <script>
-      lucide.createIcons();
-    </script>
-  </body>
+    <!-- ================= SECTION 7 — CONTACT STRIP ================= -->
+    <section class="section contact-strip grain">
+      <div class="container">
+        <div class="contact-strip-grid">
+          <div>
+            <h2 class="section-title" data-words>Ready to Book?</h2>
+            <p class="contact-strip-sub">Contact us for availability and special offers</p>
+          </div>
+          <div class="contact-pills" data-reveal-right>
+            <a href="https://wa.me/639176223916" target="_blank" rel="noopener noreferrer" class="contact-pill">
+              <i data-lucide="message-circle"></i>
+              WhatsApp
+              <span class="contact-pill-detail">+63 917 622 3916</span>
+            </a>
+            <a href="mailto:kalovillasiargao@gmail.com" class="contact-pill">
+              <i data-lucide="mail"></i>
+              Email
+              <span class="contact-pill-detail">kalovillasiargao@gmail.com</span>
+            </a>
+            <a href="tel:+639176223916" class="contact-pill">
+              <i data-lucide="phone"></i>
+              Call Us
+              <span class="contact-pill-detail">+63 917 622 3916</span>
+            </a>
+            <a href="contact.html" class="text-link">More Contact Options <i data-lucide="arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <span class="wordmark-footer">KALO VILLA</span>
+        <p>Your Siargao Sanctuary</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="experiences.html">Experiences</a>
+        <a href="packages.html">Packages</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/p/Kalo-Villa-Siargao-61559021537174/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+        <a href="https://www.instagram.com/kalovillasiargao" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>&copy; 2025 Kalo Villa Siargao. All rights reserved</span>
+      <span>Siargao, Philippines</span>
+    </div>
+  </footer>
+
+  <!-- ================= FLOATING ACTION BUTTON ================= -->
+  <div class="fab">
+    <div class="fab-actions">
+      <a href="https://wa.me/639176223916" target="_blank" rel="noopener noreferrer" class="fab-sub fab-sub--whatsapp" aria-label="Chat on WhatsApp">
+        <span class="fab-label">WhatsApp</span>
+        <span class="fab-icon"><i data-lucide="message-circle"></i></span>
+      </a>
+      <a href="mailto:kalovillasiargao@gmail.com" class="fab-sub fab-sub--email" aria-label="Send an email">
+        <span class="fab-label">Email</span>
+        <span class="fab-icon"><i data-lucide="mail"></i></span>
+      </a>
+      <a href="tel:+639176223916" class="fab-sub fab-sub--phone" aria-label="Call us">
+        <span class="fab-label">Call</span>
+        <span class="fab-icon"><i data-lucide="phone"></i></span>
+      </a>
+    </div>
+    <button class="fab-main" aria-label="Contact options" aria-expanded="false">
+      <i data-lucide="plus"></i>
+    </button>
+  </div>
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <script defer src="script.js"></script>
+</body>
 </html>

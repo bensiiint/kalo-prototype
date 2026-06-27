@@ -1,0 +1,9 @@
+# Large video files
+*.mp4
+*.mov
+*.MOV
+*.HEIC
+*.heic
+
+# Mac system files
+.DS_Store
